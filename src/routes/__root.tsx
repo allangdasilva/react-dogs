@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 import Header from "../ui/Header";
+import Footer from "../ui/Footer";
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -12,6 +13,7 @@ function RootComponent() {
       <Header />
       <div>Hello "__root"!</div>
       <Outlet />
+      <Footer />
     </React.Fragment>
   );
 }

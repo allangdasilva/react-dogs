@@ -2,18 +2,19 @@ import clsx from "clsx";
 import { Link, type LinkProps } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
-interface AnchorProps extends LinkProps {
+type AnchorProps = LinkProps & {
   className: string;
   children: ReactNode;
-}
+};
 
-const AnchorRouter = ({ children, ...props }: AnchorProps) => {
-  const { to, className } = props;
-
+const AnchorRouter = ({ children, className, ...props }: AnchorProps) => {
   return (
     <Link
-      to={to}
-      className={clsx("p-3 rounded-base transition-colors ease-in", className)}
+      {...props}
+      className={clsx(
+        "p-3 rounded-base whitespace-nowrap transition-colors ease-in",
+        className,
+      )}
     >
       {children}
     </Link>

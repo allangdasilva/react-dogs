@@ -13,6 +13,7 @@
 }
 
 @theme {
+  --breakpoint-xxs: 17.5rem;
   --breakpoint-xs: 30rem;
 
   --font-primary: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -48,6 +49,10 @@
   }
 }
 
+@utility max-w-base {
+  @apply max-w-255 mx-auto;
+}
+
 @utility font-body-xs {
   @apply text-xs/4;
 }
@@ -70,6 +75,6 @@
     @apply font-primary;
   }
   body {
-    @apply pt-19 px-4 max-w-255 mx-auto;
+    @apply pt-53 xxs:pt-36 xs:pt-19;
   }
 }

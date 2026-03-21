@@ -4,8 +4,8 @@ import AnchorRouter from "./AnchorRouter";
 const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-base-100">
-      <div className="max-w-255 mx-auto p-4">
-        <nav className="flex flex-col items-center justify-center gap-6 xs:flex-row xs:justify-between">
+      <div className="max-w-base p-4">
+        <nav className="flex flex-col items-center justify-center gap-6 text-base-700 xs:flex-row xs:justify-between">
           <AnchorRouter
             className="inline-block hover:bg-base-300 focus:bg-base-300"
             to="/"
@@ -13,7 +13,7 @@ const Header = () => {
             <LogoIcon />
           </AnchorRouter>
 
-          <div className="flex items-center justify-center gap-6 flex-wrap *:font-body-sm *:font-semibold *:text-center">
+          <div className="flex flex-col items-center justify-center gap-6 *:font-body-sm *:font-semibold xxs:flex-row">
             <AnchorRouter
               className="px-6 bg-primary hover:bg-primary-dark focus:bg-primary-dark"
               to="/"
