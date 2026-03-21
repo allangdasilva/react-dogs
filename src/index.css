@@ -13,13 +13,15 @@
 }
 
 @theme {
+  --breakpoint-xs: 30rem;
+
   --font-primary: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
   --color-link: #0067b8;
   --color-error: #b60c0c;
 
   --color-primary: #ffbb11;
-  --color-primary-dark: #efac05;
+  --color-primary-dark: #e3a302;
 
   --color-base-100: var(--color-base-100);
   --color-base-200: var(--color-base-200);
@@ -68,6 +70,6 @@
     @apply font-primary;
   }
   body {
-    @apply pt-19;
+    @apply pt-19 px-4 max-w-255 mx-auto;
   }
 }
