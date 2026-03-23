@@ -7,7 +7,7 @@ const Header = () => {
       <div className="max-w-base p-4">
         <nav className="flex flex-col items-center justify-center gap-6 text-base-700 xs:flex-row xs:justify-between">
           <AnchorRouter
-            className="inline-block hover:bg-base-300 focus:bg-base-300"
+            className="inline-block hover:bg-base-300 focus-visible:bg-base-300"
             to="/"
           >
             <LogoIcon />
@@ -15,13 +15,13 @@ const Header = () => {
 
           <div className="flex flex-col items-center justify-center gap-6 *:font-body-sm *:font-semibold xxs:flex-row">
             <AnchorRouter
-              className="px-6 bg-primary hover:bg-primary-dark focus:bg-primary-dark"
+              className="px-6 bg-primary hover:bg-primary-dark focus-visible:bg-primary-dark"
               to="/login"
             >
               Entrar
             </AnchorRouter>
             <AnchorRouter
-              className="px-6 bg-base-200 hover:bg-base-300 focus:bg-base-300"
+              className="px-6 bg-base-200 hover:bg-base-300 focus-visible:bg-base-300"
               to="/signup"
             >
               Criar conta
