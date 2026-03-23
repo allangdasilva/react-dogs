@@ -22,7 +22,7 @@ const Header = () => {
             </AnchorRouter>
             <AnchorRouter
               className="px-6 bg-base-200 hover:bg-base-300 focus:bg-base-300"
-              to="/"
+              to="/signup"
             >
               Criar conta
             </AnchorRouter>
