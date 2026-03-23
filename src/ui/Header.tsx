@@ -13,7 +13,7 @@ const Header = () => {
             <LogoIcon />
           </AnchorRouter>
 
-          <div className="flex flex-col items-center justify-center gap-6 *:font-body-sm *:font-semibold xxs:flex-row">
+          <div className="flex flex-col items-center justify-center gap-6 xxs:flex-row">
             <AnchorRouter
               className="px-6 bg-primary hover:bg-primary-dark focus-visible:bg-primary-dark"
               to="/login"

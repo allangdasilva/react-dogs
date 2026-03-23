@@ -11,7 +11,6 @@ function RootComponent() {
   return (
     <React.Fragment>
       <Header />
-      <div>Hello "__root"!</div>
       <Outlet />
       <Footer />
     </React.Fragment>

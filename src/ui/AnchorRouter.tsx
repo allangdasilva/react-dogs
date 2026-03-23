@@ -3,8 +3,8 @@ import { Link, type LinkProps } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
 type AnchorProps = LinkProps & {
-  className: string;
   children: ReactNode;
+  className?: string;
 };
 
 const AnchorRouter = ({ children, className, ...props }: AnchorProps) => {
@@ -12,7 +12,7 @@ const AnchorRouter = ({ children, className, ...props }: AnchorProps) => {
     <Link
       {...props}
       className={clsx(
-        "p-3 rounded-base whitespace-nowrap transition-colors ease-in",
+        "p-3 font-body-sm font-semibold rounded-base whitespace-nowrap transition-colors ease-in",
         className,
       )}
     >
