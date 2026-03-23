@@ -16,7 +16,7 @@ const Header = () => {
           <div className="flex flex-col items-center justify-center gap-6 *:font-body-sm *:font-semibold xxs:flex-row">
             <AnchorRouter
               className="px-6 bg-primary hover:bg-primary-dark focus:bg-primary-dark"
-              to="/"
+              to="/login"
             >
               Entrar
             </AnchorRouter>
