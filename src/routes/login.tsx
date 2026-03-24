@@ -10,14 +10,12 @@ export const Route = createFileRoute("/login")({
 
 function RouteComponent() {
   return (
-    <div className="grid sm:min-h-dvh sm:before:bg-[url(/img/login-bg.jpg)] sm:before:bg-cover sm:before:bg-center sm:grid-cols-2">
-      <div className="flex flex-col pl-6 pr-4 py-12 sm:self-center sm:max-w-127.5">
-        <h2 className="relative font-title-base text-base-700 after:absolute after:bottom-0 after:-left-1 after:w-4 after:h-4 after:bg-[url(/img/pegada.svg)] after:bg-center">
-          Entrar
-        </h2>
+    <section className="auth-wrapper sm:before:bg-[url(/img/login-bg.jpg)]">
+      <div className="auth-form-wrapper">
+        <h2 className="page-title">Entrar</h2>
 
-        <Form className="gap-6 mt-6">
-          <div className="flex flex-col gap-3">
+        <Form className="mt-6">
+          <div className="auth-form-fields-wrapper">
             <InputField
               id="email"
               label="Email"
@@ -44,11 +42,14 @@ function RouteComponent() {
 
         <p className="mt-6 font-body-sm text-base-700">
           Não tem uma conta?{" "}
-          <Link className="text-link hover:underline focus:underline" to="/">
+          <Link
+            className="text-link hover:underline focus:underline"
+            to="/signup"
+          >
             Crie uma!
           </Link>
         </p>
       </div>
-    </div>
+    </section>
   );
 }

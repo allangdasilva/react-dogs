@@ -8,7 +8,7 @@ type FormProps = React.FormHTMLAttributes<HTMLFormElement> & {
 
 const Form = ({ children, className, ...props }: FormProps) => {
   return (
-    <form className={clsx("flex flex-col", className)} {...props}>
+    <form className={clsx("flex flex-col gap-6", className)} {...props}>
       {children}
     </form>
   );
