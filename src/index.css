@@ -70,10 +70,6 @@
   @apply rounded-2xl;
 }
 
-@utility page-title {
-  @apply relative font-title-base text-base-700 after:absolute after:bottom-0 after:-left-1 after:w-4 after:h-4 after:bg-[url(/img/pegada.svg)] after:bg-center after:pointer-events-none;
-}
-
 @utility auth-wrapper {
   @apply grid sm:min-h-dvh sm:before:bg-cover sm:before:bg-center sm:grid-cols-2;
 }
