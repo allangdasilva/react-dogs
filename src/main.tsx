@@ -4,6 +4,7 @@ import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { routeTree } from "./routeTree.gen.ts";
 import "./index.css";
+import "./api/interceptors.ts";
 
 const queryClient = new QueryClient();
 
@@ -11,6 +12,9 @@ const router = createRouter({
   routeTree,
   defaultPreload: "intent",
   scrollRestoration: true,
+  context: {
+    queryClient,
+  },
 });
 
 declare module "@tanstack/react-router" {

@@ -5,7 +5,7 @@ import ButtonSubmit from "../../../components/form/ButtonSubmit";
 import {
   signupFormSchema,
   type SignupFormSchema,
-} from "../types/signup.schema";
+} from "../types/signupForm.schema";
 import Form from "../../../components/form/Form";
 
 const SignupForm = () => {

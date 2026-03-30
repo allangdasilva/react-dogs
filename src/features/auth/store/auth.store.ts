@@ -14,7 +14,6 @@ const storeConfig: StateCreator<
   [["zustand/devtools", never], ["zustand/persist", unknown]]
 > = (set) => ({
   token: null,
-  user: null,
 
   setToken: (token) => set({ token }),
   logout: () => set({ token: null }),
