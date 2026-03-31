@@ -13,6 +13,11 @@ const loginSearchSchema = z.object({
 });
 
 export const Route = createFileRoute("/_public/login")({
+  // validateSearch: É uma função que roda antes da rota carregar.
+  // 'search': É um objeto que contém todos os parâmetros da URL (ex: ?redirect=/user&tema=dark)
+  // O que ele faz: Ele pega esses parâmetros "crus" (Record<string, unknown>) e os passa pelo Zod.
+  // Se o Zod validar (loginSearchSchema.parse), o Router tipa esses dados automaticamente.
+  // Se falhar (ex: mandarem um número no redirect), o Zod/Router barram ou usam o valor padrão do .catch()
   validateSearch: (search) => loginSearchSchema.parse(search),
   component: RouteComponent,
 });

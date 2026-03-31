@@ -1,13 +1,15 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Form from "../../../components/form/Form";
+import { Route } from "../../../routes/_public/login";
+import ErrorForm from "../../../components/form/ErrorForm";
+import { useLoginMutation } from "../api/useLoginMutation";
 import InputField from "../../../components/form/InputField";
 import ButtonSubmit from "../../../components/form/ButtonSubmit";
 import {
   loginFormSchema,
   type LoginFormSchema,
 } from "../types/loginForm.schema";
-import { useLoginMutation } from "../api/useLoginMutation";
 
 const LoginForm = () => {
   const {
@@ -19,9 +21,17 @@ const LoginForm = () => {
     mode: "onBlur",
   });
 
-  const { mutate, error } = useLoginMutation();
+  // 1. Route.useSearch(): Hook do TanStack que lê os parâmetros de busca já validados pelo validateSearch.
+  // Como estamos dentro de um arquivo da rota de login, ele sabe exatamente que existe o campo 'redirect'.
+  const search = Route.useSearch();
+
+  // 2. useLoginMutation: Nosso hook de login customizado.
+  // Passamos o 'search.redirect' como destino (o 'redirectTo' que criamos nas options do hook).
+  // Se o usuário veio de um redirecionamento, ele vai para lá. Se veio direto pro login, search.redirect é undefined e o hook usará "/"
+  const { mutate, error } = useLoginMutation({ redirectTo: search.redirect });
 
   function handleLogin(credentials: LoginFormSchema) {
+    // Dispara a mutation. O sucesso desta mutation completará o fluxo navegando para o destino correto.
     mutate(credentials);
   }
 
@@ -46,9 +56,7 @@ const LoginForm = () => {
         />
       </div>
 
-      {error && (
-        <span className="font-body-sm text-error">{error.message}</span>
-      )}
+      {error && <ErrorForm error={error} />}
 
       <ButtonSubmit>Avançar</ButtonSubmit>
     </Form>

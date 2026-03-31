@@ -9,16 +9,14 @@ import {
 import axios from "axios";
 import { useAuthStore } from "../store/auth.store";
 import { fetchCurrentUser } from "./get-user";
-import { Route } from "../../../routes/_public/login";
 
-export const useLoginMutation = () => {
+// caso você use const search = Route.useSearch() 'importado de _public/login' para pegar os parâmetros da rota (todo aquele caso de UX em _auth.tsx) dentro do useLoginMutation, o Router espera que esse hook esteja sendo usado dentro da rota /logim. E como queremos utilizá-lo dentro de useSignupMutation, vamos optar por passar esse parâmetro opcionalmente, ou seja, quando LoginForm chamar o useLoginMutation, lá mesmo pegaremos o parâmetro de busca de /login e parassemos aqui, e para o useSignupMutation passamos o valor padrão "/", dai quando o usuário se cadastrar ele vai ser jogado para a home (comportamento padrão)
+export const useLoginMutation = (options?: { redirectTo?: string }) => {
   // aqui podemos usar o hook useAuthStore normalmente. pois hooks funcionam
   // em componentes React e dentro ou outros hooks
   const setToken = useAuthStore((state) => state.setToken);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  // Pegamos os parâmetros da URL de login
-  const search = Route.useSearch();
 
   return useMutation({
     mutationFn: async (credentials: LoginFormSchema) => {
@@ -78,9 +76,7 @@ export const useLoginMutation = () => {
 
       // Lógica de Redirecionamento:
       // Se houver algo no search.redirect, vai pra lá. Senão, vai pra "/"
-      const destination = search.redirect || "/";
-
-      navigate({ to: destination });
+      navigate({ to: options?.redirectTo || "/" });
     },
   });
 };

@@ -15,7 +15,7 @@ export const Route = createFileRoute("/_auth")({
         to: "/login",
         // search é para a experiência do usuário
         // UX: Salvamos a URL que o usuário tentou acessar (ex: /settings), para que, após o login, possamos mandá-lo de volta para lá.
-        // imagine que ele recebeu um link de uma imagem (apenas exemplo), só que ele está deslogado e não conseguiu acessa-la, quando ele fizer o login, ele será redirecionado diretamente para lá ao invés de '/' (rota padrão)
+        // imagine que ele recebeu um link de uma imagem (apenas exemplo), só que ele está deslogado e não conseguiu acessa-la, então ele irá para /login e /login irá conter na URL os parâmetros da rota que ele estava tentando acessar, ex: (/login?redirect=user), então, quando ele fizer o login, ele será redirecionado diretamente para lá ao invés de '/' (rota padrão)
         // Para que o tanstack aceite o search: { redirect: ... } na URL do login, você precisa definir que a rota de Login espera esse parâmetro.
         search: { redirect: location.pathname },
       });

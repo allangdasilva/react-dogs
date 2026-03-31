@@ -1,24 +1,33 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import Form from "../../../components/form/Form";
+import ErrorForm from "../../../components/form/ErrorForm";
+import { useSigupMutation } from "../api/useSignupMutation";
 import InputField from "../../../components/form/InputField";
 import ButtonSubmit from "../../../components/form/ButtonSubmit";
 import {
   signupFormSchema,
   type SignupFormSchema,
 } from "../types/signupForm.schema";
-import Form from "../../../components/form/Form";
 
 const SignupForm = () => {
   const {
     register,
+    handleSubmit,
     formState: { errors },
   } = useForm<SignupFormSchema>({
     resolver: zodResolver(signupFormSchema),
     mode: "onBlur",
   });
 
+  const { mutate, error } = useSigupMutation();
+
+  function handleSignup(credentials: SignupFormSchema) {
+    mutate(credentials);
+  }
+
   return (
-    <Form className="mt-6">
+    <Form onSubmit={handleSubmit(handleSignup)} className="mt-6">
       <div className="auth-form-fields-wrapper">
         <InputField
           id="user"
@@ -45,6 +54,8 @@ const SignupForm = () => {
           error={errors.password}
         />
       </div>
+
+      {error && <ErrorForm error={error} />}
 
       <ButtonSubmit>Criar</ButtonSubmit>
     </Form>
