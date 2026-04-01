@@ -49,7 +49,7 @@ function AuthBar({ user }: { user: UserSchema }) {
       <p className="font-body-sm font-semibold capitalize">
         {nome.toLowerCase()}
       </p>
-      <AnchorRouter to="/user" className={anchorElementPrimary}>
+      <AnchorRouter to="/profile" className={anchorElementPrimary}>
         Perfil
       </AnchorRouter>
     </>

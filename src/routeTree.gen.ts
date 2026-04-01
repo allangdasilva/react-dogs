@@ -14,10 +14,10 @@ import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PublicSignupRouteImport } from './routes/_public/signup'
 import { Route as PublicLoginRouteImport } from './routes/_public/login'
-import { Route as AuthUserIndexRouteImport } from './routes/_auth/user/index'
-import { Route as AuthUserStatisticsRouteImport } from './routes/_auth/user/statistics'
-import { Route as AuthUserSettingsRouteImport } from './routes/_auth/user/settings'
-import { Route as AuthUserPostRouteImport } from './routes/_auth/user/post'
+import { Route as AuthProfileIndexRouteImport } from './routes/_auth/profile/index'
+import { Route as AuthProfileStatisticsRouteImport } from './routes/_auth/profile/statistics'
+import { Route as AuthProfileSettingsRouteImport } from './routes/_auth/profile/settings'
+import { Route as AuthProfilePostRouteImport } from './routes/_auth/profile/post'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -42,24 +42,24 @@ const PublicLoginRoute = PublicLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => PublicRoute,
 } as any)
-const AuthUserIndexRoute = AuthUserIndexRouteImport.update({
-  id: '/user/',
-  path: '/user/',
+const AuthProfileIndexRoute = AuthProfileIndexRouteImport.update({
+  id: '/profile/',
+  path: '/profile/',
   getParentRoute: () => AuthRoute,
 } as any)
-const AuthUserStatisticsRoute = AuthUserStatisticsRouteImport.update({
-  id: '/user/statistics',
-  path: '/user/statistics',
+const AuthProfileStatisticsRoute = AuthProfileStatisticsRouteImport.update({
+  id: '/profile/statistics',
+  path: '/profile/statistics',
   getParentRoute: () => AuthRoute,
 } as any)
-const AuthUserSettingsRoute = AuthUserSettingsRouteImport.update({
-  id: '/user/settings',
-  path: '/user/settings',
+const AuthProfileSettingsRoute = AuthProfileSettingsRouteImport.update({
+  id: '/profile/settings',
+  path: '/profile/settings',
   getParentRoute: () => AuthRoute,
 } as any)
-const AuthUserPostRoute = AuthUserPostRouteImport.update({
-  id: '/user/post',
-  path: '/user/post',
+const AuthProfilePostRoute = AuthProfilePostRouteImport.update({
+  id: '/profile/post',
+  path: '/profile/post',
   getParentRoute: () => AuthRoute,
 } as any)
 
@@ -67,19 +67,19 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
-  '/user/post': typeof AuthUserPostRoute
-  '/user/settings': typeof AuthUserSettingsRoute
-  '/user/statistics': typeof AuthUserStatisticsRoute
-  '/user/': typeof AuthUserIndexRoute
+  '/profile/post': typeof AuthProfilePostRoute
+  '/profile/settings': typeof AuthProfileSettingsRoute
+  '/profile/statistics': typeof AuthProfileStatisticsRoute
+  '/profile/': typeof AuthProfileIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
-  '/user/post': typeof AuthUserPostRoute
-  '/user/settings': typeof AuthUserSettingsRoute
-  '/user/statistics': typeof AuthUserStatisticsRoute
-  '/user': typeof AuthUserIndexRoute
+  '/profile/post': typeof AuthProfilePostRoute
+  '/profile/settings': typeof AuthProfileSettingsRoute
+  '/profile/statistics': typeof AuthProfileStatisticsRoute
+  '/profile': typeof AuthProfileIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -88,10 +88,10 @@ export interface FileRoutesById {
   '/_public': typeof PublicRouteWithChildren
   '/_public/login': typeof PublicLoginRoute
   '/_public/signup': typeof PublicSignupRoute
-  '/_auth/user/post': typeof AuthUserPostRoute
-  '/_auth/user/settings': typeof AuthUserSettingsRoute
-  '/_auth/user/statistics': typeof AuthUserStatisticsRoute
-  '/_auth/user/': typeof AuthUserIndexRoute
+  '/_auth/profile/post': typeof AuthProfilePostRoute
+  '/_auth/profile/settings': typeof AuthProfileSettingsRoute
+  '/_auth/profile/statistics': typeof AuthProfileStatisticsRoute
+  '/_auth/profile/': typeof AuthProfileIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -99,19 +99,19 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/signup'
-    | '/user/post'
-    | '/user/settings'
-    | '/user/statistics'
-    | '/user/'
+    | '/profile/post'
+    | '/profile/settings'
+    | '/profile/statistics'
+    | '/profile/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/login'
     | '/signup'
-    | '/user/post'
-    | '/user/settings'
-    | '/user/statistics'
-    | '/user'
+    | '/profile/post'
+    | '/profile/settings'
+    | '/profile/statistics'
+    | '/profile'
   id:
     | '__root__'
     | '/'
@@ -119,10 +119,10 @@ export interface FileRouteTypes {
     | '/_public'
     | '/_public/login'
     | '/_public/signup'
-    | '/_auth/user/post'
-    | '/_auth/user/settings'
-    | '/_auth/user/statistics'
-    | '/_auth/user/'
+    | '/_auth/profile/post'
+    | '/_auth/profile/settings'
+    | '/_auth/profile/statistics'
+    | '/_auth/profile/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -168,49 +168,49 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicLoginRouteImport
       parentRoute: typeof PublicRoute
     }
-    '/_auth/user/': {
-      id: '/_auth/user/'
-      path: '/user'
-      fullPath: '/user/'
-      preLoaderRoute: typeof AuthUserIndexRouteImport
+    '/_auth/profile/': {
+      id: '/_auth/profile/'
+      path: '/profile'
+      fullPath: '/profile/'
+      preLoaderRoute: typeof AuthProfileIndexRouteImport
       parentRoute: typeof AuthRoute
     }
-    '/_auth/user/statistics': {
-      id: '/_auth/user/statistics'
-      path: '/user/statistics'
-      fullPath: '/user/statistics'
-      preLoaderRoute: typeof AuthUserStatisticsRouteImport
+    '/_auth/profile/statistics': {
+      id: '/_auth/profile/statistics'
+      path: '/profile/statistics'
+      fullPath: '/profile/statistics'
+      preLoaderRoute: typeof AuthProfileStatisticsRouteImport
       parentRoute: typeof AuthRoute
     }
-    '/_auth/user/settings': {
-      id: '/_auth/user/settings'
-      path: '/user/settings'
-      fullPath: '/user/settings'
-      preLoaderRoute: typeof AuthUserSettingsRouteImport
+    '/_auth/profile/settings': {
+      id: '/_auth/profile/settings'
+      path: '/profile/settings'
+      fullPath: '/profile/settings'
+      preLoaderRoute: typeof AuthProfileSettingsRouteImport
       parentRoute: typeof AuthRoute
     }
-    '/_auth/user/post': {
-      id: '/_auth/user/post'
-      path: '/user/post'
-      fullPath: '/user/post'
-      preLoaderRoute: typeof AuthUserPostRouteImport
+    '/_auth/profile/post': {
+      id: '/_auth/profile/post'
+      path: '/profile/post'
+      fullPath: '/profile/post'
+      preLoaderRoute: typeof AuthProfilePostRouteImport
       parentRoute: typeof AuthRoute
     }
   }
 }
 
 interface AuthRouteChildren {
-  AuthUserPostRoute: typeof AuthUserPostRoute
-  AuthUserSettingsRoute: typeof AuthUserSettingsRoute
-  AuthUserStatisticsRoute: typeof AuthUserStatisticsRoute
-  AuthUserIndexRoute: typeof AuthUserIndexRoute
+  AuthProfilePostRoute: typeof AuthProfilePostRoute
+  AuthProfileSettingsRoute: typeof AuthProfileSettingsRoute
+  AuthProfileStatisticsRoute: typeof AuthProfileStatisticsRoute
+  AuthProfileIndexRoute: typeof AuthProfileIndexRoute
 }
 
 const AuthRouteChildren: AuthRouteChildren = {
-  AuthUserPostRoute: AuthUserPostRoute,
-  AuthUserSettingsRoute: AuthUserSettingsRoute,
-  AuthUserStatisticsRoute: AuthUserStatisticsRoute,
-  AuthUserIndexRoute: AuthUserIndexRoute,
+  AuthProfilePostRoute: AuthProfilePostRoute,
+  AuthProfileSettingsRoute: AuthProfileSettingsRoute,
+  AuthProfileStatisticsRoute: AuthProfileStatisticsRoute,
+  AuthProfileIndexRoute: AuthProfileIndexRoute,
 }
 
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
