@@ -2,7 +2,10 @@ import z from "zod/v3";
 
 export const signupFormSchema = z.object({
   email: z.string().email("Insira um email válido."),
-  username: z.string().min(1, "Preencha um valor."),
+  username: z
+    .string()
+    .min(1, "Preencha um valor.")
+    .max(32, "Username muito grande."),
   password: z.string().min(1, "Preencha um valor."),
 });
 

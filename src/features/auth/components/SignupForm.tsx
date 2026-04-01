@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import clsx from "clsx";
 import Form from "../../../components/form/Form";
 import ErrorForm from "../../../components/form/ErrorForm";
 import { useSigupMutation } from "../api/useSignupMutation";
@@ -20,7 +21,7 @@ const SignupForm = () => {
     mode: "onBlur",
   });
 
-  const { mutate, error } = useSigupMutation();
+  const { mutate, error, isPending } = useSigupMutation();
 
   function handleSignup(credentials: SignupFormSchema) {
     mutate(credentials);
@@ -28,7 +29,11 @@ const SignupForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(handleSignup)} className="mt-6">
-      <div className="auth-form-fields-wrapper">
+      <div
+        className={clsx("auth-form-fields-wrapper", {
+          "opacity-60": isPending,
+        })}
+      >
         <InputField
           id="user"
           label="Usuário"
@@ -57,7 +62,11 @@ const SignupForm = () => {
 
       {error && <ErrorForm error={error} />}
 
-      <ButtonSubmit>Criar</ButtonSubmit>
+      {isPending ? (
+        <ButtonSubmit disabled>Criando...</ButtonSubmit>
+      ) : (
+        <ButtonSubmit>Criar</ButtonSubmit>
+      )}
     </Form>
   );
 };

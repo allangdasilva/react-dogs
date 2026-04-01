@@ -10,6 +10,7 @@ import {
   loginFormSchema,
   type LoginFormSchema,
 } from "../types/loginForm.schema";
+import clsx from "clsx";
 
 const LoginForm = () => {
   const {
@@ -28,7 +29,9 @@ const LoginForm = () => {
   // 2. useLoginMutation: Nosso hook de login customizado.
   // Passamos o 'search.redirect' como destino (o 'redirectTo' que criamos nas options do hook).
   // Se o usuário veio de um redirecionamento, ele vai para lá. Se veio direto pro login, search.redirect é undefined e o hook usará "/"
-  const { mutate, error } = useLoginMutation({ redirectTo: search.redirect });
+  const { mutate, error, isPending } = useLoginMutation({
+    redirectTo: search.redirect,
+  });
 
   function handleLogin(credentials: LoginFormSchema) {
     // Dispara a mutation. O sucesso desta mutation completará o fluxo navegando para o destino correto.
@@ -37,7 +40,11 @@ const LoginForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(handleLogin)} className="mt-6">
-      <div className="auth-form-fields-wrapper">
+      <div
+        className={clsx("auth-form-fields-wrapper", {
+          "opacity-60": isPending,
+        })}
+      >
         <InputField
           id="username"
           label="Usuário"
@@ -58,7 +65,11 @@ const LoginForm = () => {
 
       {error && <ErrorForm error={error} />}
 
-      <ButtonSubmit>Avançar</ButtonSubmit>
+      {isPending ? (
+        <ButtonSubmit disabled>Entrando...</ButtonSubmit>
+      ) : (
+        <ButtonSubmit>Entrar</ButtonSubmit>
+      )}
     </Form>
   );
 };
