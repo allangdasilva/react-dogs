@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Google Sans Flex";
+  src: url("/fonts/GoogleSansFlex-VariableFont.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 :root {
   --color-base-100: #f8f8f1;
   --color-base-200: #f0ede6;
@@ -16,7 +23,7 @@
   --breakpoint-xxs: 17.5rem;
   --breakpoint-xs: 30rem;
 
-  --font-primary: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-primary: "Google Sans Flex", sans-serif;
 
   --color-link: #0067b8;
   --color-error: #b60c0c;
