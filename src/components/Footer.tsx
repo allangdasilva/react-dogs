@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="flex flex-col items-center justify-center gap-3 py-12 bg-primary">
       <AnchorRouter
         to="/"
-        className="inline-block hover:bg-primary-dark focus-visible:bg-primary-dark"
+        className="py-4 hover:bg-primary-dark focus-visible:bg-primary-dark"
       >
         <LogoIcon />
       </AnchorRouter>
