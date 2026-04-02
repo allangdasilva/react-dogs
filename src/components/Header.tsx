@@ -1,8 +1,7 @@
-import AnchorRouter from "./AnchorRouter";
-import { useAuthStore } from "../features/auth/store/auth.store";
 import { useQuery } from "@tanstack/react-query";
+import { useAuthStore } from "../features/auth/store/auth.store";
 import { fetchCurrentUser } from "../features/auth/api/get-user";
-import type { UserSchema } from "../features/auth/types/user.schema";
+import AnchorRouter from "./AnchorRouter";
 import HomeIcon from "./svgs/HomeIcon";
 import AnchorLabel from "./AnchorLabel";
 import ProfileIcon from "./svgs/ProfileIcon";
@@ -24,8 +23,8 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-base-100">
-      <div className="max-w-base p-4">
-        <nav className="flex flex-col items-center justify-center gap-6 text-base-700 xs:flex-row xs:justify-between">
+      <div className="max-w-base px-4 py-3">
+        <nav className="flex flex-col items-center justify-center gap-3 text-base-700 xs:flex-row xs:justify-between">
           <AnchorRouter
             className=" hover:bg-base-300 focus-visible:bg-base-300"
             to="/"
@@ -34,9 +33,7 @@ const Header = () => {
             <AnchorLabel>Início</AnchorLabel>
           </AnchorRouter>
 
-          <div className="flex flex-col items-center justify-center gap-6 xxs:flex-row">
-            {user ? <AuthBar user={user} /> : <PublicBar />}
-          </div>
+          {user ? <AuthBar /> : <PublicBar />}
         </nav>
       </div>
     </header>
@@ -45,24 +42,20 @@ const Header = () => {
 
 export default Header;
 
-function AuthBar({ user }: { user: UserSchema }) {
-  const { nome } = user;
+function AuthBar() {
   return (
-    <>
-      <p className="font-body-sm font-semibold capitalize">
-        {nome.toLowerCase()}
-      </p>
+    <div>
       <AnchorRouter to="/profile" className={bgBase_200}>
         <ProfileIcon />
         <AnchorLabel>Perfil</AnchorLabel>
       </AnchorRouter>
-    </>
+    </div>
   );
 }
 
 function PublicBar() {
   return (
-    <>
+    <div className="flex items-center justify-center gap-3">
       <AnchorRouter
         className="bg-primary hover:bg-primary-dark focus-visible:bg-primary-dark"
         to="/login"
@@ -75,6 +68,6 @@ function PublicBar() {
         <SignupIcon />
         <AnchorLabel>Criar conta</AnchorLabel>
       </AnchorRouter>
-    </>
+    </div>
   );
 }

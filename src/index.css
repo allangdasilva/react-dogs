@@ -99,6 +99,6 @@
     @apply font-primary;
   }
   body {
-    @apply pt-53 xxs:pt-36 xs:pt-19;
+    @apply pt-36 xs:pt-19;
   }
 }
