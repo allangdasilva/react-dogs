@@ -12,7 +12,7 @@ const AnchorRouter = ({ children, className, ...props }: AnchorProps) => {
     <Link
       {...props}
       className={clsx(
-        "flex flex-col items-center px-4 py-2 font-anchor-base font-medium rounded-base whitespace-nowrap transition-colors ease-in",
+        "flex flex-col items-center px-4 py-2 rounded-base whitespace-nowrap transition-colors ease-in",
         className,
       )}
     >
