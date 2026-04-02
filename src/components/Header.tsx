@@ -1,4 +1,3 @@
-import LogoIcon from "./svgs/LogoIcon";
 import AnchorRouter from "./AnchorRouter";
 import { useAuthStore } from "../features/auth/store/auth.store";
 import { useQuery } from "@tanstack/react-query";
@@ -6,9 +5,10 @@ import { fetchCurrentUser } from "../features/auth/api/get-user";
 import type { UserSchema } from "../features/auth/types/user.schema";
 import HomeIcon from "./svgs/HomeIcon";
 import AnchorLabel from "./AnchorLabel";
+import ProfileIcon from "./svgs/ProfileIcon";
+import SignupIcon from "./svgs/SignupIcon";
 
-const anchorElementPrimary =
-  "px-6 bg-primary hover:bg-primary-dark focus-visible:bg-primary-dark";
+const bgBase_200 = "bg-base-200 hover:bg-base-300 focus-visible:bg-base-300";
 
 const Header = () => {
   const token = useAuthStore((s) => s.token);
@@ -52,8 +52,9 @@ function AuthBar({ user }: { user: UserSchema }) {
       <p className="font-body-sm font-semibold capitalize">
         {nome.toLowerCase()}
       </p>
-      <AnchorRouter to="/profile" className={anchorElementPrimary}>
-        Perfil
+      <AnchorRouter to="/profile" className={bgBase_200}>
+        <ProfileIcon />
+        <AnchorLabel>Perfil</AnchorLabel>
       </AnchorRouter>
     </>
   );
@@ -62,14 +63,17 @@ function AuthBar({ user }: { user: UserSchema }) {
 function PublicBar() {
   return (
     <>
-      <AnchorRouter className={anchorElementPrimary} to="/login">
-        Entrar
-      </AnchorRouter>
       <AnchorRouter
-        className="px-6 bg-base-200 hover:bg-base-300 focus-visible:bg-base-300"
-        to="/signup"
+        className="bg-primary hover:bg-primary-dark focus-visible:bg-primary-dark"
+        to="/login"
       >
-        Criar conta
+        <ProfileIcon />
+        <AnchorLabel>Entrar</AnchorLabel>
+      </AnchorRouter>
+
+      <AnchorRouter className={bgBase_200} to="/signup">
+        <SignupIcon />
+        <AnchorLabel>Criar conta</AnchorLabel>
       </AnchorRouter>
     </>
   );
