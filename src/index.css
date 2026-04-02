@@ -53,6 +53,10 @@
   @apply max-w-255 mx-auto;
 }
 
+@utility button-form {
+  @apply py-3 font-body-sm font-semibold text-center rounded-base cursor-pointer transition-colors ease-in;
+}
+
 @utility font-anchor-base {
   @apply text-[0.625rem] leading-3;
 }

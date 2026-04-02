@@ -12,7 +12,7 @@ const ButtonSubmit = ({ children, ...props }: ButtonProps) => {
       {...props}
       className={clsx(
         props.className,
-        "py-3 font-body-sm font-semibold rounded-base cursor-pointer text-base-100 bg-base-900 hover:bg-base-700/90 focus:bg-base-700/90  transition-colors ease-in",
+        "button-form text-base-100 bg-base-900 hover:bg-base-700/90 focus:bg-base-700/90",
       )}
       type="submit"
     >

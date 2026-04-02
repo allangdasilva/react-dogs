@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import PageTitle from "../PageTitle";
-import AnchorRouter from "../AnchorRouter";
 import LoginForm from "../../features/auth/components/LoginForm";
 
 const Login = () => {
@@ -16,12 +15,12 @@ const Login = () => {
 
         <LoginForm />
 
-        <AnchorRouter
+        <Link
           to="/"
-          className="mt-3 text-center rounded-base text-base-700 hover:bg-base-300 focus:bg-base-300"
+          className="button-form mt-3 text-base-700 hover:bg-base-300 focus:bg-base-300"
         >
           Esqueceu a Senha?
-        </AnchorRouter>
+        </Link>
 
         <p className="mt-6 font-body-sm text-base-700">
           Não tem uma conta?{" "}
