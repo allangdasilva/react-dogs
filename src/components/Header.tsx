@@ -4,6 +4,8 @@ import { useAuthStore } from "../features/auth/store/auth.store";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCurrentUser } from "../features/auth/api/get-user";
 import type { UserSchema } from "../features/auth/types/user.schema";
+import HomeIcon from "./svgs/HomeIcon";
+import AnchorLabel from "./AnchorLabel";
 
 const anchorElementPrimary =
   "px-6 bg-primary hover:bg-primary-dark focus-visible:bg-primary-dark";
@@ -25,10 +27,11 @@ const Header = () => {
       <div className="max-w-base p-4">
         <nav className="flex flex-col items-center justify-center gap-6 text-base-700 xs:flex-row xs:justify-between">
           <AnchorRouter
-            className="inline-block hover:bg-base-300 focus-visible:bg-base-300"
+            className=" hover:bg-base-300 focus-visible:bg-base-300"
             to="/"
           >
-            <LogoIcon />
+            <HomeIcon />
+            <AnchorLabel>Início</AnchorLabel>
           </AnchorRouter>
 
           <div className="flex flex-col items-center justify-center gap-6 xxs:flex-row">
