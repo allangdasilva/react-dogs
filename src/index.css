@@ -53,6 +53,9 @@
   @apply max-w-255 mx-auto;
 }
 
+@utility font-anchor-base {
+  @apply text-[0.625rem] leading-3;
+}
 @utility font-body-xs {
   @apply text-xs leading-4;
 }
