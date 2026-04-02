@@ -1,4 +1,5 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import React from "react";
 import { useAuthStore } from "../features/auth/store/auth.store";
 
 // _auth.tsx (Layout): Não muda a URL. Serve apenas para aplicar a lógica de proteção via beforeLoad.
@@ -25,5 +26,9 @@ export const Route = createFileRoute("/_auth")({
 });
 
 function RouteComponent() {
-  return <div>Hello "/_auth"!</div>;
+  return (
+    <React.Fragment>
+      <Outlet />
+    </React.Fragment>
+  );
 }
