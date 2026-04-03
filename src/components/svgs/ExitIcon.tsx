@@ -1,6 +1,7 @@
 const ExitIcon = () => {
   return (
     <svg
+      className="*:group-hover:fill-primary *:group-focus:fill-primary *:transition-colors *:ease-in"
       width={24}
       height={24}
       viewBox="0 0 24 24"

@@ -1,3 +1,4 @@
+import AnchorLabel from "../AnchorLabel";
 import AnchorRouter from "../AnchorRouter";
 import AddIcon from "../svgs/AddIcon";
 import ExitIcon from "../svgs/ExitIcon";
@@ -6,37 +7,37 @@ import StatsIcon from "../svgs/StatsIcon";
 
 const ProfileMenu = () => {
   return (
-    <div className="hidden gap-3 sm:flex">
+    <div className="hidden sm:gap-3 sm:flex sm:items-center">
       <AnchorRouter
         activeOptions={{ exact: true }}
         activeProps={{
-          className: "bg-primary",
+          className: "anchor-bg-primary",
         }}
-        className="px-4 py-3 bg-base-200 flex flex-col items-center text-base-700"
+        className="anchor-bg-200"
         to="/profile"
       >
         <PostsIcon />
-        <span>Posts</span>
+        <AnchorLabel>Posts</AnchorLabel>
       </AnchorRouter>
       <AnchorRouter
-        activeProps={{ className: "bg-primary" }}
-        className="px-4 py-3 bg-base-200 flex flex-col items-center text-base-700"
+        activeProps={{ className: "anchor-bg-primary" }}
+        className="anchor-bg-200"
         to="/profile/post"
       >
         <AddIcon />
-        <span>Criar</span>
+        <AnchorLabel>Criar</AnchorLabel>
       </AnchorRouter>
       <AnchorRouter
-        activeProps={{ className: "bg-primary" }}
-        className="px-4 py-3 bg-base-200 flex flex-col items-center text-base-700"
+        activeProps={{ className: "anchor-bg-primary" }}
+        className="anchor-bg-200"
         to="/profile/statistics"
       >
         <StatsIcon />
-        <span>Dados</span>
+        <AnchorLabel>Dados</AnchorLabel>
       </AnchorRouter>
-      <button className="px-4 py-3 flex flex-col items-center text-base-700">
+      <button className="flex flex-col items-center px-4 py-2 rounded-base whitespace-nowrap cursor-pointer group">
         <ExitIcon />
-        <span>Sair</span>
+        <AnchorLabel>Sair</AnchorLabel>
       </button>
     </div>
   );
