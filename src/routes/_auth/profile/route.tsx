@@ -9,8 +9,10 @@ export const Route = createFileRoute("/_auth/profile")({
 function RouteComponent() {
   return (
     <React.Fragment>
-      <ProfileHeader />
-      <Outlet />
+      <div className="min-h-dvh">
+        <ProfileHeader />
+        <Outlet />
+      </div>
     </React.Fragment>
   );
 }
