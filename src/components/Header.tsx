@@ -7,8 +7,6 @@ import AnchorLabel from "./AnchorLabel";
 import ProfileIcon from "./svgs/ProfileIcon";
 import SignupIcon from "./svgs/SignupIcon";
 
-const bgBase_200 = "bg-base-200 hover:bg-base-300 focus-visible:bg-base-300";
-
 const Header = () => {
   const token = useAuthStore((s) => s.token);
 
@@ -45,7 +43,7 @@ export default Header;
 function AuthBar() {
   return (
     <div>
-      <AnchorRouter to="/profile" className={bgBase_200}>
+      <AnchorRouter to="/profile" className="anchor-bg-200">
         <ProfileIcon />
         <AnchorLabel>Perfil</AnchorLabel>
       </AnchorRouter>
@@ -56,15 +54,12 @@ function AuthBar() {
 function PublicBar() {
   return (
     <div className="flex items-center justify-center gap-3">
-      <AnchorRouter
-        className="bg-primary hover:bg-primary-dark focus-visible:bg-primary-dark"
-        to="/login"
-      >
+      <AnchorRouter className="anchor-bg-primary" to="/login">
         <ProfileIcon />
         <AnchorLabel>Entrar</AnchorLabel>
       </AnchorRouter>
 
-      <AnchorRouter className={bgBase_200} to="/signup">
+      <AnchorRouter className="anchor-bg-200" to="/signup">
         <SignupIcon />
         <AnchorLabel>Criar conta</AnchorLabel>
       </AnchorRouter>
