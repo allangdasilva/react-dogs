@@ -83,6 +83,9 @@
 @utility font-body-base {
   @apply text-base leading-6;
 }
+@utility font-title-sm {
+  @apply text-[2rem] leading-10 font-bold;
+}
 @utility font-title-base {
   @apply text-5xl leading-14 font-bold;
 }
