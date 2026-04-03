@@ -4,7 +4,7 @@ import ProfileMenu from "./ProfileMenu";
 
 const ProfileHeader = () => {
   return (
-    <header className="flex justify-between items-center px-4 max-w-base">
+    <header className="flex justify-between items-center flex-wrap px-4 py-12 max-w-base">
       <PageTitle>Minha Conta</PageTitle>
       <nav>
         <ProfileDropdownMenu />
