@@ -88,7 +88,7 @@
 }
 
 @utility button-form {
-  @apply py-3 font-body-sm font-semibold text-center rounded-base cursor-pointer transition-colors ease-in;
+  @apply w-full py-3 px-6 font-body-sm font-semibold text-center rounded-base cursor-pointer whitespace-nowrap transition-colors ease-in;
 }
 
 @utility anchor-bg-200 {
