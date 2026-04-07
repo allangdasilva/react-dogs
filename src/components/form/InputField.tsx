@@ -17,7 +17,7 @@ const InputField = ({ id, label, error, ...props }: InputProps) => {
         aria-invalid={!!error}
         // Se o erro existir: vincula esse elemento (input) à mensagem de erro através do id
         aria-describedby={error ? `${id}-error` : undefined}
-        className="w-full px-4 py-3 rounded-base border border-base-300 outline-0 bg-base-100 placeholder:text-base-300 hover:border-base-500 focus:border-primary focus:ring-2 focus:ring-primary/40 transition-colors ease-in"
+        className="w-full px-4 py-3 rounded-base border border-base-300 outline-0 bg-base-100 placeholder:text-base-300 hover:border-base-500 focus:border-primary focus:ring-2 focus:ring-primary/40 focus:bg-base-000 transition-colors ease-in"
         id={id}
         {...props}
       />
