@@ -40,6 +40,30 @@
   --color-base-700: var(--color-base-700);
   --color-base-800: var(--color-base-800);
   --color-base-900: var(--color-base-900);
+
+  --animate-modal-in: modal-in 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-modal-out: modal-out 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes modal-out {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -69,6 +93,10 @@
 }
 @utility anchor-bg-primary {
   @apply bg-primary hover:bg-primary-dark focus-visible:bg-primary-dark;
+}
+
+@utility menu-icon-fill {
+  @apply *:group-hover:fill-primary *:group-focus:fill-primary *:transition-colors *:ease-in;
 }
 
 @utility font-anchor-base {
@@ -107,8 +135,5 @@
 @layer base {
   * {
     @apply font-primary;
-  }
-  body {
-    @apply pt-36 xs:pt-19;
   }
 }

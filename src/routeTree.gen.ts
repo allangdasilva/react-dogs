@@ -17,7 +17,7 @@ import { Route as PublicLoginRouteImport } from './routes/_public/login'
 import { Route as AuthProfileRouteRouteImport } from './routes/_auth/profile/route'
 import { Route as AuthProfileIndexRouteImport } from './routes/_auth/profile/index'
 import { Route as AuthProfileStatisticsRouteImport } from './routes/_auth/profile/statistics'
-import { Route as AuthProfilePostRouteImport } from './routes/_auth/profile/post'
+import { Route as AuthProfileCreateRouteImport } from './routes/_auth/profile/create'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -57,9 +57,9 @@ const AuthProfileStatisticsRoute = AuthProfileStatisticsRouteImport.update({
   path: '/statistics',
   getParentRoute: () => AuthProfileRouteRoute,
 } as any)
-const AuthProfilePostRoute = AuthProfilePostRouteImport.update({
-  id: '/post',
-  path: '/post',
+const AuthProfileCreateRoute = AuthProfileCreateRouteImport.update({
+  id: '/create',
+  path: '/create',
   getParentRoute: () => AuthProfileRouteRoute,
 } as any)
 
@@ -68,7 +68,7 @@ export interface FileRoutesByFullPath {
   '/profile': typeof AuthProfileRouteRouteWithChildren
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
-  '/profile/post': typeof AuthProfilePostRoute
+  '/profile/create': typeof AuthProfileCreateRoute
   '/profile/statistics': typeof AuthProfileStatisticsRoute
   '/profile/': typeof AuthProfileIndexRoute
 }
@@ -76,7 +76,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
-  '/profile/post': typeof AuthProfilePostRoute
+  '/profile/create': typeof AuthProfileCreateRoute
   '/profile/statistics': typeof AuthProfileStatisticsRoute
   '/profile': typeof AuthProfileIndexRoute
 }
@@ -88,7 +88,7 @@ export interface FileRoutesById {
   '/_auth/profile': typeof AuthProfileRouteRouteWithChildren
   '/_public/login': typeof PublicLoginRoute
   '/_public/signup': typeof PublicSignupRoute
-  '/_auth/profile/post': typeof AuthProfilePostRoute
+  '/_auth/profile/create': typeof AuthProfileCreateRoute
   '/_auth/profile/statistics': typeof AuthProfileStatisticsRoute
   '/_auth/profile/': typeof AuthProfileIndexRoute
 }
@@ -99,7 +99,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/login'
     | '/signup'
-    | '/profile/post'
+    | '/profile/create'
     | '/profile/statistics'
     | '/profile/'
   fileRoutesByTo: FileRoutesByTo
@@ -107,7 +107,7 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/signup'
-    | '/profile/post'
+    | '/profile/create'
     | '/profile/statistics'
     | '/profile'
   id:
@@ -118,7 +118,7 @@ export interface FileRouteTypes {
     | '/_auth/profile'
     | '/_public/login'
     | '/_public/signup'
-    | '/_auth/profile/post'
+    | '/_auth/profile/create'
     | '/_auth/profile/statistics'
     | '/_auth/profile/'
   fileRoutesById: FileRoutesById
@@ -187,24 +187,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthProfileStatisticsRouteImport
       parentRoute: typeof AuthProfileRouteRoute
     }
-    '/_auth/profile/post': {
-      id: '/_auth/profile/post'
-      path: '/post'
-      fullPath: '/profile/post'
-      preLoaderRoute: typeof AuthProfilePostRouteImport
+    '/_auth/profile/create': {
+      id: '/_auth/profile/create'
+      path: '/create'
+      fullPath: '/profile/create'
+      preLoaderRoute: typeof AuthProfileCreateRouteImport
       parentRoute: typeof AuthProfileRouteRoute
     }
   }
 }
 
 interface AuthProfileRouteRouteChildren {
-  AuthProfilePostRoute: typeof AuthProfilePostRoute
+  AuthProfileCreateRoute: typeof AuthProfileCreateRoute
   AuthProfileStatisticsRoute: typeof AuthProfileStatisticsRoute
   AuthProfileIndexRoute: typeof AuthProfileIndexRoute
 }
 
 const AuthProfileRouteRouteChildren: AuthProfileRouteRouteChildren = {
-  AuthProfilePostRoute: AuthProfilePostRoute,
+  AuthProfileCreateRoute: AuthProfileCreateRoute,
   AuthProfileStatisticsRoute: AuthProfileStatisticsRoute,
   AuthProfileIndexRoute: AuthProfileIndexRoute,
 }

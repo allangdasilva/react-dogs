@@ -28,7 +28,9 @@ export const Route = createFileRoute("/_auth")({
 function RouteComponent() {
   return (
     <React.Fragment>
-      <Outlet />
+      <div className="pt-36 xxs:pt-19">
+        <Outlet />
+      </div>
     </React.Fragment>
   );
 }

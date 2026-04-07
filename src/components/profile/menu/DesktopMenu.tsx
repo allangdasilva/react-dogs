@@ -1,11 +1,11 @@
-import AnchorLabel from "../AnchorLabel";
-import AnchorRouter from "../AnchorRouter";
-import AddIcon from "../svgs/AddIcon";
-import ExitIcon from "../svgs/ExitIcon";
-import PostsIcon from "../svgs/PostsIcon";
-import StatsIcon from "../svgs/StatsIcon";
+import AnchorLabel from "../../AnchorLabel";
+import AnchorRouter from "../../AnchorRouter";
+import AddIcon from "../../svgs/AddIcon";
+import ExitIcon from "../../svgs/ExitIcon";
+import PostsIcon from "../../svgs/PostsIcon";
+import StatsIcon from "../../svgs/StatsIcon";
 
-const ProfileMenu = () => {
+const DesktopMenu = () => {
   return (
     <div className="hidden sm:gap-3 sm:flex sm:items-center">
       <AnchorRouter
@@ -22,7 +22,7 @@ const ProfileMenu = () => {
       <AnchorRouter
         activeProps={{ className: "anchor-bg-primary" }}
         className="anchor-bg-200"
-        to="/profile/post"
+        to="/profile/create"
       >
         <AddIcon />
         <AnchorLabel>Criar</AnchorLabel>
@@ -43,4 +43,4 @@ const ProfileMenu = () => {
   );
 };
 
-export default ProfileMenu;
+export default DesktopMenu;

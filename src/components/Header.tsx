@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import clsx from "clsx";
 import { useAuthStore } from "../features/auth/store/auth.store";
 import { fetchCurrentUser } from "../features/auth/api/get-user";
 import AnchorRouter from "./AnchorRouter";
@@ -20,9 +21,14 @@ const Header = () => {
   });
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-base-100">
+    <header className="fixed top-0 left-0 w-full z-40 bg-base-100">
       <div className="max-w-base px-4 py-3">
-        <nav className="flex flex-col items-center justify-center gap-3 text-base-700 xs:flex-row xs:justify-between">
+        <nav
+          className={clsx(
+            "flex flex-col items-center justify-center gap-3 text-base-700 xs:flex-row xs:justify-between",
+            { "xxs:flex-row xxs:justify-between": user },
+          )}
+        >
           <AnchorRouter
             className=" hover:bg-base-300 focus-visible:bg-base-300"
             to="/"
@@ -43,7 +49,11 @@ export default Header;
 function AuthBar() {
   return (
     <div>
-      <AnchorRouter to="/profile" className="anchor-bg-200">
+      <AnchorRouter
+        to="/profile"
+        activeProps={{ className: "anchor-bg-primary" }}
+        className="anchor-bg-200"
+      >
         <ProfileIcon />
         <AnchorLabel>Perfil</AnchorLabel>
       </AnchorRouter>
