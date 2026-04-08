@@ -1,4 +1,5 @@
 import React from "react";
+
 type ErrorProps = React.HTMLAttributes<HTMLSpanElement> & {
   error: Error;
 };
