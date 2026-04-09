@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
-import { isAxiosError } from "axios";
 import { api } from "../../../api/axios";
 import { useLoginMutation } from "./useLoginMutation";
 import { type SignupFormSchema } from "../types/signupForm.schema";
@@ -8,6 +7,7 @@ import {
   signupResponseSchema,
   type SignupResponseSchema,
 } from "../types/signupResponse";
+import { handleApiError } from "./handleApiError";
 
 export const useSigupMutation = () => {
   const queryClient = useQueryClient();
@@ -25,15 +25,7 @@ export const useSigupMutation = () => {
 
         return signupResponseSchema.parse(response.data);
       } catch (error: unknown) {
-        if (isAxiosError(error)) {
-          const status = error.response?.status;
-          if (status === 403 || status === 401) {
-            throw new Error(`${error.response?.data?.message}.`);
-          }
-        }
-        throw new Error(
-          "Ocorreu um erro ao tentar cadastrar. Tente novamente mais tarde.",
-        );
+        handleApiError(error, "Já existe um usuário com esses dados.");
       }
     },
     // _data É uma convenção de JavaScript/TypeScript para indicar que aquele parâmetro é ignorado, mas você precisa declará-lo para chegar ao segundo argumento

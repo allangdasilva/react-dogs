@@ -6,9 +6,9 @@ import {
   loginResponseSchema,
   type LoginResponseSchema,
 } from "../types/loginResponse.schema";
-import axios from "axios";
 import { useAuthStore } from "../store/auth.store";
 import { fetchCurrentUser } from "./get-user";
+import { handleApiError } from "./handleApiError";
 
 // caso você use const search = Route.useSearch() 'importado de _public/login' para pegar os parâmetros da rota (todo aquele caso de UX em _auth.tsx) dentro do useLoginMutation, o Router espera que esse hook esteja sendo usado dentro da rota /logim. E como queremos utilizá-lo dentro de useSignupMutation, vamos optar por passar esse parâmetro opcionalmente, ou seja, quando LoginForm chamar o useLoginMutation, lá mesmo pegaremos o parâmetro de busca de /login e parassemos aqui, e para o useSignupMutation passamos o valor padrão "/", dai quando o usuário se cadastrar ele vai ser jogado para a home (comportamento padrão)
 export const useLoginMutation = (options?: { redirectTo?: string }) => {
@@ -37,20 +37,8 @@ export const useLoginMutation = (options?: { redirectTo?: string }) => {
 
         // O endpoint de validate fica inútil nesse caso, pq ao fazer o login eu já tenho um token novo, ou seja, é válido, então eu retorno ele e pego ele no onSucess e faço o setToken no zustand, dai em diante meu beforeLoad no root/qualquer outra requisição passará o token graças ao inteceptor do axios
         return token;
-      } catch (error: unknown) {
-        // O Axios coloca a resposta do servidor dentro de error.response
-        // Aqui verificamos se o error é uma instância de AxiosError, assim fica mais seguro para fazer a verificação do status da resposta
-        if (axios.isAxiosError(error)) {
-          const status = error.response?.status;
-          // Se o axios tentou fazer a requisição acima e não obteve sucesso, então cai aqui no bloco de catch, que faz  o seguinte "se o erro for 403 ou 401 (erros de usuário não autorizado), devolve a seguinte mensagem "Usuário ou senha inválidos." para o {erro} do hook useLoginMutation lá no seu componente"
-          if (status === 403 || status === 401) {
-            throw new Error("Usuário ou senha inválidos.");
-          }
-        }
-        // Caso seja outro erro (ex: rede fora do ar), então devolve a seguinte mensagem "Ocorreu um erro ao tentar entrar. Tente novamente mais tarde."
-        throw new Error(
-          "Ocorreu um erro ao tentar entrar. Tente novamente mais tarde.",
-        );
+      } catch (error) {
+        handleApiError(error, "Usuários ou senhas inválidos.", true);
       }
     },
     onSuccess: async (token) => {

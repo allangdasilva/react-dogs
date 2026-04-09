@@ -7,16 +7,16 @@ interface AuthState {
   logout: () => void;
 }
 
-type Token = string | null;
+type Token = string | undefined;
 
 const storeConfig: StateCreator<
   AuthState,
   [["zustand/devtools", never], ["zustand/persist", unknown]]
 > = (set) => ({
-  token: null,
+  token: undefined,
 
   setToken: (token) => set({ token }),
-  logout: () => set({ token: null }),
+  logout: () => set({ token: undefined }),
 });
 
 export const useAuthStore = create<AuthState>()(
