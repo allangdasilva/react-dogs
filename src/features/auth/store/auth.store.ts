@@ -7,7 +7,7 @@ interface AuthState {
   logout: () => void;
 }
 
-type Token = string | undefined;
+export type Token = string | undefined;
 
 const storeConfig: StateCreator<
   AuthState,

@@ -5,7 +5,7 @@ import * as React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useAuthStore } from "../features/auth/store/auth.store";
-import { fetchCurrentUser } from "../features/auth/api/get-user";
+import { userQueryOptions } from "../features/auth/api/queries/user.query,";
 
 interface RootRouteContext {
   queryClient: QueryClient;
@@ -26,12 +26,7 @@ export const Route = createRootRouteWithContext<RootRouteContext>()({
         // ensureQueryData? Ele é um método "inteligente". Ele verifica: "Eu já tenho esse dado no cache e ele ainda é válido?".
         // Se sim, ele retorna o dado do cache instantaneamente (não faz requisição).
         // Se não, ele faz a requisição, salva no cache e depois retorna o dado.
-        await context.queryClient.ensureQueryData({
-          queryKey: ["user"],
-          // O endpoint de "/api/user" (buscar usuário logado) já serve como validador de token. Se o token for inválido, o endpoint retorna 401.
-          // interceptor de request vai capturar o token e injetá-lo no Header automaticamente nessa request.
-          queryFn: fetchCurrentUser,
-        });
+        await context.queryClient.ensureQueryData(userQueryOptions(token));
       } catch {
         // Se der erro (token expirado/token errado), limpa tudo
         useAuthStore.getState().logout();

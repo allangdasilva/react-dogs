@@ -7,7 +7,7 @@ import {
   signupResponseSchema,
   type SignupResponseSchema,
 } from "../types/signupResponse";
-import { handleApiError } from "./handleApiError";
+import { handleApiError } from "./functions/handleApiError";
 
 export const useSigupMutation = () => {
   const queryClient = useQueryClient();

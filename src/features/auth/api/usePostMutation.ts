@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { api } from "../../../api/axios";
-import { handleApiError } from "./handleApiError";
+import { handleApiError } from "./functions/handleApiError";
 
 export const usePostMutation = () => {
   const queryClient = useQueryClient();

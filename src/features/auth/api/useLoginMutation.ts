@@ -7,8 +7,8 @@ import {
   type LoginResponseSchema,
 } from "../types/loginResponse.schema";
 import { useAuthStore } from "../store/auth.store";
-import { fetchCurrentUser } from "./get-user";
-import { handleApiError } from "./handleApiError";
+import { handleApiError } from "./functions/handleApiError";
+import { userQueryOptions } from "./queries/user.query,";
 
 // caso você use const search = Route.useSearch() 'importado de _public/login' para pegar os parâmetros da rota (todo aquele caso de UX em _auth.tsx) dentro do useLoginMutation, o Router espera que esse hook esteja sendo usado dentro da rota /logim. E como queremos utilizá-lo dentro de useSignupMutation, vamos optar por passar esse parâmetro opcionalmente, ou seja, quando LoginForm chamar o useLoginMutation, lá mesmo pegaremos o parâmetro de busca de /login e parassemos aqui, e para o useSignupMutation passamos o valor padrão "/", dai quando o usuário se cadastrar ele vai ser jogado para a home (comportamento padrão)
 export const useLoginMutation = (options?: { redirectTo?: string }) => {
@@ -46,21 +46,14 @@ export const useLoginMutation = (options?: { redirectTo?: string }) => {
       // O interceptor agora já tem acesso ao novo token para as próximas chamadas.
       setToken(token);
 
-      // 2. Limpa o cache de forma abrangente.
-      // Como o usuário mudou, não queremos que sobrem fotos ou dados do usuário anterior.
-      // O invalidate sem chaves limpa TUDO, pode passar { queryKey: ['user'] } se preferir.
-      // Se houver algum componente na tela usando aquele dado, ele dispara um refetch (busca novamente) na hora para atualizar a interface.
-      // o invalidateQueries não precisa necessariamente de um await, pois ele apenas "troca uma etiqueta"/informa que os dados estão stale/velho no cache.
-      queryClient.invalidateQueries();
+      // 2. clear(): Ele remove absolutamente tudo do cache imediatamente.
+      queryClient.clear();
 
       // 3. Busca Antecipada (Prefetching):
       // Em vez de esperar o componente da próxima tela montar e mostrar um "Carregando...",
       // nós já puxamos os dados agora. O queryClient guarda no cache e o useQuery['user'] da próxima tela lerá instantaneamente de lá.
       // O await no fetchQuery garante que a mutação (mutationFn/onSuccess) só termine quando os dados do usuário estiverem salvos.
-      await queryClient.fetchQuery({
-        queryKey: ["user"],
-        queryFn: fetchCurrentUser,
-      });
+      await queryClient.fetchQuery(userQueryOptions(token));
 
       // Lógica de Redirecionamento:
       // Se houver algo no search.redirect, vai pra lá. Senão, vai pra "/"

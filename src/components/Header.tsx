@@ -1,24 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import { useAuthStore } from "../features/auth/store/auth.store";
-import { fetchCurrentUser } from "../features/auth/api/get-user";
 import AnchorRouter from "./AnchorRouter";
 import HomeIcon from "./svgs/HomeIcon";
 import AnchorLabel from "./AnchorLabel";
 import ProfileIcon from "./svgs/ProfileIcon";
 import SignupIcon from "./svgs/SignupIcon";
+import { userQueryOptions } from "../features/auth/api/queries/user.query,";
 
 const Header = () => {
   const token = useAuthStore((s) => s.token);
 
   // não estou desestruturando user de data, estou renomeando data para user!
-  const { data: user } = useQuery({
-    queryKey: ["user"],
-    queryFn: fetchCurrentUser,
-    enabled: !!token, // evita que ele tente buscar sem token
-    // staledTime: Infinity garante que ele use o que está no cache sem refetch imediato
-    staleTime: Infinity,
-  });
+  const { data: user } = useQuery(userQueryOptions(token));
 
   return (
     <header className="fixed top-0 left-0 w-full z-40 bg-base-100">
