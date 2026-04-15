@@ -58,12 +58,20 @@ function AuthBar() {
 function PublicBar() {
   return (
     <div className="flex items-center justify-center gap-3">
-      <AnchorRouter className="anchor-bg-primary" to="/login">
+      <AnchorRouter
+        className="anchor-bg-300"
+        to="/login"
+        activeProps={{ className: "anchor-bg-primary" }}
+      >
         <ProfileIcon />
         <AnchorLabel>Entrar</AnchorLabel>
       </AnchorRouter>
 
-      <AnchorRouter className="anchor-bg-200" to="/signup">
+      <AnchorRouter
+        className="anchor-bg-200"
+        to="/signup"
+        activeProps={{ className: "anchor-bg-primary" }}
+      >
         <SignupIcon />
         <AnchorLabel>Criar conta</AnchorLabel>
       </AnchorRouter>

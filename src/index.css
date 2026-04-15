@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@plugin 'tailwind-scrollbar';
+
 @font-face {
   font-family: "Google Sans Flex";
   src: url("/fonts/GoogleSansFlex-VariableFont.ttf") format("truetype");
@@ -94,6 +96,9 @@
 @utility anchor-bg-200 {
   @apply bg-base-200 hover:bg-base-300 focus-visible:bg-base-300;
 }
+@utility anchor-bg-300 {
+  @apply bg-base-300/60 hover:bg-base-500/60 focus-visible:bg-base-500/60;
+}
 @utility anchor-bg-primary {
   @apply bg-primary hover:bg-primary-dark focus-visible:bg-primary-dark;
 }
@@ -121,6 +126,10 @@
   @apply text-5xl leading-14 font-bold;
 }
 
+@utility link-sm-underline-blue {
+  @apply font-body-sm text-link hover:underline focus:underline;
+}
+
 @utility rounded-base {
   @apply rounded-2xl;
 }
@@ -138,5 +147,8 @@
 @layer base {
   * {
     @apply font-primary;
+  }
+  main {
+    min-height: 100dvh;
   }
 }

@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import clsx from "clsx";
 import Form from "../../../components/form/Form";
 import { Route } from "../../../routes/_public/login";
 import ErrorForm from "../../../components/form/ErrorForm";
@@ -10,7 +11,6 @@ import {
   loginFormSchema,
   type LoginFormSchema,
 } from "../types/loginForm.schema";
-import clsx from "clsx";
 
 const LoginForm = () => {
   const {
