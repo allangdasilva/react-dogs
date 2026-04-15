@@ -1,14 +1,16 @@
 import clsx from "clsx";
 import { type ReactNode } from "react";
 
-type FormProps = React.FormHTMLAttributes<HTMLFormElement> & {
+type Props = React.FormHTMLAttributes<HTMLFormElement> & {
   children: ReactNode;
-  className?: string;
 };
 
-const Form = ({ children, className, ...props }: FormProps) => {
+const Form = ({ children, ...props }: Props) => {
   return (
-    <form className={clsx("flex flex-col gap-6", className)} {...props}>
+    <form
+      className={clsx("flex flex-col gap-6", props.className)}
+      onSubmit={props.onSubmit}
+    >
       {children}
     </form>
   );

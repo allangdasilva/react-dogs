@@ -1,12 +1,12 @@
 import type { FieldError } from "react-hook-form";
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+type Props = React.InputHTMLAttributes<HTMLInputElement> & {
   id: string;
   label: string;
   error?: FieldError;
 };
 
-const InputField = ({ id, label, error, ...props }: InputProps) => {
+const InputField = ({ id, label, error, ...props }: Props) => {
   return (
     <div className="flex flex-col font-body-base text-base-700">
       <label className="pb-2 cursor-pointer" htmlFor={id}>

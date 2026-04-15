@@ -1,14 +1,14 @@
 import type { FieldError } from "react-hook-form";
 import UploadIcon from "../svgs/UploadIcon";
 
-type InputFileProps = React.InputHTMLAttributes<HTMLInputElement> & {
+type Props = React.InputHTMLAttributes<HTMLInputElement> & {
   id: string;
   label: string;
   preview: string | null;
   error?: FieldError;
 };
 
-const InputFile = ({ id, label, error, preview, ...props }: InputFileProps) => {
+const InputFile = ({ id, label, error, preview, ...props }: Props) => {
   return (
     <div className="flex flex-col text-center mt-2">
       <input {...props} className="sr-only peer" id={id} />
