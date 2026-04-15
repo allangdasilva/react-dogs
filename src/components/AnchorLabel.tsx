@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 
-type AnchorProps = React.HTMLAttributes<HTMLSpanElement> & {
+type Props = React.HTMLAttributes<HTMLSpanElement> & {
   children: ReactNode;
 };
 
-const AnchorLabel = ({ children, ...props }: AnchorProps) => {
+const AnchorLabel = ({ children }: Props) => {
   return (
-    <span className="font-anchor-base font-medium text-base-700" {...props}>
+    <span className="font-anchor-base font-medium text-base-700">
       {children}
     </span>
   );

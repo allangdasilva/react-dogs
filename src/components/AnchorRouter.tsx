@@ -2,12 +2,12 @@ import clsx from "clsx";
 import { Link, type LinkProps } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
-type AnchorProps = LinkProps & {
+type Props = LinkProps & {
   children: ReactNode;
   className?: string;
 };
 
-const AnchorRouter = ({ children, className, ...props }: AnchorProps) => {
+const AnchorRouter = ({ children, className, ...props }: Props) => {
   return (
     <Link
       {...props}
