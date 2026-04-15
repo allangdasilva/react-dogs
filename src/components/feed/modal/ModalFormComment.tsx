@@ -15,7 +15,12 @@ const ModalFormComment = () => {
   return (
     <section className="p-3 bg-base-100">
       <Form className="flex-row gap-2!">
-        <TextareaField id="comment" placeholder="Comente..." rows={1} />
+        <TextareaField
+          id="comment"
+          label="Comente"
+          placeholder="Comente..."
+          rows={1}
+        />
         <ButtonSubmit className="py-2 px-4 max-w-fit">
           <CommentIcon />
         </ButtonSubmit>
