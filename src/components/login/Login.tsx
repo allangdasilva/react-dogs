@@ -24,10 +24,7 @@ const Login = () => {
 
         <p className="mt-6 font-body-sm text-base-700">
           Não tem uma conta?{" "}
-          <Link
-            className="text-link hover:underline focus:underline"
-            to="/signup"
-          >
+          <Link className="link-sm-underline-blue" to="/signup">
             Crie uma!
           </Link>
         </p>

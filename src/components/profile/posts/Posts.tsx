@@ -7,10 +7,7 @@ const Posts = () => {
       <BoneIcon />
       <h3 className="font-title-sm">Postar fotos</h3>
       <p>Quando você postar fotos, elas aparecerão aqui.</p>
-      <Link
-        to="/profile/create"
-        className="font-body-sm text-link hover:underline focus:underline"
-      >
+      <Link to="/profile/create" className="link-sm-underline-blue">
         Poste sua primeira foto!
       </Link>
     </div>
