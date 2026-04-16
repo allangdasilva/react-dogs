@@ -5,7 +5,7 @@ type Props = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
 
 const TextareaField = ({ id, label, ...props }: Props) => {
   return (
-    <div>
+    <div className="w-full">
       <label className="sr-only" htmlFor={id}>
         {label}
       </label>

@@ -1,4 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
+import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import PageTitle from "../../PageTitle";
 import Spacer from "../../Spacer";
 import CloseIcon from "../../svgs/CloseIcon";
@@ -7,12 +9,18 @@ import type { PhotoSchema } from "../../../features/auth/types/photos.schema";
 import FeedPhoto from "../FeedPhoto";
 import ModalFormComment from "./ModalFormComment";
 import ModalHeader from "./ModalHeader";
+import ModalComments from "./ModalComments";
+import ErrorFallback from "../../helper/ErrorFallback";
+import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 
 type Props = {
   photo: PhotoSchema;
 };
 
 const Modal = ({ photo }: Props) => {
+  // Este hook é o "controle remoto" do cache de erros do TanStack
+  const { reset } = useQueryErrorResetBoundary();
+
   return (
     <Dialog.Root>
       <Dialog.Trigger className="outline-none cursor-pointer group">
@@ -54,16 +62,34 @@ const Modal = ({ photo }: Props) => {
               <Spacer className="mt-2 bg-base-200" />
 
               {/* Comentários */}
-              <ul className="mt-2">
-                <li className="font-body-sm text-base-700">
-                  <h3 className="font-semibold inline">User: </h3>
-                  <span>Comentário</span>
-                </li>
-              </ul>
+              {/* O Suspense permite que você "delegue" o estado de loading para um pai. Quando o useSuspenseQuery é chamado, ele "suspende" o componente e mostra o fallback mais próximo. */}
+              <Suspense fallback={<p>Carregando...</p>}>
+                {/* Quando você usa useQuery (normal), o erro fica guardado no objeto { error }. O React não trava.
+                Quando você usa useSuspenseQuery, o TanStack Query lança (throw) o erro para cima. Se não houver um ErrorBoundary em volta, o seu app inteiro "quebra" (fica com a tela branca ou mostra o erro padrão do navegador). */}
+                {/* Diferença entre erros do ErrorBoundary vs. useMutation:
+
+                Erros no useSuspenseQuery (ErrorBoundary): Erro de Leitura/Renderização. Sem os dados, o componente não existe. Impede o componente de ser exibido.
+
+                Erros no useMutation (try/catch ou state): Erro de Ação do Usuário. O componente existe, mas a ação falhou. O componente continua na tela; apenas exibe um alerta.
+                 */}
+                {/* Ou seja,Você não quer que o app inteiro morra se apenas a seção de comentários falhar. */}
+                {/* Use useSuspenseQuery + ErrorBoundary quando: O dado é obrigatório para a visualização daquela parte da tela. Você quer um código mais limpo, sem if (isLoading) espalhados. */}
+                {/* onReset (mais detalhes em ErrorFallback.tsx): O TanStack Query fornece um hook especial chamado useQueryErrorResetBoundary(). Ele serve justamente para avisar ao cache: "Apague a memória de que esta query deu erro". */}
+                <ErrorBoundary
+                  FallbackComponent={ErrorFallback}
+                  // Quando o resetErrorBoundary (lá do botão) é chamado,
+                  // o ErrorBoundary executa esta função onReset primeiro.
+                  onReset={() => {
+                    reset(); // Isso limpa o "status de erro" das queries dentro deste boundary
+                  }}
+                >
+                  <ModalComments photo_id={photo.id} />
+                </ErrorBoundary>
+              </Suspense>
             </div>
 
             {/* Formulário de comentar */}
-            <ModalFormComment />
+            <ModalFormComment photo_id={photo.id} />
           </div>
 
           <Dialog.Close className="absolute top-3 left-3 rounded-full p-0.5 cursor-pointer bg-base-100/50 hover:bg-base-100 focus:bg-base-100 transition-colors ease-in">

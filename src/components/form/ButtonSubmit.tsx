@@ -12,6 +12,8 @@ const ButtonSubmit = ({ children, ...props }: Props) => {
         props.className,
         "button-form text-base-100 bg-base-900 hover:bg-base-700/90 focus:bg-base-700/90",
       )}
+      tabIndex={props.tabIndex}
+      disabled={props.disabled}
       type="submit"
     >
       {children}
