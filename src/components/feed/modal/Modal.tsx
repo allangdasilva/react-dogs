@@ -1,17 +1,17 @@
 import * as Dialog from "@radix-ui/react-dialog";
+import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import type { PhotoSchema } from "../../../features/auth/types/photos.schema";
 import PageTitle from "../../PageTitle";
 import Spacer from "../../Spacer";
 import CloseIcon from "../../svgs/CloseIcon";
+import ErrorFallback from "../../helper/ErrorFallback";
+import Photo from "../photo/Photo";
 import ModalDescription from "./ModalDescription";
-import type { PhotoSchema } from "../../../features/auth/types/photos.schema";
-import FeedPhoto from "../FeedPhoto";
 import ModalFormComment from "./ModalFormComment";
 import ModalHeader from "./ModalHeader";
 import ModalComments from "./ModalComments";
-import ErrorFallback from "../../helper/ErrorFallback";
-import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 
 type Props = {
   photo: PhotoSchema;
@@ -24,7 +24,7 @@ const Modal = ({ photo }: Props) => {
   return (
     <Dialog.Root>
       <Dialog.Trigger className="outline-none cursor-pointer group">
-        <FeedPhoto photo={photo} />
+        <Photo photo={photo} />
       </Dialog.Trigger>
 
       <Dialog.Portal>

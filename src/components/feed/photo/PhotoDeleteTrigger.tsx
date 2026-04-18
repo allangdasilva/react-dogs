@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import clsx from "clsx";
-import DeleteIcon from "../svgs/DeleteIcon";
+import DeleteIcon from "../../svgs/DeleteIcon";
 
 type Props = React.RefAttributes<HTMLButtonElement> & {
   isPending: boolean;

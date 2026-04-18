@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { usePhotoDeleteMutation } from "../../features/auth/api/usePhotoDeleteMutation";
-import PhotoDeleteTrigger from "../feed/PhotoDeleteTrigger";
+import PhotoDeleteTrigger from "../feed/photo/PhotoDeleteTrigger";
 
 type Props = {
   photo_id: number;
