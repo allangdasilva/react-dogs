@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuthStore } from "../../../features/auth/store/auth.store";
-import { userQueryOptions } from "../../../features/auth/api/queries/user.query,";
+import { userQueryOptions } from "../../../features/auth/api/queries/user.query";
 import {
   commentFormSchema,
   type CommentFormSchema,

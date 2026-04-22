@@ -16,9 +16,9 @@ const Image = ({ ...props }: Props) => {
   }, []);
 
   return (
-    <div className="relative">
+    <div>
       {!loaded && (
-        <div className="absolute inset-0 animate-pulse bg-base-300"></div>
+        <div className="absolute inset-0 animate-pulse bg-base-200"></div>
       )}
       <img
         ref={imgRef}

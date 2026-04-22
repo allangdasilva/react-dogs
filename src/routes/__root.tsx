@@ -5,7 +5,7 @@ import * as React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useAuthStore } from "../features/auth/store/auth.store";
-import { userQueryOptions } from "../features/auth/api/queries/user.query,";
+import { userQueryOptions } from "../features/auth/api/queries/user.query";
 import ToastProvider from "../components/helper/ToastProvider";
 
 interface RootRouteContext {

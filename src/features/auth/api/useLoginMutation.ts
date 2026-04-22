@@ -8,7 +8,7 @@ import {
 } from "../types/loginResponse.schema";
 import { useAuthStore } from "../store/auth.store";
 import { handleApiError } from "./functions/handleApiError";
-import { userQueryOptions } from "./queries/user.query,";
+import { userQueryOptions } from "./queries/user.query";
 
 // caso você use const search = Route.useSearch() 'importado de _public/login' para pegar os parâmetros da rota (todo aquele caso de UX em _auth.tsx) dentro do useLoginMutation, o Router espera que esse hook esteja sendo usado dentro da rota /logim. E como queremos utilizá-lo dentro de useSignupMutation, vamos optar por passar esse parâmetro opcionalmente, ou seja, quando LoginForm chamar o useLoginMutation, lá mesmo pegaremos o parâmetro de busca de /login e parassemos aqui, e para o useSignupMutation passamos o valor padrão "/", dai quando o usuário se cadastrar ele vai ser jogado para a home (comportamento padrão)
 export const useLoginMutation = (options?: { redirectTo?: string }) => {

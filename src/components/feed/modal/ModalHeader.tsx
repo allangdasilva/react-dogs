@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import EyeIcon from "../../svgs/EyeIcon";
 import type { PhotoSchema } from "../../../features/auth/types/photos.schema";
-import { userQueryOptions } from "../../../features/auth/api/queries/user.query,";
+import { userQueryOptions } from "../../../features/auth/api/queries/user.query";
 import { useAuthStore } from "../../../features/auth/store/auth.store";
 import ConfirmDialog from "../../helper/ConfirmDialog";
 

@@ -6,7 +6,7 @@ import HomeIcon from "./svgs/HomeIcon";
 import AnchorLabel from "./AnchorLabel";
 import ProfileIcon from "./svgs/ProfileIcon";
 import SignupIcon from "./svgs/SignupIcon";
-import { userQueryOptions } from "../features/auth/api/queries/user.query,";
+import { userQueryOptions } from "../features/auth/api/queries/user.query";
 
 const Header = () => {
   const token = useAuthStore((s) => s.token);
