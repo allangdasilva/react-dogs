@@ -4,7 +4,7 @@
 import { useEffect } from "react";
 
 // resetErrorBoundary: É uma função que, quando chamada, diz ao ErrorBoundary: "Ei, limpa esse estado de erro e tenta renderizar os meus filhos (o ModalComments) de novo". Ele tenta dar um "reboot" no componente que quebrou. O problema: Se você apenas clicar no botão e não fizer nada com o TanStack Query, o componente vai tentar montar, vai ver que a query ainda está com erro no cache e vai "quebrar" instantaneamente de novo. É um loop infinito de erro. É aí que entra o onReset.
-const ErrorFallback = ({ error, resetErrorBoundary }: any) => {
+const ErrorCommentsFallback = ({ error, resetErrorBoundary }: any) => {
   useEffect(() => {
     console.error(error);
   }, []);
@@ -24,4 +24,4 @@ const ErrorFallback = ({ error, resetErrorBoundary }: any) => {
   );
 };
 
-export default ErrorFallback;
+export default ErrorCommentsFallback;

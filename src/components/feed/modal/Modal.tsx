@@ -6,13 +6,13 @@ import type { PhotoSchema } from "../../../features/auth/types/photos.schema";
 import PageTitle from "../../PageTitle";
 import Spacer from "../../Spacer";
 import CloseIcon from "../../svgs/CloseIcon";
-import ErrorFallback from "../../helper/ErrorFallback";
+import SkeletonComments from "../../helper/SkeletonComments";
+import ErrorCommentsFallback from "../../helper/ErrorCommentsFallback";
 import Photo from "../photo/Photo";
 import ModalDescription from "./ModalDescription";
 import ModalFormComment from "./ModalFormComment";
 import ModalHeader from "./ModalHeader";
 import ModalComments from "./ModalComments";
-import SkeletonComments from "../../helper/SkeletonComments";
 
 type Props = {
   photo: PhotoSchema;
@@ -77,7 +77,7 @@ const Modal = ({ photo }: Props) => {
                 {/* Use useSuspenseQuery + ErrorBoundary quando: O dado é obrigatório para a visualização daquela parte da tela. Você quer um código mais limpo, sem if (isLoading) espalhados. */}
                 {/* onReset (mais detalhes em ErrorFallback.tsx): O TanStack Query fornece um hook especial chamado useQueryErrorResetBoundary(). Ele serve justamente para avisar ao cache: "Apague a memória de que esta query deu erro". */}
                 <ErrorBoundary
-                  FallbackComponent={ErrorFallback}
+                  FallbackComponent={ErrorCommentsFallback}
                   // Quando o resetErrorBoundary (lá do botão) é chamado,
                   // o ErrorBoundary executa esta função onReset primeiro.
                   onReset={() => {
