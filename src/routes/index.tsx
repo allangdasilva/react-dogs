@@ -5,6 +5,7 @@ import { userQueryOptions } from "../features/auth/api/queries/user.query";
 import { useAuthStore } from "../features/auth/store/auth.store";
 import { photosQueryOptions } from "../features/auth/api/queries/photos.query";
 import Feed from "../components/feed/Feed";
+import Loading from "../components/helper/Loading";
 
 export const Route = createFileRoute("/")({
   // pendingMs:
@@ -44,11 +45,7 @@ export const Route = createFileRoute("/")({
   // pendingComponent:
   // esse componente aparece enquanto o loader ainda não terminou.
   // É o loading oficial da rota.
-  pendingComponent: () => (
-    <div className="pt-36 xs:pt-19">
-      <p>Carregando feed...</p>
-    </div>
-  ),
+  pendingComponent: Loading,
 
   component: RouteComponent,
 });
