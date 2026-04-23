@@ -12,6 +12,7 @@ import ModalDescription from "./ModalDescription";
 import ModalFormComment from "./ModalFormComment";
 import ModalHeader from "./ModalHeader";
 import ModalComments from "./ModalComments";
+import SkeletonComments from "../../helper/SkeletonComments";
 
 type Props = {
   photo: PhotoSchema;
@@ -63,7 +64,7 @@ const Modal = ({ photo }: Props) => {
 
               {/* Comentários */}
               {/* O Suspense permite que você "delegue" o estado de loading para um pai. Quando o useSuspenseQuery é chamado, ele "suspende" o componente e mostra o fallback mais próximo. */}
-              <Suspense fallback={<p>Carregando...</p>}>
+              <Suspense fallback={<SkeletonComments />}>
                 {/* Quando você usa useQuery (normal), o erro fica guardado no objeto { error }. O React não trava.
                 Quando você usa useSuspenseQuery, o TanStack Query lança (throw) o erro para cima. Se não houver um ErrorBoundary em volta, o seu app inteiro "quebra" (fica com a tela branca ou mostra o erro padrão do navegador). */}
                 {/* Diferença entre erros do ErrorBoundary vs. useMutation:
