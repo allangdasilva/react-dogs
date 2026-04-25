@@ -44,7 +44,7 @@ function RootComponent() {
   const token = useAuthStore((s) => s.token);
 
   // useQuery:
-  // Se já estiver no cache por causa do BeforeLoad do __root, ele vem instantaneamente.
+  // Já vai estar no cache por causa do BeforeLoad do __root, ou seja, ele vem instantaneamente.
   const { data: user } = useQuery(userQueryOptions(token));
   return (
     <React.Fragment>
