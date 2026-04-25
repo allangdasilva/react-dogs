@@ -149,6 +149,6 @@
     @apply font-primary;
   }
   main {
-    min-height: 100dvh;
+    @apply min-h-dvh flex flex-col;
   }
 }

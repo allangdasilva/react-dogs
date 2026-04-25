@@ -57,7 +57,7 @@ const Create = () => {
   }
 
   return (
-    <section className="max-w-base px-4 py-12 flex flex-col gap-8 md:flex-row md:gap-6 md:items-center">
+    <section className="w-full max-w-base px-4 py-12 flex flex-col gap-8 md:flex-row md:gap-6 md:items-center">
       <Form onSubmit={handleSubmit(handlePost)} className="flex-1">
         <div
           className={clsx("auth-form-fields-wrapper", {

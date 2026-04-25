@@ -21,9 +21,7 @@ export const Route = createFileRoute("/_public")({
 function RouteComponent() {
   return (
     <React.Fragment>
-      <div className="pt-36 xs:pt-19">
-        <Outlet />
-      </div>
+      <Outlet />
     </React.Fragment>
   );
 }

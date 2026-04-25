@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
-import { useAuthStore } from "../../features/auth/store/auth.store";
-import { userQueryOptions } from "../../features/auth/api/queries/user.query";
 
 const Loading = () => {
   const [step, setStep] = useState(0);
-
-  const token = useAuthStore((s) => s.token);
-  const { data: user } = useQuery(userQueryOptions(token));
 
   useEffect(() => {
     function updateStep() {
@@ -28,12 +22,7 @@ const Loading = () => {
   }
 
   return (
-    <div
-      className={clsx(
-        "min-h-dvh flex items-center justify-center px-4 py-12 pt-48 xs:pt-31",
-        { "xxs:pt-31": user },
-      )}
-    >
+    <div className="flex items-center justify-center px-4 grow">
       <svg
         width={46}
         height={31}

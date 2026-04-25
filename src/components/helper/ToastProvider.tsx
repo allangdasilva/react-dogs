@@ -12,7 +12,7 @@ const ToastProvider = () => {
           color: "#1f1c14",
           background: "#f8f8f1",
         },
-        duration: 10000,
+        duration: 2000,
       }}
     />
   );

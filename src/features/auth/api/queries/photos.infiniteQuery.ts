@@ -1,16 +1,36 @@
-import { queryOptions } from "@tanstack/react-query";
+import { infiniteQueryOptions } from "@tanstack/react-query";
 import { fetchPhotos } from "../functions/get-photos";
 
-export const photosQueryOptions = (params: {
-  page: number;
-  total: number;
-  user: number;
-}) => {
-  return queryOptions({
+// useInfiniteQuery é o hook do React Query usado para listas paginadas que crescem aos poucos.
+// Ele guarda várias páginas no cache, te dá controle para buscar a próxima página (fetchNextPage) e te informa se ainda existe mais conteúdo (hasNextPage). É a escolha certa para feed, timeline, comentários longos e qualquer lista que carregue “mais itens” ao rolar.
+
+const PAGE_SIZE = 6;
+
+export const photosInfiniteQueryOptions = (userId: number) => {
+  return infiniteQueryOptions({
     // IDENTIFICADOR ÚNICO: Como uma "etiqueta" no armário (cache).
-    // Se os parâmetros mudarem (ex: outra página), ele cria uma gaveta nova.
-    queryKey: ["photos", params],
-    queryFn: () => fetchPhotos(params.page, params.total, params.user),
+    // Se os parâmetros mudarem (ex: outro usuário), ele cria uma gaveta nova.
+    // Se o userId mudar, o cache muda também
+    queryKey: ["photos", userId],
+
+    // initialPageParam é o primeiro "pageParam" da lista infinita.
+    // O React Query usa isso para saber por onde começar.
+    // famoso "página 1"
+    initialPageParam: 1,
+
+    // queryFn recebe o pageParam atual:
+    // queryFn recebe pageParam na primeira chamada, pageParam vem de initialPageParam
+    // nas próximas chamadas, pageParam vem do valor retornado por getNextPageParam
+    queryFn: ({ pageParam }) => fetchPhotos(pageParam, PAGE_SIZE, userId),
+
+    // getNextPageParam decide se existe próxima página.
+    // Se retornar undefined/null, o React Query entende que acabou.
+    // Aqui eu estou inferindo pelo tamanho da página:
+    // se vier menos itens que PAGE_SIZE, não existe próxima página.
+    getNextPageParam: (lastPage, allPages) => {
+      if (lastPage.length < PAGE_SIZE) return undefined;
+      return allPages.length + 1;
+    },
 
     // staleTime: Economiza muita banda e bateria do celular, já que o feed não fica "recarregando" toda hora que o usuário muda de aba. Para feeds em tempo real, costuma-se usar um staleTime de 30 segundos ou 1 minuto.
     // VALIDADE DO DADO (STALE TIME): Define por quanto tempo o dado é considerado "fresco".

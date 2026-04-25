@@ -12,7 +12,7 @@ const ProfileHeader = () => {
   const pageTitle = (lastMatch?.staticData as any)?.title;
 
   return (
-    <header className="max-w-base px-4 pt-12 flex flex-col">
+    <header className="w-full max-w-base px-4 pt-12 flex flex-col">
       <div className="flex flex-col gap-6 justify-between items-center flex-wrap xxs:flex-row xxs:gap-0">
         <PageTitle>{pageTitle}</PageTitle>
         <nav>

@@ -1,11 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import clsx from "clsx";
-import { userQueryOptions } from "../features/auth/api/queries/user.query";
-import { useAuthStore } from "../features/auth/store/auth.store";
-import { photosQueryOptions } from "../features/auth/api/queries/photos.query";
 import Feed from "../components/feed/Feed";
 import Loading from "../components/helper/Loading";
+import { photosInfiniteQueryOptions } from "../features/auth/api/queries/photos.infiniteQuery";
 
 export const Route = createFileRoute("/")({
   // pendingMs:
@@ -24,21 +20,20 @@ export const Route = createFileRoute("/")({
   //
   // evita aquele efeito de "piscar" (loading aparece e some muito rápido)
   //
-  // aqui você colocou 0 → assim que o loader termina, o loading some na hora
+  // aqui coloquei 300 → o loading fica visível por pelo menos esse tempo.
   //
   // uso comum:
   // - 300~500 → UX mais suave (loading não pisca)
   // - 0 → comportamento mais imediato (sem delay artificial)
-  pendingMinMs: 300,
+  pendingMinMs: 0,
   loader: async ({ context }) => {
-    // ensureQueryData:
-    // - se os dados já estiverem no cache, usa eles
-    // - se não estiverem, faz o fetch e salva no cache do React Query
-    //
-    // Aqui a ideia é garantir que as fotos já estejam prontas
-    // antes da rota renderizar o componente.
-    await context.queryClient.ensureQueryData(
-      photosQueryOptions({ page: 1, total: 6, user: 0 }),
+    // ensureInfiniteQueryData:
+    // equivalente ao ensureQueryData, mas para infinite queries.
+    // Ele usa cache se já existir; se não existir, faz o fetch da primeira página
+    // e guarda o resultado como infinite query.
+    // Aqui a ideia é garantir que as fotos já estejam prontas antes da rota renderizar o componente.
+    await context.queryClient.ensureInfiniteQueryData(
+      photosInfiniteQueryOptions(0),
     );
   },
 
@@ -51,23 +46,5 @@ export const Route = createFileRoute("/")({
 });
 
 function RouteComponent() {
-  const token = useAuthStore((s) => s.token);
-
-  // useQuery:
-  // aqui eu deixei o user separado porque ele está sendo usado só para estilo.
-  // Ele pode carregar em paralelo sem bloquear o feed.
-  const { data: user } = useQuery(userQueryOptions(token));
-
-  // useSuspenseQuery:
-  // como o loader já garantiu que as fotos existem no cache,
-  // useSuspenseQuery lê o dado pronto e não precisa lidar com "loading" manual aqui.
-  const { data: photos } = useSuspenseQuery(
-    photosQueryOptions({ page: 1, total: 6, user: 0 }),
-  );
-
-  return (
-    <div className={clsx("pt-36 xs:pt-19", { "xxs:pt-19": user })}>
-      <Feed photos={photos} />
-    </div>
-  );
+  return <Feed isProfile={false} userId={0} />;
 }

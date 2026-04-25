@@ -1,12 +1,13 @@
 import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import type { QueryClient } from "@tanstack/react-query";
+import { useQuery, type QueryClient } from "@tanstack/react-query";
 import * as React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useAuthStore } from "../features/auth/store/auth.store";
 import { userQueryOptions } from "../features/auth/api/queries/user.query";
 import ToastProvider from "../components/helper/ToastProvider";
+import clsx from "clsx";
 
 interface RootRouteContext {
   queryClient: QueryClient;
@@ -40,10 +41,19 @@ export const Route = createRootRouteWithContext<RootRouteContext>()({
 });
 
 function RootComponent() {
+  const token = useAuthStore((s) => s.token);
+
+  // useQuery:
+  // Se já estiver no cache por causa do BeforeLoad do __root, ele vem instantaneamente.
+  const { data: user } = useQuery(userQueryOptions(token));
   return (
     <React.Fragment>
       <Header />
-      <main>
+      <main
+        className={clsx("pt-36 xs:pt-19", {
+          "xxs:pt-19": user,
+        })}
+      >
         <Outlet />
       </main>
       <Footer />
