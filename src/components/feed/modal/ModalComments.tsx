@@ -6,12 +6,15 @@ type Props = React.HTMLAttributes<HTMLUListElement> & {
 };
 
 const ModalComments = ({ photo_id }: Props) => {
-  const { data: comments } = useSuspenseQuery(photoQueryOptions(photo_id));
+  const { data } = useSuspenseQuery(photoQueryOptions(photo_id));
 
   return (
     <ul className="mt-2">
-      {comments.map((comment) => (
-        <li key={comment.comment_ID} className="font-body-sm text-base-700">
+      {data.comments.map((comment) => (
+        <li
+          key={comment.comment_ID}
+          className="font-body-sm text-base-700 *:break-all"
+        >
           <h3 className="font-semibold inline">{comment.comment_author}: </h3>
           <span>{comment.comment_content}</span>
         </li>

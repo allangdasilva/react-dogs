@@ -1,17 +1,13 @@
 import { api } from "../../../../api/axios";
 import {
-  commentsResponseSchema,
-  type CommentResponseSchema,
-} from "../../types/commentResponse";
-import type { PhotoSchema } from "../../types/photos.schema";
+  photoAndCommentsSchema,
+  type PhotoAndCommentsSchema,
+} from "../../types/photos.schema";
 
 export const fetchPhoto = async (id: number) => {
-  const response = await api.get<{
-    photo: PhotoSchema;
-    comments: CommentResponseSchema[];
-  }>(`/api/photo/${id}`);
+  const response = await api.get<PhotoAndCommentsSchema>(`/api/photo/${id}`);
 
-  const comments = commentsResponseSchema.parse(response.data.comments);
+  const data = photoAndCommentsSchema.parse(response.data);
 
-  return comments;
+  return data;
 };

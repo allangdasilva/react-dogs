@@ -30,7 +30,7 @@ function Description({ value, type, children }: DescriptionProps) {
   const unit = type === "weight" ? "kg" : Number(value) === 1 ? "ano" : "anos";
 
   return (
-    <span className="font-body-base text-base-700">
+    <span className="font-body-base text-base-700 break-all">
       <span className="font-bold">{children} </span>
       {value} {unit}
     </span>

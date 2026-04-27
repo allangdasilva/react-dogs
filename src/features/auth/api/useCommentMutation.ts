@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { handleApiError } from "./functions/handleApiError";
+import type { UseFormReset } from "react-hook-form";
 import { api } from "../../../api/axios";
 import type { CommentFormSchema } from "../types/commentForm";
 import { type CommentResponseSchema } from "../types/commentResponse";
-import type { UseFormReset } from "react-hook-form";
+import { handleApiError } from "./functions/handleApiError";
 
 type MutateProps = {
   id: number;

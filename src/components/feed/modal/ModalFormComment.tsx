@@ -1,23 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import clsx from "clsx";
 import { useAuthStore } from "../../../features/auth/store/auth.store";
 import { userQueryOptions } from "../../../features/auth/api/queries/user.query";
 import {
   commentFormSchema,
   type CommentFormSchema,
 } from "../../../features/auth/types/commentForm";
+import { useCommentMutation } from "../../../features/auth/api/useCommentMutation";
 import TextareaField from "../../form/TextareaField";
 import ButtonSubmit from "../../form/ButtonSubmit";
 import CommentIcon from "../../svgs/CommentIcon";
 import Form from "../../form/Form";
-import { useForm } from "react-hook-form";
-import { useCommentMutation } from "../../../features/auth/api/useCommentMutation";
 
 type Props = React.HTMLAttributes<HTMLElement> & {
   photo_id: number;
 };
 
-const ModalFormComment = ({ photo_id }: Props) => {
+const ModalFormComment = ({ photo_id, ...props }: Props) => {
   const token = useAuthStore((s) => s.token);
   const { data: user } = useQuery(userQueryOptions(token));
 
@@ -38,7 +39,7 @@ const ModalFormComment = ({ photo_id }: Props) => {
 
   if (!user) return null;
   return (
-    <section className="p-3 bg-base-100">
+    <section className={clsx("w-full", props.className)}>
       <Form onSubmit={handleSubmit(handleComment)} className="flex-row gap-2!">
         <TextareaField
           id="comment"
@@ -55,7 +56,7 @@ const ModalFormComment = ({ photo_id }: Props) => {
           <ButtonSubmit
             disabled
             tabIndex={-1}
-            className="py-2 px-4 max-w-fit cursor-default opacity-50"
+            className="py-2 px-4 max-w-fit cursor-default opacity-50 hover:bg-base-900"
           >
             <CommentIcon />
           </ButtonSubmit>

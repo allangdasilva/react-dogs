@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PublicRouteImport } from './routes/_public'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PhotoIdRouteImport } from './routes/photo/$id'
 import { Route as PublicSignupRouteImport } from './routes/_public/signup'
 import { Route as PublicLoginRouteImport } from './routes/_public/login'
 import { Route as AuthProfileRouteRouteImport } from './routes/_auth/profile/route'
@@ -30,6 +31,11 @@ const AuthRoute = AuthRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhotoIdRoute = PhotoIdRouteImport.update({
+  id: '/photo/$id',
+  path: '/photo/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PublicSignupRoute = PublicSignupRouteImport.update({
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/profile': typeof AuthProfileRouteRouteWithChildren
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
+  '/photo/$id': typeof PhotoIdRoute
   '/profile/create': typeof AuthProfileCreateRoute
   '/profile/statistics': typeof AuthProfileStatisticsRoute
   '/profile/': typeof AuthProfileIndexRoute
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
+  '/photo/$id': typeof PhotoIdRoute
   '/profile/create': typeof AuthProfileCreateRoute
   '/profile/statistics': typeof AuthProfileStatisticsRoute
   '/profile': typeof AuthProfileIndexRoute
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   '/_auth/profile': typeof AuthProfileRouteRouteWithChildren
   '/_public/login': typeof PublicLoginRoute
   '/_public/signup': typeof PublicSignupRoute
+  '/photo/$id': typeof PhotoIdRoute
   '/_auth/profile/create': typeof AuthProfileCreateRoute
   '/_auth/profile/statistics': typeof AuthProfileStatisticsRoute
   '/_auth/profile/': typeof AuthProfileIndexRoute
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/login'
     | '/signup'
+    | '/photo/$id'
     | '/profile/create'
     | '/profile/statistics'
     | '/profile/'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/signup'
+    | '/photo/$id'
     | '/profile/create'
     | '/profile/statistics'
     | '/profile'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/_auth/profile'
     | '/_public/login'
     | '/_public/signup'
+    | '/photo/$id'
     | '/_auth/profile/create'
     | '/_auth/profile/statistics'
     | '/_auth/profile/'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRouteWithChildren
   PublicRoute: typeof PublicRouteWithChildren
+  PhotoIdRoute: typeof PhotoIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -150,6 +163,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/photo/$id': {
+      id: '/photo/$id'
+      path: '/photo/$id'
+      fullPath: '/photo/$id'
+      preLoaderRoute: typeof PhotoIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_public/signup': {
@@ -239,6 +259,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRouteWithChildren,
   PublicRoute: PublicRouteWithChildren,
+  PhotoIdRoute: PhotoIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

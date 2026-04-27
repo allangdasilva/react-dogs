@@ -1,0 +1,23 @@
+import type { CommentResponseSchema } from "../../features/auth/types/commentResponse";
+
+type Props = {
+  comments: CommentResponseSchema[];
+};
+
+const PhotoPageComments = ({ comments }: Props) => {
+  return (
+    <ul className="p-3 rounded-base min-h-30 max-h-30 overflow-scroll scrollbar-none bg-base-100">
+      {comments.map((comment) => (
+        <li
+          key={comment.comment_ID}
+          className="font-body-sm font-normal text-base-700 *:break-all"
+        >
+          <h3 className="font-semibold inline">{comment.comment_author}: </h3>
+          <span>{comment.comment_content}</span>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+export default PhotoPageComments;

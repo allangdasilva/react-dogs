@@ -1,4 +1,5 @@
 import z from "zod/v3";
+import { commentsResponseSchema } from "./commentResponse";
 
 export const photoSchema = z.object({
   id: z.number(),
@@ -11,6 +12,12 @@ export const photoSchema = z.object({
   acessos: z.number(),
 });
 export type PhotoSchema = z.infer<typeof photoSchema>;
+
+export const photoAndCommentsSchema = z.object({
+  photo: photoSchema,
+  comments: commentsResponseSchema,
+});
+export type PhotoAndCommentsSchema = z.infer<typeof photoAndCommentsSchema>;
 
 export const photosSchema = z.array(photoSchema);
 export type PhotosSchema = z.infer<typeof photosSchema>;

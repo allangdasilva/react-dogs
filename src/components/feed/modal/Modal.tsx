@@ -1,9 +1,9 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useQueryErrorResetBoundary } from "@tanstack/react-query";
+import { Link } from "@tanstack/react-router";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import type { PhotoSchema } from "../../../features/auth/types/photos.schema";
-import PageTitle from "../../PageTitle";
 import Spacer from "../../Spacer";
 import CloseIcon from "../../svgs/CloseIcon";
 import SkeletonComments from "../../helper/SkeletonComments";
@@ -49,8 +49,11 @@ const Modal = ({ photo }: Props) => {
             {/* Título, Descrição e Comentários*/}
             <div className="p-3 h-full overflow-y-scroll scrollbar-none bg-base-000">
               {/* Título */}
-              <Dialog.Title className="sr-only">{photo.title}</Dialog.Title>
-              <PageTitle>{photo.title}</PageTitle>
+              <Dialog.Title className="font-title-sm break-all text-base-700">
+                <Link to="/photo/$id" params={{ id: String(photo.id) }}>
+                  {photo.title}
+                </Link>
+              </Dialog.Title>
 
               {/* Semanticamente, um Dialog deve ter apenas uma descrição (ou nenhuma). O Radix associa o ID da descrição ao atributo aria-describedby do modal. Se você usa várias vezes, os leitores de tela podem se confundir ou ler apenas a última. Use Dialog.Description apenas para uma breve explicação do que é o modal (pode usa-la  assim: descrição invisível e acessivel) e use tags HTML normais (p, span, header) para o restante do conteúdo. */}
               <Dialog.Description className="sr-only">
@@ -90,7 +93,7 @@ const Modal = ({ photo }: Props) => {
             </div>
 
             {/* Formulário de comentar */}
-            <ModalFormComment photo_id={photo.id} />
+            <ModalFormComment className="p-3 bg-base-100" photo_id={photo.id} />
           </div>
 
           <Dialog.Close className="absolute top-3 left-3 rounded-full p-0.5 cursor-pointer bg-base-100/50 hover:bg-base-100 focus:bg-base-100 transition-colors ease-in">
