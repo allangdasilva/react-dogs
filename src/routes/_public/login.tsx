@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Login from "../../components/login/Login";
-import z from "zod/v3";
+import z from "zod";
 
 // search (redirect / ux)
 

@@ -5,6 +5,7 @@ type Props = {
 };
 
 const PhotoPageComments = ({ comments }: Props) => {
+  if (!comments.length) return null;
   return (
     <ul className="p-3 rounded-base min-h-30 max-h-30 overflow-scroll scrollbar-none bg-base-100">
       {comments.map((comment) => (

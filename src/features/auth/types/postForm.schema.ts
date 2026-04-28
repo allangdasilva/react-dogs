@@ -1,4 +1,4 @@
-import z from "zod/v3";
+import z from "zod";
 
 export const postFormSchema = z.object({
   nome: z.string().min(1, "Preencha um valor.").max(32, "Nome muito grande."),

@@ -1,4 +1,4 @@
-import z from "zod/v3";
+import z from "zod";
 import { commentsResponseSchema } from "./commentResponse";
 
 export const photoSchema = z.object({

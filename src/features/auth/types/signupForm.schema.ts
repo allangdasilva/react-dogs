@@ -1,4 +1,4 @@
-import z from "zod/v3";
+import z from "zod";
 
 export const signupFormSchema = z.object({
   email: z.string().email("Insira um email válido."),
