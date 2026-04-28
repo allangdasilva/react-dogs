@@ -17,14 +17,17 @@ const ModalHeader = ({ photo }: Props) => {
 
   return (
     <header
-      className={clsx("p-3 flex justify-between items-center bg-base-100", {
-        "flex-row-reverse": user && user.username === photo.author,
-      })}
+      className={clsx(
+        "p-3 flex justify-between items-center gap-1 bg-base-100",
+        {
+          "flex-row-reverse": user && user.username === photo.author,
+        },
+      )}
     >
       {user && user.username === photo.author ? (
         <ConfirmDialog photo_id={photo.id} />
       ) : (
-        <Link className="link-sm-underline-blue break-all" to="/">
+        <Link className="link-sm-underline-blue wrap-break-word min-w-0" to="/">
           @{photo.author}
         </Link>
       )}

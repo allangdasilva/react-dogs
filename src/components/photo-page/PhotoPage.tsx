@@ -32,7 +32,7 @@ const PhotoPage = () => {
         </div>
         <div className="flex flex-col gap-2 self-start mt-3 m-auto">
           <div className="p-3 rounded-base bg-base-100">
-            <h2 className="font-title-sm break-all text-base-700">
+            <h2 className="font-title-sm wrap-break-word min-w-0 text-base-700">
               {photo.title}
             </h2>
 

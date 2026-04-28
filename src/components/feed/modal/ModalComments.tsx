@@ -13,10 +13,10 @@ const ModalComments = ({ photo_id }: Props) => {
       {data.comments.map((comment) => (
         <li
           key={comment.comment_ID}
-          className="font-body-sm text-base-700 *:break-all"
+          className="font-body-sm text-base-700 *:wrap-break-word"
         >
           <h3 className="font-semibold inline">{comment.comment_author}: </h3>
-          <span>{comment.comment_content}</span>
+          <span className="min-w-0">{comment.comment_content}</span>
         </li>
       ))}
     </ul>
