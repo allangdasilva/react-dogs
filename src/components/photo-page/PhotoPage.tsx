@@ -5,6 +5,7 @@ import {
 import { Suspense } from "react";
 import { useParams } from "@tanstack/react-router";
 import { ErrorBoundary } from "react-error-boundary";
+import Image from "../helper/Image";
 import { photoQueryOptions } from "../../features/auth/api/queries/photo.query";
 import SkeletonComments from "../helper/SkeletonComments";
 import ErrorCommentsFallback from "../helper/ErrorCommentsFallback";
@@ -21,20 +22,16 @@ const PhotoPage = () => {
   const { photo, comments } = data;
 
   return (
-    <section className="w-full flex flex-col items-center max-w-base px-4 py-12">
+    <section className="flex flex-col items-center">
       <div className="w-full max-w-160">
         <div className="rounded-base overflow-hidden">
-          <img
-            className="w-full h-full object-contain"
-            src={photo.src}
-            alt={photo.title}
-          />
+          <Image src={photo.src} alt={photo.title} />
         </div>
         <div className="flex flex-col gap-2 self-start mt-3 m-auto">
           <div className="p-3 rounded-base bg-base-100">
-            <h2 className="font-title-sm wrap-break-word min-w-0 text-base-700">
+            <h3 className="font-title-sm wrap-break-word min-w-0 text-base-700">
               {photo.title}
-            </h2>
+            </h3>
 
             <ModalDescription photo={photo} />
           </div>

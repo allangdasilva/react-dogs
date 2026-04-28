@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
 
 type Props = React.HTMLAttributes<HTMLElement> & {
-  userId: number;
+  userId: number | string;
   isProfile: boolean;
 };
 
@@ -33,7 +33,7 @@ const Feed = ({ userId, isProfile }: Props) => {
   const photos = data.pages.flat();
 
   return (
-    <section className="w-full flex flex-col max-w-base px-4 py-12">
+    <section className="w-full flex flex-col">
       <ul className="grid grid-cols-2 gap-3 md:grid-cols-3">
         {photos.map((photo) => (
           <li
@@ -53,7 +53,11 @@ const Feed = ({ userId, isProfile }: Props) => {
 
       <div ref={ref} aria-hidden={true}></div>
 
-      {isFetchingNextPage && <Loading />}
+      {isFetchingNextPage && (
+        <div className="mt-12">
+          <Loading />
+        </div>
+      )}
 
       {!hasNextPage && !isProfile ? (
         <p className="font-body-base text-base-500 text-center mt-12">

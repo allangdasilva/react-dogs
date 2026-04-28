@@ -50,17 +50,21 @@ const Modal = ({ photo }: Props) => {
             {/* Título, Descrição e Comentários*/}
             <div className="p-3 h-full overflow-y-scroll scrollbar-none bg-base-000">
               {/* Título */}
-              <Dialog.Title className="font-title-sm text-base-700">
-                <Link
-                  className="flex justify-between items-center gap-1 group"
-                  to="/photo/$id"
-                  params={{ id: String(photo.id) }}
-                >
-                  {/* break-words: Quebra em espaços. Se a palavra for única e gigante, quebra a palavra.*/}
-                  {/* min-w-0 no Flexbox: Elementos flexíveis por padrão tentam manter o tamanho do conteúdo (min-content). Se o título for uma string gigante sem espaços, o flexbox vai tentar deixar o span do tamanho da string, ignorando o limite do componente pai. O min-w-0 "reseta" isso e força o texto a respeitar o limite e quebrar. */}
-                  <span className="wrap-break-word min-w-0">{photo.title}</span>
-                  <OpenInNewIcon />
-                </Link>
+              <Dialog.Title asChild>
+                <h3 className="font-title-sm text-base-700">
+                  <Link
+                    className="flex justify-between items-center gap-1 group"
+                    to="/photo/$id"
+                    params={{ id: String(photo.id) }}
+                  >
+                    {/* break-words: Quebra em espaços. Se a palavra for única e gigante, quebra a palavra.*/}
+                    {/* min-w-0 no Flexbox: Elementos flexíveis por padrão tentam manter o tamanho do conteúdo (min-content). Se o título for uma string gigante sem espaços, o flexbox vai tentar deixar o span do tamanho da string, ignorando o limite do componente pai. O min-w-0 "reseta" isso e força o texto a respeitar o limite e quebrar. */}
+                    <span className="wrap-break-word min-w-0">
+                      {photo.title}
+                    </span>
+                    <OpenInNewIcon />
+                  </Link>
+                </h3>
               </Dialog.Title>
 
               {/* Semanticamente, um Dialog deve ter apenas uma descrição (ou nenhuma). O Radix associa o ID da descrição ao atributo aria-describedby do modal. Se você usa várias vezes, os leitores de tela podem se confundir ou ler apenas a última. Use Dialog.Description apenas para uma breve explicação do que é o modal (pode usa-la  assim: descrição invisível e acessivel) e use tags HTML normais (p, span, header) para o restante do conteúdo. */}

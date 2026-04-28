@@ -6,7 +6,7 @@ import { fetchPhotos } from "../functions/get-photos";
 
 const PAGE_SIZE = 6;
 
-export const photosInfiniteQueryOptions = (userId: number) => {
+export const photosInfiniteQueryOptions = (userId: number | string) => {
   return infiniteQueryOptions({
     // IDENTIFICADOR ÚNICO: Como uma "etiqueta" no armário (cache).
     // Se os parâmetros mudarem (ex: outro usuário), ele cria uma gaveta nova.

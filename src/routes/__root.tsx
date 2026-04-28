@@ -50,8 +50,8 @@ function RootComponent() {
     <React.Fragment>
       <Header />
       <main
-        className={clsx("pt-36 xs:pt-19", {
-          "xxs:pt-19": user,
+        className={clsx("w-full max-w-base px-4 pb-12 pt-48 xs:pt-31", {
+          "xxs:pt-31": user,
         })}
       >
         <Outlet />

@@ -27,7 +27,11 @@ const ModalHeader = ({ photo }: Props) => {
       {user && user.username === photo.author ? (
         <ConfirmDialog photo_id={photo.id} />
       ) : (
-        <Link className="link-sm-underline-blue wrap-break-word min-w-0" to="/">
+        <Link
+          className="link-sm-underline-blue wrap-break-word min-w-0"
+          to="/$profileId"
+          params={{ profileId: photo.author }}
+        >
           @{photo.author}
         </Link>
       )}

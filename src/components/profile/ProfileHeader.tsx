@@ -1,6 +1,5 @@
 import { useMatches } from "@tanstack/react-router";
 import PageTitle from "../PageTitle";
-import Spacer from "../Spacer";
 import DesktopMenu from "./menu/DesktopMenu";
 import MobileMenu from "./menu/MobileMenu";
 
@@ -12,7 +11,7 @@ const ProfileHeader = () => {
   const pageTitle = (lastMatch?.staticData as any)?.title;
 
   return (
-    <header className="w-full max-w-base px-4 pt-12 flex flex-col">
+    <header className="flex flex-col">
       <div className="flex flex-col gap-6 justify-between items-center flex-wrap xxs:flex-row xxs:gap-0">
         <PageTitle>{pageTitle}</PageTitle>
         <nav>
@@ -20,7 +19,6 @@ const ProfileHeader = () => {
           <DesktopMenu />
         </nav>
       </div>
-      <Spacer className="mt-12 bg-base-200" />
     </header>
   );
 };

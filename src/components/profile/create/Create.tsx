@@ -57,7 +57,7 @@ const Create = () => {
   }
 
   return (
-    <section className="w-full max-w-base px-4 py-12 flex flex-col gap-8 md:flex-row md:gap-6 md:items-center">
+    <section className="flex flex-col gap-8 md:flex-row md:gap-6 md:items-center">
       <Form onSubmit={handleSubmit(handlePost)} className="flex-1">
         <div
           className={clsx("auth-form-fields-wrapper", {
@@ -111,9 +111,13 @@ const Create = () => {
           <ButtonSubmit>Postar</ButtonSubmit>
         )}
       </Form>
-      <div className="flex-1 flex items-center rounded-base aspect-square overflow-hidden">
+      <div
+        className={clsx("flex-1 flex items-center overflow-hidden", {
+          "hidden md:block": !preview,
+        })}
+      >
         {preview ? (
-          <img src={preview} alt="Post prévia" />
+          <img className="rounded-base" src={preview} alt="Post prévia" />
         ) : (
           <div
             className={clsx(
