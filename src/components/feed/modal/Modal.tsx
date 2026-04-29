@@ -9,7 +9,6 @@ import CloseIcon from "../../svgs/CloseIcon";
 import SkeletonComments from "../../helper/SkeletonComments";
 import ErrorCommentsFallback from "../../helper/ErrorCommentsFallback";
 import OpenInNewIcon from "../../svgs/OpenInNewIcon";
-import SmTitle from "../../SmTitle";
 import Photo from "../photo/Photo";
 import ModalDescription from "./ModalDescription";
 import ModalFormComment from "./ModalFormComment";
@@ -51,8 +50,8 @@ const Modal = ({ photo }: Props) => {
             {/* Título, Descrição e Comentários*/}
             <div className="p-3 h-full overflow-y-scroll scrollbar-none bg-base-000">
               {/* Título */}
-              <Dialog.Title asChild>
-                <SmTitle>
+              <Dialog.Title className="font-title-sm wrap-break-word min-w-0 text-base-700 mb-1">
+                <Dialog.Close className="w-full" asChild>
                   <Link
                     className="flex justify-between items-center gap-1 group"
                     to="/photo/$id"
@@ -65,7 +64,7 @@ const Modal = ({ photo }: Props) => {
                     </span>
                     <OpenInNewIcon />
                   </Link>
-                </SmTitle>
+                </Dialog.Close>
               </Dialog.Title>
 
               {/* Semanticamente, um Dialog deve ter apenas uma descrição (ou nenhuma). O Radix associa o ID da descrição ao atributo aria-describedby do modal. Se você usa várias vezes, os leitores de tela podem se confundir ou ler apenas a última. Use Dialog.Description apenas para uma breve explicação do que é o modal (pode usa-la  assim: descrição invisível e acessivel) e use tags HTML normais (p, span, header) para o restante do conteúdo. */}

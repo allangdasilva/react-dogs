@@ -30,7 +30,9 @@ const PhotoPage = () => {
         </div>
         <div className="flex flex-col gap-2 self-start mt-3 m-auto">
           <div className="p-3 rounded-base bg-base-100">
-            <SmTitle>{photo.title}</SmTitle>
+            <div className="mb-1">
+              <SmTitle>{photo.title}</SmTitle>
+            </div>
 
             <ModalDescription photo={photo} />
           </div>

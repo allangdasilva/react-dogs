@@ -1,3 +1,4 @@
+import * as Dialog from "@radix-ui/react-dialog";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
@@ -27,13 +28,15 @@ const ModalHeader = ({ photo }: Props) => {
       {user && user.username === photo.author ? (
         <ConfirmDialog photo_id={photo.id} />
       ) : (
-        <Link
-          className="link-sm-underline-blue wrap-break-word min-w-0"
-          to="/$profileId"
-          params={{ profileId: photo.author }}
-        >
-          @{photo.author}
-        </Link>
+        <Dialog.Close asChild>
+          <Link
+            className="link-sm-underline-blue wrap-break-word min-w-0"
+            to="/$profileId"
+            params={{ profileId: photo.author }}
+          >
+            @{photo.author}
+          </Link>
+        </Dialog.Close>
       )}
 
       <span className="flex items-center gap-1">
