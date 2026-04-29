@@ -56,6 +56,7 @@ function RootComponent() {
       >
         <Outlet />
       </main>
+
       <Footer />
       <ToastProvider />
       <TanStackRouterDevtools />

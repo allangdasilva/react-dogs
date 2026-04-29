@@ -39,7 +39,7 @@ const LoginForm = () => {
   }
 
   return (
-    <Form onSubmit={handleSubmit(handleLogin)} className="mt-6">
+    <Form onSubmit={handleSubmit(handleLogin)} className="w-full">
       <div
         className={clsx("auth-form-fields-wrapper", {
           "opacity-60": isPending,
