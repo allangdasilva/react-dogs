@@ -4,7 +4,7 @@ import SmTitle from "../../SmTitle";
 
 const Posts = () => {
   return (
-    <div className="mt-12 flex flex-col gap-6 items-center text-center text-base-700">
+    <div className="flex flex-col gap-6 items-center text-center text-base-700">
       <BoneIcon />
       <SmTitle>Postar fotos</SmTitle>
       <p>Quando você postar fotos, elas aparecerão aqui.</p>
