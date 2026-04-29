@@ -134,12 +134,6 @@
   @apply rounded-2xl;
 }
 
-@utility auth-wrapper {
-  @apply grid sm:min-h-dvh sm:before:bg-cover sm:before:bg-center sm:grid-cols-2;
-}
-@utility auth-form-wrapper {
-  @apply flex flex-col sm:pl-4 sm:self-center sm:max-w-127.5;
-}
 @utility auth-form-fields-wrapper {
   @apply flex flex-col gap-3;
 }

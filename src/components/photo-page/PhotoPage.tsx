@@ -12,6 +12,7 @@ import ErrorCommentsFallback from "../helper/ErrorCommentsFallback";
 import ModalDescription from "../feed/modal/ModalDescription";
 import ModalFormComment from "../feed/modal/ModalFormComment";
 import PhotoPageComments from "./PhotoPageComments";
+import SmTitle from "../SmTitle";
 
 const PhotoPage = () => {
   const params = useParams({ from: "/photo/$id" });
@@ -29,9 +30,7 @@ const PhotoPage = () => {
         </div>
         <div className="flex flex-col gap-2 self-start mt-3 m-auto">
           <div className="p-3 rounded-base bg-base-100">
-            <h3 className="font-title-sm wrap-break-word min-w-0 text-base-700">
-              {photo.title}
-            </h3>
+            <SmTitle>{photo.title}</SmTitle>
 
             <ModalDescription photo={photo} />
           </div>
