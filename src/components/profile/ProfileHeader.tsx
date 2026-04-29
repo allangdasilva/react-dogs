@@ -12,7 +12,7 @@ const ProfileHeader = () => {
 
   return (
     <header className="flex flex-col">
-      <div className="flex flex-col gap-6 justify-between items-center flex-wrap xxs:flex-row xxs:gap-0">
+      <div className="flex flex-col gap-4 justify-between items-center flex-wrap xxs:flex-row">
         <PageTitle>{pageTitle}</PageTitle>
         <nav>
           <MobileMenu />

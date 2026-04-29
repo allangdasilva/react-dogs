@@ -6,7 +6,7 @@ type Props = React.HTMLAttributes<HTMLElement> & {
 
 const ProfileIdHeader = ({ profileId }: Props) => {
   return (
-    <header className="flex flex-col gap-6 justify-between items-center flex-wrap xxs:flex-row xxs:gap-0">
+    <header className="flex flex-col gap-4 justify-between items-center flex-wrap xxs:flex-row">
       <PageTitle>Posts</PageTitle>
       <h3 className="font-title-sm wrap-break-word min-w-0 text-base-700">
         @{profileId}
