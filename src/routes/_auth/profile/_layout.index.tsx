@@ -11,7 +11,7 @@ import { photosInfiniteQueryOptions } from "../../../features/auth/api/queries/p
 import { Suspense } from "react";
 import Loading from "../../../components/helper/Loading";
 
-export const Route = createFileRoute("/_auth/profile/")({
+export const Route = createFileRoute("/_auth/profile/_layout/")({
   staticData: {
     title: "Posts",
   },
@@ -29,7 +29,7 @@ function RouteComponent() {
     <Suspense fallback={<Loading />}>
       <ProfileFeed userId={data.id} />
     </Suspense>
-  );
+  )
 }
 
 function ProfileFeed({ userId }: { userId: number }) {

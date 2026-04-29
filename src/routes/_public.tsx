@@ -1,6 +1,7 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 import React from "react";
 import { useAuthStore } from "../features/auth/store/auth.store";
+import NotFound from "../components/helper/NotFound";
 
 // _auth.tsx (Layout): Não muda a URL. Serve apenas para aplicar a lógica de proteção via beforeLoad.
 // As rotas dentro das pasta _public é o que o Outlet daqui renderiza
@@ -15,6 +16,7 @@ export const Route = createFileRoute("/_public")({
       });
     }
   },
+  notFoundComponent: () => <NotFound>Erro 404.</NotFound>,
   component: RouteComponent,
 });
 

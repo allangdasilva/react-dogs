@@ -41,7 +41,6 @@ export const Route = createFileRoute("/")({
   // esse componente aparece enquanto o loader ainda não terminou.
   // É o loading oficial da rota.
   pendingComponent: Loading,
-
   component: RouteComponent,
 });
 

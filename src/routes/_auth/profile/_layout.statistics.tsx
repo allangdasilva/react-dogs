@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/_auth/profile/statistics")({
+export const Route = createFileRoute("/_auth/profile/_layout/statistics")({
   staticData: {
     title: "Dados",
   },

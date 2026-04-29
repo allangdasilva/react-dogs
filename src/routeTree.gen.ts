@@ -17,9 +17,10 @@ import { Route as PhotoIdRouteImport } from './routes/photo/$id'
 import { Route as PublicSignupRouteImport } from './routes/_public/signup'
 import { Route as PublicLoginRouteImport } from './routes/_public/login'
 import { Route as AuthProfileRouteRouteImport } from './routes/_auth/profile/route'
-import { Route as AuthProfileIndexRouteImport } from './routes/_auth/profile/index'
-import { Route as AuthProfileStatisticsRouteImport } from './routes/_auth/profile/statistics'
-import { Route as AuthProfileCreateRouteImport } from './routes/_auth/profile/create'
+import { Route as AuthProfileLayoutRouteImport } from './routes/_auth/profile/_layout'
+import { Route as AuthProfileLayoutIndexRouteImport } from './routes/_auth/profile/_layout.index'
+import { Route as AuthProfileLayoutStatisticsRouteImport } from './routes/_auth/profile/_layout.statistics'
+import { Route as AuthProfileLayoutCreateRouteImport } from './routes/_auth/profile/_layout.create'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -59,42 +60,47 @@ const AuthProfileRouteRoute = AuthProfileRouteRouteImport.update({
   path: '/profile',
   getParentRoute: () => AuthRoute,
 } as any)
-const AuthProfileIndexRoute = AuthProfileIndexRouteImport.update({
+const AuthProfileLayoutRoute = AuthProfileLayoutRouteImport.update({
+  id: '/_layout',
+  getParentRoute: () => AuthProfileRouteRoute,
+} as any)
+const AuthProfileLayoutIndexRoute = AuthProfileLayoutIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => AuthProfileRouteRoute,
+  getParentRoute: () => AuthProfileLayoutRoute,
 } as any)
-const AuthProfileStatisticsRoute = AuthProfileStatisticsRouteImport.update({
-  id: '/statistics',
-  path: '/statistics',
-  getParentRoute: () => AuthProfileRouteRoute,
-} as any)
-const AuthProfileCreateRoute = AuthProfileCreateRouteImport.update({
+const AuthProfileLayoutStatisticsRoute =
+  AuthProfileLayoutStatisticsRouteImport.update({
+    id: '/statistics',
+    path: '/statistics',
+    getParentRoute: () => AuthProfileLayoutRoute,
+  } as any)
+const AuthProfileLayoutCreateRoute = AuthProfileLayoutCreateRouteImport.update({
   id: '/create',
   path: '/create',
-  getParentRoute: () => AuthProfileRouteRoute,
+  getParentRoute: () => AuthProfileLayoutRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$profileId': typeof ProfileIdRoute
-  '/profile': typeof AuthProfileRouteRouteWithChildren
+  '/profile': typeof AuthProfileLayoutRouteWithChildren
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
   '/photo/$id': typeof PhotoIdRoute
-  '/profile/create': typeof AuthProfileCreateRoute
-  '/profile/statistics': typeof AuthProfileStatisticsRoute
-  '/profile/': typeof AuthProfileIndexRoute
+  '/profile/create': typeof AuthProfileLayoutCreateRoute
+  '/profile/statistics': typeof AuthProfileLayoutStatisticsRoute
+  '/profile/': typeof AuthProfileLayoutIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$profileId': typeof ProfileIdRoute
+  '/profile': typeof AuthProfileLayoutIndexRoute
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
   '/photo/$id': typeof PhotoIdRoute
-  '/profile/create': typeof AuthProfileCreateRoute
-  '/profile/statistics': typeof AuthProfileStatisticsRoute
-  '/profile': typeof AuthProfileIndexRoute
+  '/profile/create': typeof AuthProfileLayoutCreateRoute
+  '/profile/statistics': typeof AuthProfileLayoutStatisticsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -106,9 +112,10 @@ export interface FileRoutesById {
   '/_public/login': typeof PublicLoginRoute
   '/_public/signup': typeof PublicSignupRoute
   '/photo/$id': typeof PhotoIdRoute
-  '/_auth/profile/create': typeof AuthProfileCreateRoute
-  '/_auth/profile/statistics': typeof AuthProfileStatisticsRoute
-  '/_auth/profile/': typeof AuthProfileIndexRoute
+  '/_auth/profile/_layout': typeof AuthProfileLayoutRouteWithChildren
+  '/_auth/profile/_layout/create': typeof AuthProfileLayoutCreateRoute
+  '/_auth/profile/_layout/statistics': typeof AuthProfileLayoutStatisticsRoute
+  '/_auth/profile/_layout/': typeof AuthProfileLayoutIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -126,12 +133,12 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$profileId'
+    | '/profile'
     | '/login'
     | '/signup'
     | '/photo/$id'
     | '/profile/create'
     | '/profile/statistics'
-    | '/profile'
   id:
     | '__root__'
     | '/'
@@ -142,9 +149,10 @@ export interface FileRouteTypes {
     | '/_public/login'
     | '/_public/signup'
     | '/photo/$id'
-    | '/_auth/profile/create'
-    | '/_auth/profile/statistics'
-    | '/_auth/profile/'
+    | '/_auth/profile/_layout'
+    | '/_auth/profile/_layout/create'
+    | '/_auth/profile/_layout/statistics'
+    | '/_auth/profile/_layout/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -213,40 +221,58 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthProfileRouteRouteImport
       parentRoute: typeof AuthRoute
     }
-    '/_auth/profile/': {
-      id: '/_auth/profile/'
+    '/_auth/profile/_layout': {
+      id: '/_auth/profile/_layout'
+      path: ''
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthProfileLayoutRouteImport
+      parentRoute: typeof AuthProfileRouteRoute
+    }
+    '/_auth/profile/_layout/': {
+      id: '/_auth/profile/_layout/'
       path: '/'
       fullPath: '/profile/'
-      preLoaderRoute: typeof AuthProfileIndexRouteImport
-      parentRoute: typeof AuthProfileRouteRoute
+      preLoaderRoute: typeof AuthProfileLayoutIndexRouteImport
+      parentRoute: typeof AuthProfileLayoutRoute
     }
-    '/_auth/profile/statistics': {
-      id: '/_auth/profile/statistics'
+    '/_auth/profile/_layout/statistics': {
+      id: '/_auth/profile/_layout/statistics'
       path: '/statistics'
       fullPath: '/profile/statistics'
-      preLoaderRoute: typeof AuthProfileStatisticsRouteImport
-      parentRoute: typeof AuthProfileRouteRoute
+      preLoaderRoute: typeof AuthProfileLayoutStatisticsRouteImport
+      parentRoute: typeof AuthProfileLayoutRoute
     }
-    '/_auth/profile/create': {
-      id: '/_auth/profile/create'
+    '/_auth/profile/_layout/create': {
+      id: '/_auth/profile/_layout/create'
       path: '/create'
       fullPath: '/profile/create'
-      preLoaderRoute: typeof AuthProfileCreateRouteImport
-      parentRoute: typeof AuthProfileRouteRoute
+      preLoaderRoute: typeof AuthProfileLayoutCreateRouteImport
+      parentRoute: typeof AuthProfileLayoutRoute
     }
   }
 }
 
+interface AuthProfileLayoutRouteChildren {
+  AuthProfileLayoutCreateRoute: typeof AuthProfileLayoutCreateRoute
+  AuthProfileLayoutStatisticsRoute: typeof AuthProfileLayoutStatisticsRoute
+  AuthProfileLayoutIndexRoute: typeof AuthProfileLayoutIndexRoute
+}
+
+const AuthProfileLayoutRouteChildren: AuthProfileLayoutRouteChildren = {
+  AuthProfileLayoutCreateRoute: AuthProfileLayoutCreateRoute,
+  AuthProfileLayoutStatisticsRoute: AuthProfileLayoutStatisticsRoute,
+  AuthProfileLayoutIndexRoute: AuthProfileLayoutIndexRoute,
+}
+
+const AuthProfileLayoutRouteWithChildren =
+  AuthProfileLayoutRoute._addFileChildren(AuthProfileLayoutRouteChildren)
+
 interface AuthProfileRouteRouteChildren {
-  AuthProfileCreateRoute: typeof AuthProfileCreateRoute
-  AuthProfileStatisticsRoute: typeof AuthProfileStatisticsRoute
-  AuthProfileIndexRoute: typeof AuthProfileIndexRoute
+  AuthProfileLayoutRoute: typeof AuthProfileLayoutRouteWithChildren
 }
 
 const AuthProfileRouteRouteChildren: AuthProfileRouteRouteChildren = {
-  AuthProfileCreateRoute: AuthProfileCreateRoute,
-  AuthProfileStatisticsRoute: AuthProfileStatisticsRoute,
-  AuthProfileIndexRoute: AuthProfileIndexRoute,
+  AuthProfileLayoutRoute: AuthProfileLayoutRouteWithChildren,
 }
 
 const AuthProfileRouteRouteWithChildren =

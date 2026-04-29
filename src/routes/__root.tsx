@@ -8,6 +8,7 @@ import { useAuthStore } from "../features/auth/store/auth.store";
 import { userQueryOptions } from "../features/auth/api/queries/user.query";
 import ToastProvider from "../components/helper/ToastProvider";
 import clsx from "clsx";
+import NotFound from "../components/helper/NotFound";
 
 interface RootRouteContext {
   queryClient: QueryClient;
@@ -37,6 +38,7 @@ export const Route = createRootRouteWithContext<RootRouteContext>()({
       }
     }
   },
+  notFoundComponent: () => <NotFound>Erro 404.</NotFound>,
   component: RootComponent,
 });
 
