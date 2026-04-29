@@ -3,7 +3,7 @@ import {
   useSuspenseQuery,
 } from "@tanstack/react-query";
 import { Suspense } from "react";
-import { useParams } from "@tanstack/react-router";
+import { Link, useParams } from "@tanstack/react-router";
 import { ErrorBoundary } from "react-error-boundary";
 import Image from "../helper/Image";
 import { photoQueryOptions } from "../../features/auth/api/queries/photo.query";
@@ -30,8 +30,15 @@ const PhotoPage = () => {
         </div>
         <div className="flex flex-col gap-2 self-start mt-3 m-auto">
           <div className="p-3 rounded-base bg-base-100">
-            <div className="mb-1">
+            <div className="mb-1 flex justify-between items-center flex-wrap gap-x-1">
               <SmTitle>{photo.title}</SmTitle>
+              <Link
+                to="/$profileId"
+                params={{ profileId: photo.author }}
+                className="link-sm-underline-blue"
+              >
+                @{photo.author}
+              </Link>
             </div>
 
             <ModalDescription photo={photo} />
