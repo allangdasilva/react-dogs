@@ -1,21 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import clsx from "clsx";
 import PageTitle from "../PageTitle";
 import LoginForm from "../../features/auth/components/LoginForm";
 
 const Login = () => {
   return (
-    <section className="grid sm:grid-cols-2 sm:gap-4">
-      <div className="hidden pointer-events-none sm:block">
-        <div className="absolute inset-0 grid grid-cols-2 gap-4 pt-19">
-          <div className="bg-center bg-cover bg-[url(img/login-bg.jpg)]"></div>
-        </div>
-      </div>
-      <div
-        className={clsx("flex flex-col items-center sm:items-stretch", {
-          "opacity-60": false,
-        })}
-      >
+    <section className="public-section-wrapper">
+      <div className="public-section-background bg-[url(img/login-bg.jpg)]"></div>
+      <div className="public-section-form-wrapper">
         <div className="mb-6">
           <PageTitle>Entrar</PageTitle>
         </div>
