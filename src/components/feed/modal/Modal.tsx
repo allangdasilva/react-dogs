@@ -22,6 +22,7 @@ type Props = {
 const Modal = ({ photo }: Props) => {
   // Este hook é o "controle remoto" do cache de erros do TanStack
   const { reset } = useQueryErrorResetBoundary();
+  const photoId = String(photo.id);
 
   return (
     <Dialog.Root>
@@ -55,7 +56,7 @@ const Modal = ({ photo }: Props) => {
                   <Link
                     className="flex justify-between items-center gap-1 group"
                     to="/photo/$id"
-                    params={{ id: String(photo.id) }}
+                    params={{ id: photoId }}
                   >
                     {/* break-words: Quebra em espaços. Se a palavra for única e gigante, quebra a palavra.*/}
                     {/* min-w-0 no Flexbox: Elementos flexíveis por padrão tentam manter o tamanho do conteúdo (min-content). Se o título for uma string gigante sem espaços, o flexbox vai tentar deixar o span do tamanho da string, ignorando o limite do componente pai. O min-w-0 "reseta" isso e força o texto a respeitar o limite e quebrar. */}

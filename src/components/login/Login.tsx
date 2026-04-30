@@ -23,7 +23,7 @@ const Login = () => {
         <LoginForm />
 
         <Link
-          to="/"
+          to="/password/reset"
           className="button-form mt-3 text-base-700 hover:bg-base-300 focus:bg-base-300"
         >
           Esqueceu a Senha?

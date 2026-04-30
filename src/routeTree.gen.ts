@@ -17,6 +17,7 @@ import { Route as PhotoIdRouteImport } from './routes/photo/$id'
 import { Route as PublicSignupRouteImport } from './routes/_public/signup'
 import { Route as PublicLoginRouteImport } from './routes/_public/login'
 import { Route as AuthProfileRouteRouteImport } from './routes/_auth/profile/route'
+import { Route as PublicPasswordResetRouteImport } from './routes/_public/password/reset'
 import { Route as AuthProfileLayoutRouteImport } from './routes/_auth/profile/_layout'
 import { Route as AuthProfileLayoutIndexRouteImport } from './routes/_auth/profile/_layout.index'
 import { Route as AuthProfileLayoutStatisticsRouteImport } from './routes/_auth/profile/_layout.statistics'
@@ -60,6 +61,11 @@ const AuthProfileRouteRoute = AuthProfileRouteRouteImport.update({
   path: '/profile',
   getParentRoute: () => AuthRoute,
 } as any)
+const PublicPasswordResetRoute = PublicPasswordResetRouteImport.update({
+  id: '/password/reset',
+  path: '/password/reset',
+  getParentRoute: () => PublicRoute,
+} as any)
 const AuthProfileLayoutRoute = AuthProfileLayoutRouteImport.update({
   id: '/_layout',
   getParentRoute: () => AuthProfileRouteRoute,
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
   '/photo/$id': typeof PhotoIdRoute
+  '/password/reset': typeof PublicPasswordResetRoute
   '/profile/create': typeof AuthProfileLayoutCreateRoute
   '/profile/statistics': typeof AuthProfileLayoutStatisticsRoute
   '/profile/': typeof AuthProfileLayoutIndexRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByTo {
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
   '/photo/$id': typeof PhotoIdRoute
+  '/password/reset': typeof PublicPasswordResetRoute
   '/profile/create': typeof AuthProfileLayoutCreateRoute
   '/profile/statistics': typeof AuthProfileLayoutStatisticsRoute
 }
@@ -113,6 +121,7 @@ export interface FileRoutesById {
   '/_public/signup': typeof PublicSignupRoute
   '/photo/$id': typeof PhotoIdRoute
   '/_auth/profile/_layout': typeof AuthProfileLayoutRouteWithChildren
+  '/_public/password/reset': typeof PublicPasswordResetRoute
   '/_auth/profile/_layout/create': typeof AuthProfileLayoutCreateRoute
   '/_auth/profile/_layout/statistics': typeof AuthProfileLayoutStatisticsRoute
   '/_auth/profile/_layout/': typeof AuthProfileLayoutIndexRoute
@@ -126,6 +135,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/signup'
     | '/photo/$id'
+    | '/password/reset'
     | '/profile/create'
     | '/profile/statistics'
     | '/profile/'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/signup'
     | '/photo/$id'
+    | '/password/reset'
     | '/profile/create'
     | '/profile/statistics'
   id:
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/_public/signup'
     | '/photo/$id'
     | '/_auth/profile/_layout'
+    | '/_public/password/reset'
     | '/_auth/profile/_layout/create'
     | '/_auth/profile/_layout/statistics'
     | '/_auth/profile/_layout/'
@@ -221,6 +233,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthProfileRouteRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_public/password/reset': {
+      id: '/_public/password/reset'
+      path: '/password/reset'
+      fullPath: '/password/reset'
+      preLoaderRoute: typeof PublicPasswordResetRouteImport
+      parentRoute: typeof PublicRoute
+    }
     '/_auth/profile/_layout': {
       id: '/_auth/profile/_layout'
       path: ''
@@ -291,11 +310,13 @@ const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 interface PublicRouteChildren {
   PublicLoginRoute: typeof PublicLoginRoute
   PublicSignupRoute: typeof PublicSignupRoute
+  PublicPasswordResetRoute: typeof PublicPasswordResetRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
   PublicLoginRoute: PublicLoginRoute,
   PublicSignupRoute: PublicSignupRoute,
+  PublicPasswordResetRoute: PublicPasswordResetRoute,
 }
 
 const PublicRouteWithChildren =
