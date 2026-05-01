@@ -60,7 +60,7 @@ const Create = () => {
     <section className="flex flex-col gap-8 md:flex-row md:gap-6 md:items-center">
       <Form onSubmit={handleSubmit(handlePost)} className="flex-1">
         <div
-          className={clsx("auth-form-fields-wrapper", {
+          className={clsx("form-fields-wrapper", {
             "opacity-60": isPending,
           })}
         >

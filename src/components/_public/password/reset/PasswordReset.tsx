@@ -1,19 +1,19 @@
-import SignupForm from "../../features/auth/components/SignupForm";
-import PageTitle from "../PageTitle";
+import PageTitle from "../../../PageTitle";
+import PasswordResetForm from "./PasswordResetForm";
 
-const Signup = () => {
+const PasswordReset = () => {
   return (
     <section className="public-section-wrapper">
       <div className="public-section-background bg-[url(/img/signup-bg.jpg)]"></div>
       <div className="public-section-form-wrapper">
         <div className="mb-6">
-          <PageTitle>Criar Conta</PageTitle>
+          <PageTitle>Resetar Senha</PageTitle>
         </div>
 
-        <SignupForm />
+        <PasswordResetForm />
       </div>
     </section>
   );
 };
 
-export default Signup;
+export default PasswordReset;

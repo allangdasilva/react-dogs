@@ -144,7 +144,7 @@
   @apply p-4 flex flex-col sm:items-stretch;
 }
 
-@utility auth-form-fields-wrapper {
+@utility form-fields-wrapper {
   @apply flex flex-col gap-3;
 }
 

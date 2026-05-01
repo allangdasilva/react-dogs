@@ -18,6 +18,7 @@ import { Route as PublicSignupRouteImport } from './routes/_public/signup'
 import { Route as PublicLoginRouteImport } from './routes/_public/login'
 import { Route as AuthProfileRouteRouteImport } from './routes/_auth/profile/route'
 import { Route as PublicPasswordResetRouteImport } from './routes/_public/password/reset'
+import { Route as PublicPasswordLostRouteImport } from './routes/_public/password/lost'
 import { Route as AuthProfileLayoutRouteImport } from './routes/_auth/profile/_layout'
 import { Route as AuthProfileLayoutIndexRouteImport } from './routes/_auth/profile/_layout.index'
 import { Route as AuthProfileLayoutStatisticsRouteImport } from './routes/_auth/profile/_layout.statistics'
@@ -66,6 +67,11 @@ const PublicPasswordResetRoute = PublicPasswordResetRouteImport.update({
   path: '/password/reset',
   getParentRoute: () => PublicRoute,
 } as any)
+const PublicPasswordLostRoute = PublicPasswordLostRouteImport.update({
+  id: '/password/lost',
+  path: '/password/lost',
+  getParentRoute: () => PublicRoute,
+} as any)
 const AuthProfileLayoutRoute = AuthProfileLayoutRouteImport.update({
   id: '/_layout',
   getParentRoute: () => AuthProfileRouteRoute,
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
   '/photo/$id': typeof PhotoIdRoute
+  '/password/lost': typeof PublicPasswordLostRoute
   '/password/reset': typeof PublicPasswordResetRoute
   '/profile/create': typeof AuthProfileLayoutCreateRoute
   '/profile/statistics': typeof AuthProfileLayoutStatisticsRoute
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
   '/photo/$id': typeof PhotoIdRoute
+  '/password/lost': typeof PublicPasswordLostRoute
   '/password/reset': typeof PublicPasswordResetRoute
   '/profile/create': typeof AuthProfileLayoutCreateRoute
   '/profile/statistics': typeof AuthProfileLayoutStatisticsRoute
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/_public/signup': typeof PublicSignupRoute
   '/photo/$id': typeof PhotoIdRoute
   '/_auth/profile/_layout': typeof AuthProfileLayoutRouteWithChildren
+  '/_public/password/lost': typeof PublicPasswordLostRoute
   '/_public/password/reset': typeof PublicPasswordResetRoute
   '/_auth/profile/_layout/create': typeof AuthProfileLayoutCreateRoute
   '/_auth/profile/_layout/statistics': typeof AuthProfileLayoutStatisticsRoute
@@ -135,6 +144,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/signup'
     | '/photo/$id'
+    | '/password/lost'
     | '/password/reset'
     | '/profile/create'
     | '/profile/statistics'
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/signup'
     | '/photo/$id'
+    | '/password/lost'
     | '/password/reset'
     | '/profile/create'
     | '/profile/statistics'
@@ -161,6 +172,7 @@ export interface FileRouteTypes {
     | '/_public/signup'
     | '/photo/$id'
     | '/_auth/profile/_layout'
+    | '/_public/password/lost'
     | '/_public/password/reset'
     | '/_auth/profile/_layout/create'
     | '/_auth/profile/_layout/statistics'
@@ -240,6 +252,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicPasswordResetRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_public/password/lost': {
+      id: '/_public/password/lost'
+      path: '/password/lost'
+      fullPath: '/password/lost'
+      preLoaderRoute: typeof PublicPasswordLostRouteImport
+      parentRoute: typeof PublicRoute
+    }
     '/_auth/profile/_layout': {
       id: '/_auth/profile/_layout'
       path: ''
@@ -310,12 +329,14 @@ const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 interface PublicRouteChildren {
   PublicLoginRoute: typeof PublicLoginRoute
   PublicSignupRoute: typeof PublicSignupRoute
+  PublicPasswordLostRoute: typeof PublicPasswordLostRoute
   PublicPasswordResetRoute: typeof PublicPasswordResetRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
   PublicLoginRoute: PublicLoginRoute,
   PublicSignupRoute: PublicSignupRoute,
+  PublicPasswordLostRoute: PublicPasswordLostRoute,
   PublicPasswordResetRoute: PublicPasswordResetRoute,
 }
 

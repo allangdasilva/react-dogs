@@ -41,7 +41,7 @@ const LoginForm = () => {
   return (
     <Form onSubmit={handleSubmit(handleLogin)} className="w-full">
       <div
-        className={clsx("auth-form-fields-wrapper", {
+        className={clsx("form-fields-wrapper", {
           "opacity-60": isPending,
         })}
       >
@@ -49,7 +49,7 @@ const LoginForm = () => {
           id="username"
           label="Usuário"
           type="text"
-          placeholder="Usuário"
+          placeholder="Nome de usuário"
           {...register("username")}
           error={errors.username}
         />

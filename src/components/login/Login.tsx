@@ -5,7 +5,7 @@ import LoginForm from "../../features/auth/components/LoginForm";
 const Login = () => {
   return (
     <section className="public-section-wrapper">
-      <div className="public-section-background bg-[url(img/login-bg.jpg)]"></div>
+      <div className="public-section-background bg-[url(/img/login-bg.jpg)]"></div>
       <div className="public-section-form-wrapper">
         <div className="mb-6">
           <PageTitle>Entrar</PageTitle>
@@ -14,7 +14,7 @@ const Login = () => {
         <LoginForm />
 
         <Link
-          to="/password/reset"
+          to="/password/lost"
           className="button-form mt-3 text-base-700 hover:bg-base-300 focus:bg-base-300"
         >
           Esqueceu a Senha?

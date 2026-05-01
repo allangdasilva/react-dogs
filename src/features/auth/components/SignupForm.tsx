@@ -30,7 +30,7 @@ const SignupForm = () => {
   return (
     <Form onSubmit={handleSubmit(handleSignup)} className="w-full">
       <div
-        className={clsx("auth-form-fields-wrapper", {
+        className={clsx("form-fields-wrapper", {
           "opacity-60": isPending,
         })}
       >

@@ -56,7 +56,7 @@ const ModalFormComment = ({ photo_id, ...props }: Props) => {
           <ButtonSubmit
             disabled
             tabIndex={-1}
-            className="py-2 px-4 max-w-fit cursor-default opacity-50 hover:bg-base-900"
+            className="py-2 px-4 max-w-fit opacity-60"
           >
             <CommentIcon />
           </ButtonSubmit>
