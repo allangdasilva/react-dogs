@@ -1,6 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import clsx from "clsx";
 import Form from "../../../components/form/Form";
 import { Route } from "../../../routes/_public/login";
 import ErrorForm from "../../../components/form/ErrorForm";
@@ -11,6 +10,7 @@ import {
   loginFormSchema,
   type LoginFormSchema,
 } from "../types/loginForm.schema";
+import Fieldset from "../../../components/form/Fieldset";
 
 const LoginForm = () => {
   const {
@@ -39,37 +39,35 @@ const LoginForm = () => {
   }
 
   return (
-    <Form onSubmit={handleSubmit(handleLogin)} className="w-full">
-      <div
-        className={clsx("form-fields-wrapper", {
-          "opacity-60": isPending,
-        })}
-      >
-        <InputField
-          id="username"
-          label="Usuário"
-          type="text"
-          placeholder="Nome de usuário"
-          {...register("username")}
-          error={errors.username}
-        />
-        <InputField
-          id="password"
-          label="Senha"
-          type="password"
-          placeholder="Senha"
-          {...register("password")}
-          error={errors.password}
-        />
-      </div>
+    <Form onSubmit={handleSubmit(handleLogin)}>
+      <Fieldset isPending={isPending}>
+        <div className="form-fields-wrapper">
+          <InputField
+            id="username"
+            label="Usuário"
+            type="text"
+            placeholder="Nome de usuário"
+            {...register("username")}
+            error={errors.username}
+          />
+          <InputField
+            id="password"
+            label="Senha"
+            type="password"
+            placeholder="Senha"
+            {...register("password")}
+            error={errors.password}
+          />
+        </div>
 
-      {error && <ErrorForm error={error} />}
+        <div className="mt-6">
+          <ButtonSubmit disabled={isPending}>
+            {isPending ? "Entrando..." : "Entrar"}
+          </ButtonSubmit>
+        </div>
 
-      {isPending ? (
-        <ButtonSubmit disabled>Entrando...</ButtonSubmit>
-      ) : (
-        <ButtonSubmit>Entrar</ButtonSubmit>
-      )}
+        <div className="mt-1">{error && <ErrorForm error={error} />}</div>
+      </Fieldset>
     </Form>
   );
 };

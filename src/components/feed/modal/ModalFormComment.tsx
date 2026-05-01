@@ -13,6 +13,7 @@ import TextareaField from "../../form/TextareaField";
 import ButtonSubmit from "../../form/ButtonSubmit";
 import CommentIcon from "../../svgs/CommentIcon";
 import Form from "../../form/Form";
+import Fieldset from "../../form/Fieldset";
 
 type Props = React.HTMLAttributes<HTMLElement> & {
   photo_id: number;
@@ -31,7 +32,7 @@ const ModalFormComment = ({ photo_id, ...props }: Props) => {
     resolver: zodResolver(commentFormSchema),
   });
 
-  const { mutate } = useCommentMutation(reset);
+  const { mutate, isPending } = useCommentMutation(reset);
 
   function handleComment(data: CommentFormSchema) {
     mutate({ id: photo_id, data });
@@ -40,27 +41,28 @@ const ModalFormComment = ({ photo_id, ...props }: Props) => {
   if (!user) return null;
   return (
     <section className={clsx("w-full", props.className)}>
-      <Form onSubmit={handleSubmit(handleComment)} className="flex-row gap-2!">
-        <TextareaField
-          id="comment"
-          label="Comente"
-          placeholder="Comente..."
-          rows={1}
-          {...register("comment")}
-        />
-        {isValid ? (
-          <ButtonSubmit className="py-2 px-4 max-w-fit">
-            <CommentIcon />
-          </ButtonSubmit>
-        ) : (
-          <ButtonSubmit
-            disabled
-            tabIndex={-1}
-            className="py-2 px-4 max-w-fit opacity-60"
-          >
-            <CommentIcon />
-          </ButtonSubmit>
-        )}
+      <Form onSubmit={handleSubmit(handleComment)}>
+        <Fieldset isPending={isPending}>
+          <div className="flex gap-2">
+            <TextareaField
+              id="comment"
+              label="Comente"
+              placeholder="Comente..."
+              rows={1}
+              {...register("comment")}
+            />
+
+            <ButtonSubmit
+              disabled={!isValid}
+              tabIndex={!isValid ? -1 : 0}
+              className={clsx("py-2 px-4 max-w-fit", {
+                "opacity-60": !isValid,
+              })}
+            >
+              <CommentIcon />
+            </ButtonSubmit>
+          </div>
+        </Fieldset>
       </Form>
     </section>
   );

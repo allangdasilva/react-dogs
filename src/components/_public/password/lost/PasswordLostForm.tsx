@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import clsx from "clsx";
 import { usePasswordLostMutation } from "../../../../features/auth/api/usePasswordLostMutation";
 import Form from "../../../form/Form";
 import InputField from "../../../form/InputField";
@@ -10,6 +9,7 @@ import {
   passwordLostFormSchema,
   type PasswordLostFormSchema,
 } from "../../../../features/auth/types/passwordLostFormSchema";
+import Fieldset from "../../../form/Fieldset";
 
 const PasswordLostForm = () => {
   const {
@@ -33,12 +33,7 @@ const PasswordLostForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(handlePasswordLost)}>
-      <fieldset
-        disabled={isPending}
-        className={clsx({
-          "opacity-60": isPending,
-        })}
-      >
+      <Fieldset isPending={isPending}>
         <div className="form-fields-wrapper">
           <InputField
             id="login"
@@ -49,17 +44,15 @@ const PasswordLostForm = () => {
             error={errors.login}
           />
         </div>
-        {error && <ErrorForm error={error} />}
 
         <div className="mt-6">
-          {
-            // as vezes um ternário causa salto visual em componentes, então altere só o estado insterno para garantir que não tenha esse salto
-            <ButtonSubmit disabled={isPending}>
-              {isPending ? "Enviando..." : "Enviar"}
-            </ButtonSubmit>
-          }
+          <ButtonSubmit disabled={isPending}>
+            {isPending ? "Enviando..." : "Enviar"}
+          </ButtonSubmit>
         </div>
-      </fieldset>
+
+        <div className="mt-1">{error && <ErrorForm error={error} />}</div>
+      </Fieldset>
     </Form>
   );
 };

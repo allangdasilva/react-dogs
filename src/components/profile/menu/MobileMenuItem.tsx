@@ -1,11 +1,10 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Link } from "@tanstack/react-router";
-import { type ReactNode } from "react";
 
 type Props = {
   to?: string;
   className?: string;
-  icon: ReactNode;
+  icon: React.ReactNode;
   label: string;
   onClick?: () => void;
 };

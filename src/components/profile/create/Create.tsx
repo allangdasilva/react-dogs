@@ -13,6 +13,7 @@ import InputField from "../../form/InputField";
 import ErrorForm from "../../form/ErrorForm";
 import InputFile from "../../form/InputFile";
 import Form from "../../form/Form";
+import Fieldset from "../../form/Fieldset";
 
 const Create = () => {
   const [preview, setPreview] = useState<string | null>(null);
@@ -59,57 +60,55 @@ const Create = () => {
   return (
     <section className="flex flex-col gap-8 md:flex-row md:gap-6 md:items-center">
       <Form onSubmit={handleSubmit(handlePost)} className="flex-1">
-        <div
-          className={clsx("form-fields-wrapper", {
-            "opacity-60": isPending,
-          })}
-        >
-          <InputField
-            id="name"
-            label="Nome"
-            type="text"
-            placeholder="Nome do cachorro"
-            {...register("nome")}
-            error={errors.nome}
-          />
-          <InputField
-            id="weight"
-            label="Peso"
-            type="number"
-            placeholder="Peso do cachorro"
-            {...register("peso")}
-            error={errors.peso}
-          />
-          <InputField
-            id="age"
-            label="Idade"
-            type="number"
-            placeholder="Idade do cachorro"
-            {...register("idade")}
-            error={errors.idade}
-          />
+        <Fieldset isPending={isPending}>
+          <div className="form-fields-wrapper">
+            <InputField
+              id="name"
+              label="Nome"
+              type="text"
+              placeholder="Nome do cachorro"
+              {...register("nome")}
+              error={errors.nome}
+            />
+            <InputField
+              id="weight"
+              label="Peso"
+              type="number"
+              placeholder="Peso do cachorro"
+              {...register("peso")}
+              error={errors.peso}
+            />
+            <InputField
+              id="age"
+              label="Idade"
+              type="number"
+              placeholder="Idade do cachorro"
+              {...register("idade")}
+              error={errors.idade}
+            />
 
-          <InputFile
-            id="img"
-            label="Enviar foto"
-            type="file"
-            // accpet: instrui o navegador a filtrar arquivos (como JPG, PNG, GIF, BMP) na caixa de diálogo de seleção, facilitando a escolha correta.
-            accept="image/*"
-            {...register("img")}
-            // Forçamos o TS a entender que, se houver erro, ele segue o padrão FieldError
-            error={errors.img as FieldError}
-            preview={preview}
-            onChange={handlePreview}
-          />
-        </div>
+            <InputFile
+              id="img"
+              label="Enviar foto"
+              type="file"
+              // accpet: instrui o navegador a filtrar arquivos (como JPG, PNG, GIF, BMP) na caixa de diálogo de seleção, facilitando a escolha correta.
+              accept="image/*"
+              {...register("img")}
+              // Forçamos o TS a entender que, se houver erro, ele segue o padrão FieldError
+              error={errors.img as FieldError}
+              preview={preview}
+              onChange={handlePreview}
+            />
+          </div>
 
-        {error && <ErrorForm error={error} />}
+          <div className="mt-6">
+            <ButtonSubmit disabled={isPending}>
+              {isPending ? "Postando..." : "Postar"}
+            </ButtonSubmit>
+          </div>
 
-        {isPending ? (
-          <ButtonSubmit disabled>Postando...</ButtonSubmit>
-        ) : (
-          <ButtonSubmit>Postar</ButtonSubmit>
-        )}
+          <div className="mt-1">{error && <ErrorForm error={error} />}</div>
+        </Fieldset>
       </Form>
       <div
         className={clsx("flex-1 flex items-center overflow-hidden", {

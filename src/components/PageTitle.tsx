@@ -1,7 +1,5 @@
-import { type ReactNode } from "react";
-
 type Props = React.HTMLAttributes<HTMLHeadingElement> & {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 const PageTitle = ({ children }: Props) => {

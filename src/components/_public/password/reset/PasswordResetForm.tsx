@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useSearch } from "@tanstack/react-router";
-import clsx from "clsx";
 import { usePasswordResetMutation } from "../../../../features/auth/api/usePasswordResetMutation";
 import Form from "../../../form/Form";
 import InputField from "../../../form/InputField";
@@ -11,6 +10,7 @@ import {
   passwordResetFormSchema,
   type PasswordResetFormSchema,
 } from "../../../../features/auth/types/passwordResetFormSchema";
+import Fieldset from "../../../form/Fieldset";
 
 const PasswordResetForm = () => {
   // Com a rota está validada, você troca o useLocation pelo useSearch. A diferença? O TypeScript vai saber os tipos de key e login automaticamente, sem você precisar dizer "as { key: string... }".
@@ -37,12 +37,7 @@ const PasswordResetForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(handlePasswordReset)}>
-      <fieldset
-        disabled={isPending}
-        className={clsx({
-          "opacity-60": isPending,
-        })}
-      >
+      <Fieldset isPending={isPending}>
         <div className="form-fields-wrapper">
           <InputField
             id="password"
@@ -54,24 +49,24 @@ const PasswordResetForm = () => {
           />
         </div>
 
-        {error && (
-          <div>
-            <ErrorForm error={error} />{" "}
-            <Link to="/password/lost" className="link-sm-underline-blue">
-              Solicitar novo link.
-            </Link>
-          </div>
-        )}
-
         <div className="mt-6">
-          {
-            // as vezes um ternário causa salto visual em componentes, então altere só o estado insterno para garantir que não tenha esse salto
-            <ButtonSubmit disabled={isPending}>
-              {isPending ? "Alterando..." : "Alterar"}
-            </ButtonSubmit>
-          }
+          {/* as vezes um ternário causa salto visual em componentes, então altere só o estado insterno para garantir que não tenha esse salto */}
+          <ButtonSubmit disabled={isPending}>
+            {isPending ? "Alterando..." : "Alterar"}
+          </ButtonSubmit>
         </div>
-      </fieldset>
+
+        <div className="mt-1">
+          {error && (
+            <div>
+              <ErrorForm error={error} />{" "}
+              <Link to="/password/lost" className="link-sm-underline-blue">
+                Solicitar novo link.
+              </Link>
+            </div>
+          )}
+        </div>
+      </Fieldset>
     </Form>
   );
 };
