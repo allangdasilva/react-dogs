@@ -1,4 +1,4 @@
-import AnchorRouter from "./AnchorRouter";
+import AnchorRouter from "./common/AnchorRouter";
 import LogoIcon from "./svgs/LogoIcon";
 
 const Footer = () => {

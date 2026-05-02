@@ -1,15 +1,15 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { usePasswordLostMutation } from "../../../../features/auth/api/usePasswordLostMutation";
-import Form from "../../../form/Form";
-import InputField from "../../../form/InputField";
-import ErrorForm from "../../../form/ErrorForm";
-import ButtonSubmit from "../../../form/ButtonSubmit";
+import { usePasswordLostMutation } from "../../../../features/auth/api/mutations/usePasswordLostMutation";
+import Form from "../../../common/form/Form";
+import Fieldset from "../../../common/form/Fieldset";
+import InputField from "../../../common/form/InputField";
+import ButtonSubmit from "../../../common/form/ButtonSubmit";
+import ErrorForm from "../../../common/form/ErrorForm";
 import {
   passwordLostFormSchema,
   type PasswordLostFormSchema,
-} from "../../../../features/auth/types/passwordLostFormSchema";
-import Fieldset from "../../../form/Fieldset";
+} from "../../../../features/auth/types/password/lost/passwordLostForm.schema";
 
 const PasswordLostForm = () => {
   const {

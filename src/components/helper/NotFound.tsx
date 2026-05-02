@@ -1,5 +1,5 @@
-import PageTitle from "../PageTitle";
 import { Link } from "@tanstack/react-router";
+import TitleBase from "../common/TitleBase";
 
 type Props = {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ type Props = {
 const NotFound = ({ children }: Props) => {
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      <PageTitle>{children}</PageTitle>
+      <TitleBase>{children}</TitleBase>
       <p className="font-body-base text-base-700 max-w-prose">
         O link em que você clicou pode não estar funcionando, ou a página pode
         ter sido removida.{" "}

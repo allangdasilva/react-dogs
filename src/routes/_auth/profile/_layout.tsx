@@ -1,8 +1,8 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
 import React from "react";
-import ProfileHeader from "../../../components/profile/ProfileHeader";
-import Spacer from "../../../components/Spacer";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
+import ProfileHeader from "../../../components/_auth/profile/ProfileHeader";
 import NotFound from "../../../components/helper/NotFound";
+import Spacer from "../../../components/common/Spacer";
 
 export const Route = createFileRoute("/_auth/profile/_layout")({
   component: RouteComponent,

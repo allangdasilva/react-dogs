@@ -1,4 +1,4 @@
-import PageTitle from "../../../PageTitle";
+import TitleBase from "../../../common/TitleBase";
 import PasswordLostForm from "./PasswordLostForm";
 
 const PasswordLost = () => {
@@ -7,7 +7,7 @@ const PasswordLost = () => {
       <div className="public-section-background bg-[url(/img/login-bg.jpg)]"></div>
       <div className="public-section-form-wrapper">
         <div className="mb-6">
-          <PageTitle>Encontrar conta</PageTitle>
+          <TitleBase>Encontrar conta</TitleBase>
         </div>
 
         <PasswordLostForm />

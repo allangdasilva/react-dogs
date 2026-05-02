@@ -1,16 +1,16 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useSearch } from "@tanstack/react-router";
-import { usePasswordResetMutation } from "../../../../features/auth/api/usePasswordResetMutation";
-import Form from "../../../form/Form";
-import InputField from "../../../form/InputField";
-import ErrorForm from "../../../form/ErrorForm";
-import ButtonSubmit from "../../../form/ButtonSubmit";
+import { usePasswordResetMutation } from "../../../../features/auth/api/mutations/usePasswordResetMutation";
+import Form from "../../../common/form/Form";
+import Fieldset from "../../../common/form/Fieldset";
+import InputField from "../../../common/form/InputField";
+import ButtonSubmit from "../../../common/form/ButtonSubmit";
+import ErrorForm from "../../../common/form/ErrorForm";
 import {
   passwordResetFormSchema,
   type PasswordResetFormSchema,
-} from "../../../../features/auth/types/passwordResetFormSchema";
-import Fieldset from "../../../form/Fieldset";
+} from "../../../../features/auth/types/password/reset/passwordResetForm.schema";
 
 const PasswordResetForm = () => {
   // Com a rota está validada, você troca o useLocation pelo useSearch. A diferença? O TypeScript vai saber os tipos de key e login automaticamente, sem você precisar dizer "as { key: string... }".

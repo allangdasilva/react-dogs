@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import Create from "../../../components/profile/create/Create";
+import Create from "../../../components/_auth/profile/create/Create";
 
 export const Route = createFileRoute("/_auth/profile/_layout/create")({
   // No TanStack Router, cada rota pode ter metadados. Você pode acessar todos os "matches" ativos e pegar o último (que é a rota atual).

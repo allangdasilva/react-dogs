@@ -1,4 +1,4 @@
-import PageTitle from "../../../PageTitle";
+import TitleBase from "../../../common/TitleBase";
 import PasswordResetForm from "./PasswordResetForm";
 
 const PasswordReset = () => {
@@ -7,7 +7,7 @@ const PasswordReset = () => {
       <div className="public-section-background bg-[url(/img/signup-bg.jpg)]"></div>
       <div className="public-section-form-wrapper">
         <div className="mb-6">
-          <PageTitle>Resetar Senha</PageTitle>
+          <TitleBase>Resetar Senha</TitleBase>
         </div>
 
         <PasswordResetForm />

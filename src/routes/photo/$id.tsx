@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { photoQueryOptions } from "../../features/auth/api/queries/photo.query";
+import PhotoPage from "../../components/$photo-id/PhotoPage";
 import Loading from "../../components/helper/Loading";
-import PhotoPage from "../../components/photo-page/PhotoPage";
 import NotFound from "../../components/helper/NotFound";
 
 export const Route = createFileRoute("/photo/$id")({

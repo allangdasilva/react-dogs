@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import { useAuthStore } from "../features/auth/store/auth.store";
-import AnchorRouter from "./AnchorRouter";
+import { userQueryOptions } from "../features/auth/api/queries/user.query";
+import AnchorRouter from "./common/AnchorRouter";
+import AnchorLabel from "./common/AnchorLabel";
 import HomeIcon from "./svgs/HomeIcon";
-import AnchorLabel from "./AnchorLabel";
 import ProfileIcon from "./svgs/ProfileIcon";
 import SignupIcon from "./svgs/SignupIcon";
-import { userQueryOptions } from "../features/auth/api/queries/user.query";
 
 const Header = () => {
   const token = useAuthStore((s) => s.token);

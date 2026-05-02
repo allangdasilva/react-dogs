@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import Feed from "../components/feed/Feed";
 import Loading from "../components/helper/Loading";
 import { photosInfiniteQueryOptions } from "../features/auth/api/queries/photos.infiniteQuery";
+import Feed from "../components/common/feed/Feed";
 
 export const Route = createFileRoute("/")({
   // pendingMs:

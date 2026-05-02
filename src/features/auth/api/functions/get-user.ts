@@ -1,8 +1,11 @@
 import { api } from "../../../../api/axios";
-import { userSchema, type UserSchema } from "../../types/user.schema";
+import {
+  userResponseSchema,
+  type UserResponseSchema,
+} from "../../types/userResponse.schema";
 
-export const fetchCurrentUser = async (): Promise<UserSchema> => {
-  const response = await api.get<UserSchema>("/api/user");
+export const fetchCurrentUser = async (): Promise<UserResponseSchema> => {
+  const response = await api.get<UserResponseSchema>("/api/user");
 
-  return userSchema.parse(response.data);
+  return userResponseSchema.parse(response.data);
 };

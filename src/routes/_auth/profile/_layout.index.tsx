@@ -3,13 +3,13 @@ import {
   useSuspenseInfiniteQuery,
   useSuspenseQuery,
 } from "@tanstack/react-query";
-import Posts from "../../../components/profile/posts/Posts";
+import { Suspense } from "react";
+import NoPosts from "../../../components/_auth/profile/posts/NoPosts";
+import Feed from "../../../components/common/feed/Feed";
+import Loading from "../../../components/helper/Loading";
 import { useAuthStore } from "../../../features/auth/store/auth.store";
 import { userQueryOptions } from "../../../features/auth/api/queries/user.query";
-import Feed from "../../../components/feed/Feed";
 import { photosInfiniteQueryOptions } from "../../../features/auth/api/queries/photos.infiniteQuery";
-import { Suspense } from "react";
-import Loading from "../../../components/helper/Loading";
 
 export const Route = createFileRoute("/_auth/profile/_layout/")({
   staticData: {
@@ -29,7 +29,7 @@ function RouteComponent() {
     <Suspense fallback={<Loading />}>
       <ProfileFeed userId={data.id} />
     </Suspense>
-  )
+  );
 }
 
 function ProfileFeed({ userId }: { userId: number }) {
@@ -37,7 +37,7 @@ function ProfileFeed({ userId }: { userId: number }) {
   const { data } = useSuspenseInfiniteQuery(photosInfiniteQueryOptions(userId));
   const photos = data.pages.flat();
 
-  if (!photos.length) return <Posts />;
+  if (!photos.length) return <NoPosts />;
 
   return <Feed isProfile={true} userId={userId} />;
 }

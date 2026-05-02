@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { photosInfiniteQueryOptions } from "../features/auth/api/queries/photos.infiniteQuery";
 import Loading from "../components/helper/Loading";
-import ProfileId from "../components/profile/profile-id/ProfileId";
+import ProfileId from "../components/$profile-id/ProfileId";
 
 export const Route = createFileRoute("/$profileId")({
   pendingMs: 0,
