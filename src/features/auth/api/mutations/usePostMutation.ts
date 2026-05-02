@@ -19,13 +19,11 @@ export const usePostMutation = () => {
         handleApiError(error, "Erro ao processar os dados da foto.");
       }
     },
-    onSuccess: () => {
-      // Aqui, a navegação instantânea evita que o usuário clique duas vezes no botão de enviar.
-      // Sem await mandamos o usuário para a Home na mesma hora.
-      // O 'invalidateQueries' marca a lista de fotos como "velha".
-      // Quando a Home carregar, o TanStack Query verá que os dados são velhos
-      // e buscará a lista nova (com a foto postada) automaticamente.
-      queryClient.invalidateQueries({ queryKey: ["photos"] });
+    onSuccess: async () => {
+      // Por que fazer isso? O TanStack Query guarda as fotos em cache para evitar requests extras. Quando postamos uma foto nova, o cache antigo da "home" ou "lista de fotos" está desatualizado.
+      // O invalidateQueries avisa ao QueryClient: "As fotos que você tem aí não valem mais, busque de novo".
+      // Assim, ao navegar para "/", o usuário verá a foto nova instantaneamente.
+      await queryClient.invalidateQueries({ queryKey: ["photos"] });
 
       // Só navegamos após garantir que o cache foi marcado como inválido
       navigate({ to: "/" });
