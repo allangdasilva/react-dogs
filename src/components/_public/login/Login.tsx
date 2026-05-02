@@ -5,7 +5,7 @@ import LoginForm from "./LoginForm";
 const Login = () => {
   return (
     <section className="public-section-wrapper">
-      <div className="public-section-background bg-[url(/img/login-bg.jpg)]"></div>
+      <div className="public-section-background bg-[url(/img/login-bg.webp)]"></div>
       <div className="public-section-form-wrapper">
         <div className="mb-6">
           <TitleBase>Entrar</TitleBase>

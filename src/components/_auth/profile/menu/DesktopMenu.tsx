@@ -15,6 +15,7 @@ const DesktopMenu = () => {
         }}
         className="anchor-bg-200"
         to="/profile"
+        preload={false}
       >
         <PostsIcon />
         <AnchorLabel>Posts</AnchorLabel>
@@ -23,6 +24,7 @@ const DesktopMenu = () => {
         activeProps={{ className: "anchor-bg-primary" }}
         className="anchor-bg-200"
         to="/profile/create"
+        preload={false}
       >
         <AddIcon />
         <AnchorLabel>Criar</AnchorLabel>
@@ -31,6 +33,7 @@ const DesktopMenu = () => {
         activeProps={{ className: "anchor-bg-primary" }}
         className="anchor-bg-200"
         to="/profile/statistics"
+        preload={false}
       >
         <StatsIcon />
         <AnchorLabel>Dados</AnchorLabel>

@@ -42,6 +42,8 @@ export const useLoginMutation = (options?: { redirectTo?: string }) => {
       }
     },
     onSuccess: async (token) => {
+      // Aqui precisamos do await, pois, se você retirar o await do fetchQuery, acontece o seguinte: O app te redireciona para a Home/Profile antes dos dados do usuário (nome, foto, nível de acesso) terem chegado.
+
       // 1. Atualiza o estado global primeiro.
       // O interceptor agora já tem acesso ao novo token para as próximas chamadas.
       setToken(token);

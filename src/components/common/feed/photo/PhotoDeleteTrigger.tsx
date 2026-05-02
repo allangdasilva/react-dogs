@@ -13,7 +13,7 @@ const PhotoDeleteTrigger = ({ isPending }: Props) => {
       type="button"
       className={clsx(
         "flex items-center justify-center px-4 py-3.5 rounded-base cursor-pointer anchor-bg-200 transition-colors ease-in",
-        { "opacity-50 cursor-default": isPending },
+        { "opacity-60 cursor-default": isPending },
       )}
     >
       <DeleteIcon />

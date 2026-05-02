@@ -29,9 +29,14 @@ export const useCommentMutation = (
         handleApiError(error, "Erro ao fazer comentário.");
       }
     },
-    onSuccess: async (_data, variables) => {
+    onSuccess: (_data, variables) => {
       // variables: pega os argumentos da mutation para conseguir invalidar especificamente a foto que recebeu o comentário
-      await queryClient.invalidateQueries({
+
+      // Aqui, o mais importante é "limpar a tela" para o usuário sentir que o comentário foi enviado.
+      // Sem await resetamos o campo de texto IMEDIATAMENTE.
+      // Enquanto o usuário vê o campo limpo, o cache da foto específica
+      // é atualizado em background para mostrar o novo comentário na lista.
+      queryClient.invalidateQueries({
         queryKey: ["photo", variables.id],
       });
       reset();

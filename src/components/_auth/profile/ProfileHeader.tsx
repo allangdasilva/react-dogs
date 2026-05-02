@@ -5,10 +5,12 @@ import MobileMenu from "./menu/MobileMenu";
 
 const ProfileHeader = () => {
   const matches = useMatches();
-  // Pegamos a última rota da lista de matches ativos
-  const lastMatch = matches[matches.length - 1];
-  // Acessamos o title que definimos no staticData
-  const pageTitle = (lastMatch?.staticData as any)?.title;
+  // Encontra o último match que possui o campo 'title' no staticData
+  // Isso evita pegar rotas intermediárias ou layouts sem título
+  const lastMatchWithTitle = [...matches]
+    .reverse()
+    .find((m) => (m.staticData as any)?.title);
+  const pageTitle = (lastMatchWithTitle?.staticData as any)?.title || "Perfil";
 
   return (
     <header className="flex flex-col">
