@@ -25,7 +25,7 @@ const PhotoPage = () => {
   return (
     <section className="flex flex-col items-center">
       <div className="w-full max-w-160">
-        <div className="rounded-base overflow-hidden">
+        <div className="aspect-square rounded-base overflow-hidden">
           <Image src={photo.src} alt={photo.title} />
         </div>
         <div className="flex flex-col gap-2 self-start mt-3 m-auto">

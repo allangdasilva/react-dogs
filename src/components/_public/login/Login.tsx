@@ -1,11 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import TitleBase from "../../common/TitleBase";
 import LoginForm from "./LoginForm";
+import Image from "../../helper/Image";
 
 const Login = () => {
   return (
     <section className="public-section-wrapper">
-      <div className="public-section-background bg-[url(/img/login-bg.webp)]"></div>
+      <div className="public-section-background">
+        <Image alt="" aria-hidden="true" src="/img/login-bg.webp" />
+      </div>
       <div className="public-section-form-wrapper">
         <div className="mb-6">
           <TitleBase>Entrar</TitleBase>

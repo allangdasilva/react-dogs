@@ -16,9 +16,9 @@ const Image = ({ ...props }: Props) => {
   }, []);
 
   return (
-    <div>
+    <div className="w-full h-full flex-1">
       {!loaded && (
-        <div className="absolute inset-0 animate-pulse bg-base-200"></div>
+        <div className="w-full h-full animate-pulse bg-base-200"></div>
       )}
       <img
         ref={imgRef}
@@ -27,9 +27,12 @@ const Image = ({ ...props }: Props) => {
         decoding="async"
         // Só baixa a imagem quando ela estiver perto do scroll.
         loading="lazy"
-        className={clsx("object-cover opacity-0 transition-opacity", {
-          "opacity-100": loaded,
-        })}
+        className={clsx(
+          "w-full h-full object-cover opacity-0 transition-opacity",
+          {
+            "opacity-100": loaded,
+          },
+        )}
         onLoad={() => setLoaded(true)}
       />
     </div>

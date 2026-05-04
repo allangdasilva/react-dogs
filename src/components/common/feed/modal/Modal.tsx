@@ -26,7 +26,7 @@ const Modal = ({ photo }: Props) => {
 
   return (
     <Dialog.Root>
-      <Dialog.Trigger className="outline-none cursor-pointer group">
+      <Dialog.Trigger className="flex outline-none cursor-pointer group">
         <Photo photo={photo} />
       </Dialog.Trigger>
 

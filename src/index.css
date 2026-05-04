@@ -138,7 +138,7 @@
   @apply grow grid sm:items-center sm:min-h-145 sm:grid-cols-2 sm:bg-base-100 sm:rounded-base sm:shadow-xl sm:shadow-base-300/50 sm:overflow-hidden;
 }
 @utility public-section-background {
-  @apply hidden sm:h-full sm:p-4 sm:rounded-r-2xl sm:bg-center sm:bg-cover  sm:block sm:bg-base-200;
+  @apply hidden sm:block sm:self-stretch sm:rounded-base sm:overflow-hidden;
 }
 @utility public-section-form-wrapper {
   @apply p-4 flex flex-col sm:items-stretch;
