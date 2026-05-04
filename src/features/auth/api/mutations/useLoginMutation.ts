@@ -48,8 +48,9 @@ export const useLoginMutation = (options?: { redirectTo?: string }) => {
       // O interceptor agora já tem acesso ao novo token para as próximas chamadas.
       setToken(token);
 
-      // 2. clear(): Ele remove absolutamente tudo do cache imediatamente.
-      queryClient.clear();
+      // 2. clear(): Ele remove absolutamente tudo do cache imediatamente, é o "botão nuclear". Ele é excelente para o Logout, pois garante que nenhum dado sensível do usuário anterior permaneça na memória..
+      // Nesse caso aqui, a gente quer que o feed público se mantenha em cache, então vamos remover apenas dados residuais de "user" que possam estar no cache. Isso garante que você comece do zero apenas para a chave ['user']
+      queryClient.removeQueries({ queryKey: ["user"] });
 
       // 3. Busca Antecipada (Prefetching):
       // Em vez de esperar o componente da próxima tela montar e mostrar um "Carregando...",
