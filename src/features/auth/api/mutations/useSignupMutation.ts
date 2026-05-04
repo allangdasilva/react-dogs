@@ -30,9 +30,10 @@ export const useSigupMutation = () => {
     },
     // _data É uma convenção de JavaScript/TypeScript para indicar que aquele parâmetro é ignorado, mas você precisa declará-lo para chegar ao segundo argumento
     onSuccess: async (_data, credentials) => {
-      // queryClient.clear() usar independentemente de o auto-login funcionar ou não, pois o cadastro em si já foi um sucesso e você quer limpar qualquer lixo de cache anterior.
-      queryClient.clear();
+      // queryClient.removeQueries: usar independentemente de o auto-login funcionar ou não, pois o cadastro em si já foi um sucesso e você quer limpar qualquer lixo de cache do user anterior.
+      queryClient.removeQueries({ queryKey: ["user"] });
       try {
+        // aqui obviamente tem que ser await, pois estou fazendo o login do usuário pode debaixo dos panos, ou seja, é uma requisição de rede e temos que esperar ela ser concluída para o usuário seguir
         await loginMutation({
           username: credentials.username,
           password: credentials.password,

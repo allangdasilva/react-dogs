@@ -38,6 +38,7 @@ export const useLoginMutation = (options?: { redirectTo?: string }) => {
         // O endpoint de validate fica inútil nesse caso, pq ao fazer o login eu já tenho um token novo, ou seja, é válido, então eu retorno ele e pego ele no onSucess e faço o setToken no zustand, dai em diante meu beforeLoad no root/qualquer outra requisição passará o token graças ao inteceptor do axios
         return token;
       } catch (error) {
+        // Para que o error no seu componente contenha a mensagem tratada, o tratamento deve acontecer dentro da mutationFn. O TanStack Query captura automaticamente qualquer erro lançado na mutationFn e o coloca na propriedade error do hook (por isso não vamos usar o onError nessas situações e sim o try/catch).
         handleApiError(error, "Usuários ou senhas inválidos.", true);
       }
     },
@@ -50,12 +51,14 @@ export const useLoginMutation = (options?: { redirectTo?: string }) => {
 
       // 2. clear(): Ele remove absolutamente tudo do cache imediatamente, é o "botão nuclear". Ele é excelente para o Logout, pois garante que nenhum dado sensível do usuário anterior permaneça na memória..
       // Nesse caso aqui, a gente quer que o feed público se mantenha em cache, então vamos remover apenas dados residuais de "user" que possam estar no cache. Isso garante que você comece do zero apenas para a chave ['user']
+      // AÇÃO SÍNCRONA (Sem await): O removeQueries apenas deleta os dados da memória do JS instantaneamente. Nem tudo no queryClient retorna uma Promise; métodos de "limpeza" ou "configuração", geralmente são executados na hora, sem precisar esperar o servidor.
       queryClient.removeQueries({ queryKey: ["user"] });
 
       // 3. Busca Antecipada (Prefetching):
       // Em vez de esperar o componente da próxima tela montar e mostrar um "Carregando...",
       // nós já puxamos os dados agora. O queryClient guarda no cache e o useQuery['user'] da próxima tela lerá instantaneamente de lá.
       // O await no fetchQuery garante que a mutação (mutationFn/onSuccess) só termine quando os dados do usuário estiverem salvos.
+      // AÇÃO ASSÍNCRONA (Com await): Usamos o await aqui porque o fetchQuery faz uma requisição de rede (I/O). Queremos ESPERAR que os dados cheguem do servidor e sejam salvos no cache ANTES de prosseguir para a próxima linha (o redirecionamento).
       await queryClient.fetchQuery(userQueryOptions(token));
 
       // Lógica de Redirecionamento:

@@ -34,6 +34,7 @@ export const useCommentMutation = (
       await queryClient.invalidateQueries({
         queryKey: ["photo", variables.id],
       });
+      // limpa os campos do formulário
       reset();
     },
   });

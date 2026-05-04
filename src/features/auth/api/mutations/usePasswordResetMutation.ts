@@ -36,6 +36,7 @@ export const usePasswordResetMutation = () => {
     },
     onSuccess: () => {
       toast.success("Senha alterada com sucesso!");
+      // manda o usuário para /login, pois o link agora é inválido e ele só irá receber erro se ficar tentando alterar a senha diversas vezes
       navigate({ to: "/login" });
     },
   });

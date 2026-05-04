@@ -35,6 +35,7 @@ export const usePasswordLostMutation = (
     },
     onSuccess: () => {
       toast.success("Link de recuperação enviado!");
+      // limpa os campos do formulário
       reset();
     },
   });

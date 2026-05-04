@@ -23,6 +23,7 @@ export const usePostMutation = () => {
       // Por que fazer isso? O TanStack Query guarda as fotos em cache para evitar requests extras. Quando postamos uma foto nova, o cache antigo da "home" ou "lista de fotos" está desatualizado.
       // O invalidateQueries avisa ao QueryClient: "As fotos que você tem aí não valem mais, busque de novo".
       // Assim, ao navegar para "/", o usuário verá a foto nova instantaneamente.
+      // AÇÃO ASSÍNCRONA (Com await): ao usar await, a gente diz "espere 'photos' atualizar (processo do invalidateQueries) dai sim o usuário ser redirecionado para / (home)"
       await queryClient.invalidateQueries({ queryKey: ["photos"] });
 
       // Só navegamos após garantir que o cache foi marcado como inválido
