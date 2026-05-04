@@ -16,6 +16,8 @@ export const Route = createFileRoute("/_public/password/reset")({
   beforeLoad: ({ search }) => {
     // Se algum dos dois estiver faltando, redireciona
     if (!search.login || !search.key) {
+      // O redirect é usado fora do componente, dentro da configuração da rota. Ele acontece antes da página começar a ser montada ou renderizada. Onde usar: Em beforeLoad, loaders ou funções de busca de dados.
+      // O navigate é usado dentro do componente ou em callbacks de eventos (como o seu onSuccess do TanStack Query). Ele acontece depois que o usuário já está "dentro" do ciclo de vida do React. Onde usar: Dentro de useEffect, funções de clique (onClick) ou após mutações de dados.
       throw redirect({
         to: "/password/lost",
         replace: true, // Substitui no histórico para o usuário não ficar preso no "voltar"

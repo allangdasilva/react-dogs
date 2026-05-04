@@ -7,7 +7,7 @@ import NotFound from "../../components/helper/NotFound";
 export const Route = createFileRoute("/photo/$id")({
   pendingMs: 0,
   pendingMinMs: 300,
-  loader: async ({ context, params }) => {
+  beforeLoad: async ({ context, params }) => {
     const id = Number(params.id);
 
     // 1. Validação imediata: se o ID não for um número, nem chama a API

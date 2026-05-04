@@ -3,7 +3,7 @@ import {
   useSuspenseQuery,
 } from "@tanstack/react-query";
 import { Suspense } from "react";
-import { Link, useParams } from "@tanstack/react-router";
+import { useParams } from "@tanstack/react-router";
 import { ErrorBoundary } from "react-error-boundary";
 import { photoQueryOptions } from "../../features/auth/api/queries/photo.query";
 import SkeletonComments from "../helper/SkeletonComments";
@@ -13,6 +13,7 @@ import ModalDescription from "../common/feed/modal/ModalDescription";
 import ModalFormComment from "../common/feed/modal/ModalFormComment";
 import TitleSm from "../common/TitleSm";
 import PhotoPageComments from "./PhotoPageComments";
+import ModalHeader from "../common/feed/modal/ModalHeader";
 
 const PhotoPage = () => {
   const params = useParams({ from: "/photo/$id" });
@@ -29,21 +30,20 @@ const PhotoPage = () => {
           <Image src={photo.src} alt={photo.title} />
         </div>
         <div className="flex flex-col gap-2 self-start mt-3 m-auto">
-          <div className="p-3 rounded-base bg-base-100">
-            <div className="mb-1 flex justify-between items-center flex-wrap gap-x-1">
-              <TitleSm>{photo.title}</TitleSm>
-              <Link
-                to="/$profileId"
-                params={{ profileId: photo.author }}
-                className="link-sm-underline-blue"
-              >
-                @{photo.author}
-              </Link>
-            </div>
+          {/* header */}
+          <div className="rounded-base overflow-hidden">
+            <ModalHeader isPhotoPage={true} photo={photo} />
+          </div>
 
+          {/* infos */}
+          <div className="p-3 rounded-base bg-base-100">
+            <div className="mb-1">
+              <TitleSm>{photo.title}</TitleSm>
+            </div>
             <ModalDescription photo={photo} />
           </div>
 
+          {/* comments */}
           <Suspense fallback={<SkeletonComments />}>
             <ErrorBoundary
               FallbackComponent={ErrorCommentsFallback}
@@ -55,6 +55,7 @@ const PhotoPage = () => {
             </ErrorBoundary>
           </Suspense>
 
+          {/* comment form */}
           <ModalFormComment photo_id={photo.id} />
         </div>
       </div>
