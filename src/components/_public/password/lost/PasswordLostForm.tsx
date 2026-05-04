@@ -22,7 +22,7 @@ const PasswordLostForm = () => {
     mode: "onBlur",
   });
 
-  const { mutate, isPending, error } = usePasswordLostMutation(reset);
+  const { mutate, isPending, isError, error } = usePasswordLostMutation(reset);
 
   function handlePasswordLost(data: PasswordLostFormSchema) {
     const { login } = data;
@@ -51,7 +51,7 @@ const PasswordLostForm = () => {
           </ButtonSubmit>
         </div>
 
-        <div className="mt-1">{error && <ErrorForm error={error} />}</div>
+        <div className="mt-1">{isError && <ErrorForm error={error} />}</div>
       </Fieldset>
     </Form>
   );

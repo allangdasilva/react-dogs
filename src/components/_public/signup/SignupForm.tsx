@@ -21,7 +21,7 @@ const SignupForm = () => {
     mode: "onBlur",
   });
 
-  const { mutate, error, isPending } = useSigupMutation();
+  const { mutate, isPending, isError, error } = useSigupMutation();
 
   function handleSignup(credentials: SignupFormSchema) {
     mutate(credentials);
@@ -63,7 +63,7 @@ const SignupForm = () => {
           </ButtonSubmit>
         </div>
 
-        <div className="mt-1">{error && <ErrorForm error={error} />}</div>
+        <div className="mt-1">{isError && <ErrorForm error={error} />}</div>
       </Fieldset>
     </Form>
   );

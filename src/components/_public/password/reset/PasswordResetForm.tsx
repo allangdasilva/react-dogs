@@ -27,7 +27,7 @@ const PasswordResetForm = () => {
     mode: "onBlur",
   });
 
-  const { mutate, isPending, error } = usePasswordResetMutation();
+  const { mutate, isPending, isError, error } = usePasswordResetMutation();
 
   function handlePasswordReset(data: PasswordResetFormSchema) {
     const { password } = data;
@@ -57,7 +57,7 @@ const PasswordResetForm = () => {
         </div>
 
         <div className="mt-1">
-          {error && (
+          {isError && (
             <div>
               <ErrorForm error={error} />{" "}
               <Link to="/password/lost" className="link-sm-underline-blue">

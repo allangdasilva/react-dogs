@@ -29,7 +29,7 @@ const LoginForm = () => {
   // 2. useLoginMutation: Nosso hook de login customizado.
   // Passamos o 'search.redirect' como destino (o 'redirectTo' que criamos nas options do hook).
   // Se o usuário veio de um redirecionamento, ele vai para lá. Se veio direto pro login, search.redirect é undefined e o hook usará "/"
-  const { mutate, error, isPending } = useLoginMutation({
+  const { mutate, isError, isPending, error } = useLoginMutation({
     redirectTo: search.redirect,
   });
 
@@ -66,7 +66,7 @@ const LoginForm = () => {
           </ButtonSubmit>
         </div>
 
-        <div className="mt-1">{error && <ErrorForm error={error} />}</div>
+        <div className="mt-1">{isError && <ErrorForm error={error} />}</div>
       </Fieldset>
     </Form>
   );

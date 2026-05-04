@@ -27,7 +27,7 @@ const Create = () => {
     mode: "onSubmit",
   });
 
-  const { mutate, isPending, error } = usePostMutation();
+  const { mutate, isPending, isError, error } = usePostMutation();
 
   function handlePost(data: PostFormSchema) {
     // FormData: É um objeto que simula um formulário HTML tradicional.
@@ -107,7 +107,7 @@ const Create = () => {
             </ButtonSubmit>
           </div>
 
-          <div className="mt-1">{error && <ErrorForm error={error} />}</div>
+          <div className="mt-1">{isError && <ErrorForm error={error} />}</div>
         </Fieldset>
       </Form>
       <div

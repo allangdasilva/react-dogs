@@ -16,6 +16,8 @@ export const usePhotoDeleteMutation = () => {
       toast.success("Foto deletada com sucesso!");
     },
     onError: (_error) => {
+      // Use o onError para EFEITOS (Toasts, logs externos, etc)
+      // Não dê 'throw' aqui.
       toast.error("Não foi possível apagar a foto.");
     },
   });
