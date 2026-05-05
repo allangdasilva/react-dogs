@@ -19,6 +19,15 @@ export const Route = createFileRoute("/_public/login")({
   // Se o Zod validar (loginSearchSchema.parse), o Router tipa esses dados automaticamente.
   // Se falhar (ex: mandarem um número no redirect), o Zod/Router barram ou usam o valor padrão do .catch()
   validateSearch: (search) => loginSearchSchema.parse(search),
+  head: () => ({
+    meta: [
+      {
+        name: "description",
+        content: "Crie uma conta ou entre em Dogs.",
+      },
+      { title: "Dogs - Entrar" },
+    ],
+  }),
   component: RouteComponent,
 });
 

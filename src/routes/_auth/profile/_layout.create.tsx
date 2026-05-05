@@ -6,6 +6,15 @@ export const Route = createFileRoute("/_auth/profile/_layout/create")({
   staticData: {
     title: "Criar", // Cria um campo customizado. Dai no seu componente de desejado, você busca esse dado acessando os matches ativos
   },
+  head: () => ({
+    meta: [
+      {
+        name: "description",
+        content: "Compartilhe fotos do seu pet.",
+      },
+      { title: "Dogs - Criar" },
+    ],
+  }),
   component: RouteComponent,
 });
 

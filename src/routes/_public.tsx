@@ -1,5 +1,4 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
-import React from "react";
 import { useAuthStore } from "../features/auth/store/auth.store";
 import NotFound from "../components/helper/NotFound";
 
@@ -21,9 +20,5 @@ export const Route = createFileRoute("/_public")({
 });
 
 function RouteComponent() {
-  return (
-    <React.Fragment>
-      <Outlet />
-    </React.Fragment>
-  );
+  return <Outlet />;
 }

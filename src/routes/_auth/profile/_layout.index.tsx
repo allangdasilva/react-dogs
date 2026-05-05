@@ -15,6 +15,15 @@ export const Route = createFileRoute("/_auth/profile/_layout/")({
   staticData: {
     title: "Posts",
   },
+  head: () => ({
+    meta: [
+      {
+        name: "description",
+        content: "Veja todos os seus posts em Dogs.",
+      },
+      { title: "Dogs - Posts" },
+    ],
+  }),
   component: RouteComponent,
 });
 

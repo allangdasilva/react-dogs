@@ -4,6 +4,15 @@ export const Route = createFileRoute("/_auth/profile/_layout/statistics")({
   staticData: {
     title: "Dados",
   },
+  head: () => ({
+    meta: [
+      {
+        name: "description",
+        content: "Veja as estatísticas do seu perfil.",
+      },
+      { title: "Dogs - Dados" },
+    ],
+  }),
   component: RouteComponent,
 });
 

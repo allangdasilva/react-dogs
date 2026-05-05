@@ -24,6 +24,15 @@ export const Route = createFileRoute("/_public/password/reset")({
       });
     }
   },
+  head: () => ({
+    meta: [
+      {
+        name: "description",
+        content: "Resete sua senha da sua conta Dogs.",
+      },
+      { title: "Dogs - Resetar Senha" },
+    ],
+  }),
   component: RouteComponent,
 });
 

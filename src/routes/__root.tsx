@@ -1,7 +1,11 @@
-import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
+import {
+  Outlet,
+  createRootRouteWithContext,
+  HeadContent,
+  Scripts,
+} from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { useQuery, type QueryClient } from "@tanstack/react-query";
-import * as React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useAuthStore } from "../features/auth/store/auth.store";
@@ -39,17 +43,40 @@ export const Route = createRootRouteWithContext<RootRouteContext>()({
     }
   },
   notFoundComponent: () => <NotFound>Erro 404.</NotFound>,
+  head: () => ({
+    meta: [
+      {
+        name: "description", // name: É o nome da etiqueta (a chave). Diz ao navegador ou ao Google que tipo de informação é aquela.
+        content: "Compartilhe fotos do seu pet com as pessoas.", // content: É o texto escrito na etiqueta (o valor). É a informação propriamente dita.
+      },
+      {
+        // Remova <title> e o favicon do index.html, pois quando você usa o TanStack Router para gerenciar o head, ele passa a ser o "dono" dessas informações.
+        title: "Dogs",
+      },
+    ],
+    links: [
+      {
+        rel: "icon",
+        href: "/favicon.svg",
+      },
+    ],
+  }),
   component: RootComponent,
 });
 
 function RootComponent() {
   const token = useAuthStore((s) => s.token);
 
-  // useQuery:
-  // Já vai estar no cache por causa do BeforeLoad do __root, ou seja, ele vem instantaneamente.
   const { data: user } = useQuery(userQueryOptions(token));
   return (
-    <React.Fragment>
+    <>
+      {/* 
+        1. HEADCONTENT: Vai SEMPRE no topo. 
+        Ele "teletransporta" o título, as metas e os links lá para o <head> do seu navegador.
+      */}
+      <HeadContent />
+
+      {/* 2. LAYOUT VISÍVEL: Tudo o que o usuário vê na tela */}
       <Header />
       <main
         className={clsx("w-full max-w-base px-4 pb-12 pt-48 xs:pt-31", {
@@ -58,10 +85,15 @@ function RootComponent() {
       >
         <Outlet />
       </main>
-
       <Footer />
       <ToastProvider />
+
+      {/* 
+        3. SCRIPTS E DEVTOOLS: Vão no final.
+        Eles carregam a lógica pesada depois que o visual já está pronto.
+      */}
+      <Scripts />
       <TanStackRouterDevtools />
-    </React.Fragment>
+    </>
   );
 }

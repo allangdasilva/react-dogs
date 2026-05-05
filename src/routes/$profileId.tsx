@@ -25,6 +25,15 @@ export const Route = createFileRoute("/$profileId")({
     // A API retornará um array vazio [].
   },
   pendingComponent: Loading,
+  head: ({ params }) => ({
+    meta: [
+      {
+        name: "description",
+        content: `Veja as publicações de @${params.profileId}.`,
+      },
+      { title: `Dogs - ${params.profileId}` },
+    ],
+  }),
   component: RouteComponent,
 });
 
