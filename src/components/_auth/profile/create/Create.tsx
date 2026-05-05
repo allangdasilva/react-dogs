@@ -11,7 +11,7 @@ const Create = () => {
       <CreateForm preview={preview} setPreview={setPreview} />
       <div
         className={clsx(
-          "aspect-square flex items-center justify-center rounded-base overflow-hidden",
+          "place-self-center aspect-square flex items-center justify-center rounded-base overflow-hidden",
           {
             "hidden md:block": !preview,
           },
