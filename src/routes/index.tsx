@@ -45,5 +45,5 @@ export const Route = createFileRoute("/")({
 });
 
 function RouteComponent() {
-  return <Feed isProfile={false} userId={0} />;
+  return <Feed userId={0} />;
 }

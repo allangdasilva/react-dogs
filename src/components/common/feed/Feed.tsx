@@ -7,7 +7,7 @@ import Modal from "./modal/Modal";
 
 type Props = React.HTMLAttributes<HTMLElement> & {
   userId: number | string;
-  isProfile: boolean;
+  isProfile?: boolean;
 };
 
 const Feed = ({ userId, isProfile }: Props) => {
