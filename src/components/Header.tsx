@@ -25,7 +25,7 @@ const Header = () => {
           )}
         >
           <AnchorRouter
-            className=" hover:bg-base-300 focus-visible:bg-base-300"
+            className="hover:bg-base-300 focus-visible:bg-base-300"
             to="/"
           >
             <HomeIcon />
@@ -67,7 +67,6 @@ function PublicBar() {
       <AnchorRouter
         className={isSignupActive ? "anchor-bg-200" : "anchor-bg-primary"}
         to="/login"
-        activeProps={{ className: "anchor-bg-primary" }}
       >
         <ProfileIcon />
         <AnchorLabel>Entrar</AnchorLabel>
