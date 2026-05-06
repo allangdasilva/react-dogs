@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import clsx from "clsx";
-import DeleteIcon from "../../../svgs/DeleteIcon";
+import DeleteIcon from "../../svgs/DeleteIcon";
 
 type Props = React.RefAttributes<HTMLButtonElement> & {
   isPending: boolean;
@@ -15,6 +15,7 @@ const PhotoDeleteTrigger = ({ isPending }: Props) => {
         "flex items-center justify-center px-4 py-3.5 rounded-base cursor-pointer anchor-bg-200 transition-colors ease-in",
         { "opacity-60 cursor-default": isPending },
       )}
+      aria-label="Deletar foto"
     >
       <DeleteIcon />
     </Dialog.Trigger>

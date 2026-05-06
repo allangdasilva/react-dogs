@@ -58,6 +58,7 @@ const ModalFormComment = ({ photo_id, ...props }: Props) => {
               className={clsx("py-2 px-4 max-w-fit", {
                 "opacity-60": !isValid,
               })}
+              aria-label="Enviar comentário"
             >
               <CommentIcon />
             </ButtonSubmit>

@@ -17,12 +17,8 @@ const MobileMenuItem = ({ to, icon, label }: Props) => {
   const navigate = useNavigate();
 
   function handleLogout() {
-    // Limpa o estado de autenticação (Zustand/LocalStorage)
     logout();
-    // Limpa o CACHE REAL do TanStack Query
-    // Fazemos isso antes ou junto com o navigate para evitar que dados antigos "pisquem" na tela
     queryClient.clear();
-    // Redireciona
     navigate({ to: "/" });
   }
 

@@ -57,6 +57,7 @@ const Modal = ({ photo }: Props) => {
                     className="flex justify-between items-center gap-1 group"
                     to="/photo/$id"
                     params={{ id: photoId }}
+                    aria-label="Ir para o post"
                   >
                     {/* break-words: Quebra em espaços. Se a palavra for única e gigante, quebra a palavra.*/}
                     {/* min-w-0 no Flexbox: Elementos flexíveis por padrão tentam manter o tamanho do conteúdo (min-content). Se o título for uma string gigante sem espaços, o flexbox vai tentar deixar o span do tamanho da string, ignorando o limite do componente pai. O min-w-0 "reseta" isso e força o texto a respeitar o limite e quebrar. */}
@@ -109,7 +110,10 @@ const Modal = ({ photo }: Props) => {
             <ModalFormComment className="p-3 bg-base-100" photo_id={photo.id} />
           </div>
 
-          <Dialog.Close className="absolute top-3 left-3 rounded-full p-0.5 cursor-pointer bg-base-100/50 hover:bg-base-100 focus:bg-base-100 transition-colors ease-in">
+          <Dialog.Close
+            aria-label="Fechar modal"
+            className="absolute top-3 left-3 rounded-full p-0.5 cursor-pointer bg-base-100/50 hover:bg-base-100 focus:bg-base-100 transition-colors ease-in"
+          >
             <CloseIcon />
           </Dialog.Close>
         </Dialog.Content>

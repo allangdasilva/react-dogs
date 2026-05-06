@@ -13,6 +13,7 @@ const ButtonSubmit = ({ children, ...props }: Props) => {
       )}
       tabIndex={props.tabIndex}
       disabled={props.disabled}
+      aria-label={props["aria-label"]}
       type="submit"
     >
       {children}

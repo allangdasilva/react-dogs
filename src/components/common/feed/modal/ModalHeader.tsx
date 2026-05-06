@@ -4,7 +4,7 @@ import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { useAuthStore } from "../../../../features/auth/store/auth.store";
 import { userQueryOptions } from "../../../../features/auth/api/queries/user.query";
-import ConfirmDialog from "../../../_auth/ConfirmDialog";
+import ConfirmDialog from "../../../_auth/photo-delete/ConfirmDialog";
 import EyeIcon from "../../../svgs/EyeIcon";
 import type { PhotoResponseSchema } from "../../../../features/auth/types/photosResponse.schema";
 

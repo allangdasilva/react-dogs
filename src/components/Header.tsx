@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "@tanstack/react-router";
 import clsx from "clsx";
 import { useAuthStore } from "../features/auth/store/auth.store";
 import { userQueryOptions } from "../features/auth/api/queries/user.query";
@@ -56,10 +57,15 @@ function AuthBar() {
 }
 
 function PublicBar() {
+  // Verificamos se a rota atual é exatamente a de cadastro
+  // O 'strict: false' evita erros se a rota ainda não estiver carregada
+  const location = useLocation();
+  const isSignupActive = location.pathname === "/signup";
+
   return (
     <div className="flex items-center justify-center gap-3">
       <AnchorRouter
-        className="anchor-bg-300"
+        className={isSignupActive ? "anchor-bg-200" : "anchor-bg-primary"}
         to="/login"
         activeProps={{ className: "anchor-bg-primary" }}
       >
