@@ -46,8 +46,8 @@ function AuthBar() {
     <div>
       <AnchorRouter
         to="/profile"
-        activeProps={{ className: "anchor-bg-primary" }}
-        className="anchor-bg-200"
+        activeProps={{ className: "bg-interactive-primary" }}
+        className="bg-interactive-200"
       >
         <ProfileIcon />
         <AnchorLabel>Perfil</AnchorLabel>
@@ -65,7 +65,9 @@ function PublicBar() {
   return (
     <div className="flex items-center justify-center gap-3">
       <AnchorRouter
-        className={isSignupActive ? "anchor-bg-200" : "anchor-bg-primary"}
+        className={
+          isSignupActive ? "bg-interactive-200" : "bg-interactive-primary"
+        }
         to="/login"
       >
         <ProfileIcon />
@@ -73,9 +75,9 @@ function PublicBar() {
       </AnchorRouter>
 
       <AnchorRouter
-        className="anchor-bg-200"
+        className="bg-interactive-200"
         to="/signup"
-        activeProps={{ className: "anchor-bg-primary" }}
+        activeProps={{ className: "bg-interactive-primary" }}
       >
         <SignupIcon />
         <AnchorLabel>Criar conta</AnchorLabel>

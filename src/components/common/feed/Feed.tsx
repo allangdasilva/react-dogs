@@ -38,7 +38,7 @@ const Feed = ({ userId, isProfile }: Props) => {
         {photos.map((photo) => (
           <li
             className={clsx(
-              "relative grid rounded-base aspect-square overflow-hidden  transition-colors ease-in has-focus-visible:outline-2 outline-base-900",
+              "relative grid rounded-base aspect-square overflow-hidden  transition-colors-ease-in has-focus-visible:outline-2 outline-base-900",
               {
                 "md:nth-2:col-start-2 md:nth-2:col-end-4 md:nth-2:row-span-2":
                   !isProfile,

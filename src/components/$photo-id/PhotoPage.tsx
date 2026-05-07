@@ -29,7 +29,7 @@ const PhotoPage = () => {
         <div className="aspect-square rounded-base overflow-hidden">
           <Image src={photo.src} alt={photo.title} />
         </div>
-        <div className="flex flex-col gap-2 self-start mt-3 m-auto">
+        <div className="flex flex-col gap-2 self-start mt-2 m-auto">
           {/* header */}
           <div className="rounded-base overflow-hidden">
             <ModalHeader isPhotoPage={true} photo={photo} />

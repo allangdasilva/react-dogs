@@ -6,7 +6,7 @@ const OpenInNewIcon = () => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="menu-icon-fill min-w-fit"
+      className="icon-interactive-fill-primary min-w-fit"
     >
       <title>Ir para o post</title>
       <path

@@ -85,9 +85,12 @@ function RootComponent() {
       {/* 2. LAYOUT VISÍVEL: Tudo o que o usuário vê na tela */}
       <Header />
       <main
-        className={clsx("w-full max-w-base px-4 pb-12 pt-48 xs:pt-31", {
-          "xxs:pt-31": user,
-        })}
+        className={clsx(
+          "min-h-dvh w-full max-w-base flex flex-col px-4 pb-12 pt-48 xs:pt-31",
+          {
+            "xxs:pt-31": user,
+          },
+        )}
       >
         <Outlet />
       </main>

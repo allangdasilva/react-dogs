@@ -7,10 +7,10 @@ type Props = {
 
 const NotFound = ({ children }: Props) => {
   return (
-    <div className="flex flex-col items-center gap-6 text-center">
+    <div className="error-not-found-wrapper">
       <TitleBase>{children}</TitleBase>
       <div className="max-w-prose">
-        <p className="inline font-body-base text-base-700">
+        <p className="paragraph-inline-700">
           O link em que você clicou pode não estar funcionando, ou a página pode
           ter sido removida.{" "}
         </p>

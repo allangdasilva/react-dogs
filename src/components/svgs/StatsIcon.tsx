@@ -4,7 +4,7 @@ const StatsIcon = () => {
       width={24}
       height={24}
       viewBox="0 0 24 24"
-      className="menu-icon-fill"
+      className="icon-interactive-fill-primary"
       fill="none"
     >
       <title>Estatísticas</title>

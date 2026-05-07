@@ -16,13 +16,13 @@ const ErrorGeneral = ({ isRoot, error, reset }: Props) => {
 
   return (
     <div
-      className={clsx("flex flex-col items-center gap-6 text-center", {
+      className={clsx("error-not-found-wrapper", {
         "px-4 py-12": isRoot,
       })}
     >
       <TitleBase>Ops! Algo deu errado.</TitleBase>
       <div className="max-w-prose">
-        <p className="inline font-body-base text-base-700 ">
+        <p className="paragraph-inline-700">
           Ocorreu um erro técnico ao carregar esta página. Pode ser uma
           instabilidade temporária na conexão.{" "}
         </p>

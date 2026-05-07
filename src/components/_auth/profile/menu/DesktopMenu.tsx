@@ -28,25 +28,25 @@ const DesktopMenu = () => {
       <AnchorRouter
         activeOptions={{ exact: true }}
         activeProps={{
-          className: "anchor-bg-primary",
+          className: "bg-interactive-primary",
         }}
-        className="anchor-bg-200"
+        className="bg-interactive-200"
         to="/profile"
       >
         <PostsIcon />
         <AnchorLabel>Posts</AnchorLabel>
       </AnchorRouter>
       <AnchorRouter
-        activeProps={{ className: "anchor-bg-primary" }}
-        className="anchor-bg-200"
+        activeProps={{ className: "bg-interactive-primary" }}
+        className="bg-interactive-200"
         to="/profile/create"
       >
         <AddIcon />
         <AnchorLabel>Criar</AnchorLabel>
       </AnchorRouter>
       <AnchorRouter
-        activeProps={{ className: "anchor-bg-primary" }}
-        className="anchor-bg-200"
+        activeProps={{ className: "bg-interactive-primary" }}
+        className="bg-interactive-200"
         to="/profile/statistics"
       >
         <StatsIcon />

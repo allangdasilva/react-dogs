@@ -18,7 +18,7 @@ const Login = () => {
 
         <Link
           to="/password/lost"
-          className="button-form mt-3 text-base-700 hover:bg-base-300 focus:bg-base-300"
+          className="button-form mt-3 text-base-700 bg-interactive"
         >
           Esqueceu a Senha?
         </Link>

@@ -4,7 +4,7 @@ type Props = React.HTMLAttributes<HTMLSpanElement> & {
 
 const AnchorLabel = ({ children }: Props) => {
   return (
-    <span className="font-anchor-base font-medium text-base-700">
+    <span className="font-label-base font-medium text-base-700">
       {children}
     </span>
   );

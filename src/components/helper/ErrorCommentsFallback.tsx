@@ -11,7 +11,7 @@ const ErrorCommentsFallback = ({ error, resetErrorBoundary }: any) => {
 
   return (
     <div className="mt-2">
-      <p className="inline font-body-base text-base-700">
+      <p className="paragraph-inline-700">
         Não foi possível carregar os comentários.{" "}
       </p>
       <button

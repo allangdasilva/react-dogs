@@ -28,7 +28,7 @@ const Image = ({ ...props }: Props) => {
         // Só baixa a imagem quando ela estiver perto do scroll.
         loading="lazy"
         className={clsx(
-          "w-full h-full object-cover opacity-0 transition-opacity",
+          "w-full h-full object-cover opacity-0 transition-opacity ease-in",
           {
             "opacity-100": loaded,
           },
