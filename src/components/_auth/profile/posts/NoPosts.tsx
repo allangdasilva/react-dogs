@@ -8,7 +8,10 @@ const NoPosts = () => {
       <BoneIcon />
       <TitleSm>Postar fotos</TitleSm>
       <p>Quando você postar fotos, elas aparecerão aqui.</p>
-      <Link to="/profile/create" className="link-sm-underline-blue">
+      <Link
+        to="/profile/create"
+        className="font-body-sm link-sm-underline-blue"
+      >
         Poste sua primeira foto!
       </Link>
     </div>

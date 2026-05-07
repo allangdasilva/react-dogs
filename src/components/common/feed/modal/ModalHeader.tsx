@@ -76,7 +76,7 @@ function NavigationLink({
 }) {
   const content = (
     <Link
-      className="link-sm-underline-blue wrap-break-word min-w-0"
+      className="font-body-sm link-sm-underline-blue wrap-break-word min-w-0"
       to="/$profileId"
       params={{ profileId: author }}
     >

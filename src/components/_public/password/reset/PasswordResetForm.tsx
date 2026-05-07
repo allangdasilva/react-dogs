@@ -60,7 +60,10 @@ const PasswordResetForm = () => {
           {isError && (
             <div>
               <ErrorForm error={error} />{" "}
-              <Link to="/password/lost" className="link-sm-underline-blue">
+              <Link
+                to="/password/lost"
+                className="font-body-sm link-sm-underline-blue"
+              >
                 Solicitar novo link.
               </Link>
             </div>
