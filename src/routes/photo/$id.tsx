@@ -3,6 +3,7 @@ import { photoQueryOptions } from "../../features/auth/api/queries/photo.query";
 import PhotoPage from "../../components/$photo-id/PhotoPage";
 import Loading from "../../components/helper/Loading";
 import NotFound from "../../components/helper/NotFound";
+import ErrorGeneral from "../../components/helper/ErrorGeneral";
 
 export const Route = createFileRoute("/photo/$id")({
   pendingMs: 0,
@@ -18,6 +19,7 @@ export const Route = createFileRoute("/photo/$id")({
       // Se a API der 404 aqui, o catch pega e mata a navegação na hora.
       await context.queryClient.ensureQueryData(photoQueryOptions(id));
     } catch (error) {
+      console.log(error);
       // Aqui o router entende: "Não entra nessa rota, mostra o Not Found".
       throw notFound();
     }
@@ -38,6 +40,7 @@ export const Route = createFileRoute("/photo/$id")({
   pendingComponent: Loading,
   // O notFoundComponent será disparado pelo "throw notFound()" acima
   notFoundComponent: () => <NotFound>Erro 404.</NotFound>,
+  errorComponent: ErrorGeneral,
   head: ({ loaderData }) => {
     const photoTitle = loaderData?.title ?? "Foto";
 

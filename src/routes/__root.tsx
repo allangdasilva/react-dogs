@@ -13,6 +13,7 @@ import { userQueryOptions } from "../features/auth/api/queries/user.query";
 import ToastProvider from "../components/helper/ToastProvider";
 import clsx from "clsx";
 import NotFound from "../components/helper/NotFound";
+import ErrorGeneral from "../components/helper/ErrorGeneral";
 
 interface RootRouteContext {
   queryClient: QueryClient;
@@ -43,6 +44,11 @@ export const Route = createRootRouteWithContext<RootRouteContext>()({
     }
   },
   notFoundComponent: () => <NotFound>Erro 404.</NotFound>,
+  // Sempre colocar um errorComponent no seu arquivo raiz. Ele serve como a última linha de defesa. Se algo der um erro catastrófico que nem as rotas filhas conseguiram prever, ele impede que o navegador exiba aquela tela branca de erro nativa do React.
+  // O que não anula o fato de usar errorComponent em todas rotas que possuem um loader ou usam useSuspenseQuery (ou seja, fazem requisição e a interface depende desses dados), É altamente recomendado!
+  errorComponent: ({ error, reset }) => (
+    <ErrorGeneral isRoot={true} error={error} reset={reset} />
+  ),
   head: () => ({
     meta: [
       {

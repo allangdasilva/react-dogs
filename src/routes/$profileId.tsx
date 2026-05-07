@@ -2,11 +2,12 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { photosInfiniteQueryOptions } from "../features/auth/api/queries/photos.infiniteQuery";
 import Loading from "../components/helper/Loading";
 import ProfileId from "../components/$profile-id/ProfileId";
+import ErrorGeneral from "../components/helper/ErrorGeneral";
 
 export const Route = createFileRoute("/$profileId")({
   pendingMs: 0,
   pendingMinMs: 300,
-  loader: async ({ context, params }) => {
+  beforeLoad: async ({ context, params }) => {
     // 1. Buscamos os dados normalmente
     const data = await context.queryClient.ensureInfiniteQueryData(
       photosInfiniteQueryOptions(params.profileId),
@@ -25,6 +26,7 @@ export const Route = createFileRoute("/$profileId")({
     // A API retornará um array vazio [].
   },
   pendingComponent: Loading,
+  errorComponent: ErrorGeneral,
   head: ({ params }) => ({
     meta: [
       {

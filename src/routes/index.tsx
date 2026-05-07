@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import Loading from "../components/helper/Loading";
 import { photosInfiniteQueryOptions } from "../features/auth/api/queries/photos.infiniteQuery";
 import Feed from "../components/common/feed/Feed";
+import ErrorGeneral from "../components/helper/ErrorGeneral";
 
 export const Route = createFileRoute("/")({
   // pendingMs:
@@ -41,6 +42,7 @@ export const Route = createFileRoute("/")({
   // esse componente aparece enquanto o loader ainda não terminou.
   // É o loading oficial da rota.
   pendingComponent: Loading,
+  errorComponent: ErrorGeneral,
   component: RouteComponent,
 });
 

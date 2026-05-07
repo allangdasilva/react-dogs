@@ -127,7 +127,7 @@
 }
 
 @utility link-sm-underline-blue {
-  @apply font-body-sm text-link hover:underline focus:underline;
+  @apply text-link hover:underline focus:underline;
 }
 
 @utility rounded-base {
