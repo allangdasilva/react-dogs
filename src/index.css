@@ -115,7 +115,7 @@
 
 /* Utilitários de Botão/Link */
 @utility button-form {
-  @apply w-full py-3 px-6 font-body-sm font-semibold text-center rounded-base cursor-pointer whitespace-nowrap transition-colors-ease-in;
+  @apply w-full py-3 px-6 font-body-sm font-semibold text-center rounded-base cursor-pointer whitespace-nowrap outline-interactive-primary transition-colors-no-outline;
 }
 @utility bg-interactive {
   @apply hover:bg-base-300 focus-visible:bg-base-300;
@@ -130,13 +130,16 @@
   @apply bg-primary hover:bg-primary-dark focus-visible:bg-primary-dark;
 }
 @utility icon-interactive-fill-primary {
-  @apply *:group-hover:fill-primary *:group-focus-visible:fill-primary *:transition-colors-ease-in;
+  @apply *:group-hover:fill-primary *:group-focus-visible:fill-primary *:transition-colors-no-outline *:ease-in;
 }
 @utility input-interactive {
   @apply border border-base-300 outline-0 bg-base-100 hover:border-base-500 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:bg-base-000;
 }
+@utility outline-interactive-primary {
+  @apply focus-visible:outline-offset-2 focus-visible:outline-2 focus-visible:outline-primary;
+}
 @utility link-sm-underline-blue {
-  @apply text-link hover:underline focus-visible:underline;
+  @apply text-link hover:underline focus-visible:underline outline-none;
 }
 
 /* Utilitários de Tipografia */
@@ -144,7 +147,7 @@
   @apply text-[0.625rem] leading-3;
 }
 @utility font-body-xs {
-  @apply text-xs leading-4;
+  @apply text-xs leading-4 ease-in;
 }
 @utility font-body-sm {
   @apply text-sm leading-5;
@@ -163,7 +166,10 @@
 }
 
 /* Utilitários de Transição */
-
-@utility transition-colors-ease-in {
-  @apply transition-colors ease-in;
+@utility transition-colors-no-outline {
+  /* Listamos tudo, menos outline-color, outline-width e outline-offset */
+  transition-property:
+    color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  transition-duration: 150ms;
 }

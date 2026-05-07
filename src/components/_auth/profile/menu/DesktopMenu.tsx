@@ -54,7 +54,7 @@ const DesktopMenu = () => {
       </AnchorRouter>
       <button
         onClick={handleLogout}
-        className="flex flex-col items-center px-4 py-2 rounded-base whitespace-nowrap cursor-pointer group"
+        className="flex flex-col items-center px-4 py-2 rounded-base whitespace-nowrap outline-interactive-primary cursor-pointer group"
       >
         <ExitIcon />
         <AnchorLabel>Sair</AnchorLabel>

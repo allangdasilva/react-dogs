@@ -54,7 +54,7 @@ const Modal = ({ photo }: Props) => {
               <Dialog.Title className="font-title-sm wrap-break-word min-w-0 text-base-700 mb-1">
                 <Dialog.Close className="w-full" asChild>
                   <Link
-                    className="flex justify-between items-center gap-1 group"
+                    className="flex justify-between items-center gap-1 outline-interactive-primary rounded-sm group"
                     to="/photo/$photoId"
                     params={{ photoId: photoId }}
                     aria-label="Ir para o post"
@@ -112,7 +112,7 @@ const Modal = ({ photo }: Props) => {
 
           <Dialog.Close
             aria-label="Fechar modal"
-            className="absolute top-3 left-3 rounded-full p-0.5 cursor-pointer bg-base-100/50 hover:bg-base-100 focus-visible:bg-base-100 transition-colors-ease-in"
+            className="absolute top-3 left-3 rounded-full p-0.5 cursor-pointer bg-base-100/50 hover:bg-base-100 focus-visible:bg-base-100 outline-interactive-primary transition-colors-no-outline"
           >
             <CloseIcon />
           </Dialog.Close>

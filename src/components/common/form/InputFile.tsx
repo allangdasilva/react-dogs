@@ -19,7 +19,7 @@ const InputFile = ({ id, label, error, preview, ...props }: Props) => {
         // Se o erro existir: vincula esse elemento (input) à mensagem de erro através do id
         aria-describedby={error ? `${id}-error` : undefined}
         htmlFor={id}
-        className="flex items-center justify-center gap-3 button-form text-base-700 bg-interactive-200 peer-focus-visible:bg-base-300 peer-focus-visible::outline-2"
+        className="flex items-center justify-center gap-3 button-form text-base-700 bg-interactive-200 peer-focus-visible:bg-base-300 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-2 peer-focus-visible:outline-primary"
       >
         {preview ? (
           "Alterar foto"

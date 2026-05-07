@@ -24,10 +24,7 @@ const Header = () => {
             { "xxs:flex-row xxs:justify-between": user },
           )}
         >
-          <AnchorRouter
-            className="hover:bg-base-300 focus-visible:bg-base-300"
-            to="/"
-          >
+          <AnchorRouter className="bg-interactive" to="/">
             <HomeIcon />
             <AnchorLabel>Início</AnchorLabel>
           </AnchorRouter>
