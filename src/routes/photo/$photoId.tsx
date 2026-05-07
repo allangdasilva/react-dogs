@@ -5,13 +5,13 @@ import Loading from "../../components/helper/Loading";
 import NotFound from "../../components/helper/NotFound";
 import ErrorGeneral from "../../components/helper/ErrorGeneral";
 
-export const Route = createFileRoute("/photo/$id")({
+export const Route = createFileRoute("/photo/$photoId")({
   pendingMs: 0,
   pendingMinMs: 300,
   // 1. BEFORELOAD: O "Porteiro".
   // Ele barra a entrada antes da rota sequer começar a carregar.
   beforeLoad: async ({ context, params }) => {
-    const id = Number(params.id);
+    const id = Number(params.photoId);
     if (isNaN(id)) throw notFound();
 
     try {
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/photo/$id")({
   // ZERO requisições duplicadas na rede.
   // loader: É o lugar oficial para buscar dados que o componente vai usar.
   loader: async ({ context, params }) => {
-    const id = Number(params.id);
+    const id = Number(params.photoId);
     const data = await context.queryClient.ensureQueryData(
       photoQueryOptions(id),
     );

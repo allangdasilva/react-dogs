@@ -13,7 +13,7 @@ import { Route as PublicRouteImport } from './routes/_public'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as ProfileIdRouteImport } from './routes/$profileId'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as PhotoIdRouteImport } from './routes/photo/$id'
+import { Route as PhotoPhotoIdRouteImport } from './routes/photo/$photoId'
 import { Route as PublicSignupRouteImport } from './routes/_public/signup'
 import { Route as PublicLoginRouteImport } from './routes/_public/login'
 import { Route as AuthProfileRouteRouteImport } from './routes/_auth/profile/route'
@@ -42,9 +42,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PhotoIdRoute = PhotoIdRouteImport.update({
-  id: '/photo/$id',
-  path: '/photo/$id',
+const PhotoPhotoIdRoute = PhotoPhotoIdRouteImport.update({
+  id: '/photo/$photoId',
+  path: '/photo/$photoId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PublicSignupRoute = PublicSignupRouteImport.update({
@@ -99,7 +99,7 @@ export interface FileRoutesByFullPath {
   '/profile': typeof AuthProfileLayoutRouteWithChildren
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
-  '/photo/$id': typeof PhotoIdRoute
+  '/photo/$photoId': typeof PhotoPhotoIdRoute
   '/password/lost': typeof PublicPasswordLostRoute
   '/password/reset': typeof PublicPasswordResetRoute
   '/profile/create': typeof AuthProfileLayoutCreateRoute
@@ -112,7 +112,7 @@ export interface FileRoutesByTo {
   '/profile': typeof AuthProfileLayoutIndexRoute
   '/login': typeof PublicLoginRoute
   '/signup': typeof PublicSignupRoute
-  '/photo/$id': typeof PhotoIdRoute
+  '/photo/$photoId': typeof PhotoPhotoIdRoute
   '/password/lost': typeof PublicPasswordLostRoute
   '/password/reset': typeof PublicPasswordResetRoute
   '/profile/create': typeof AuthProfileLayoutCreateRoute
@@ -127,7 +127,7 @@ export interface FileRoutesById {
   '/_auth/profile': typeof AuthProfileRouteRouteWithChildren
   '/_public/login': typeof PublicLoginRoute
   '/_public/signup': typeof PublicSignupRoute
-  '/photo/$id': typeof PhotoIdRoute
+  '/photo/$photoId': typeof PhotoPhotoIdRoute
   '/_auth/profile/_layout': typeof AuthProfileLayoutRouteWithChildren
   '/_public/password/lost': typeof PublicPasswordLostRoute
   '/_public/password/reset': typeof PublicPasswordResetRoute
@@ -143,7 +143,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/login'
     | '/signup'
-    | '/photo/$id'
+    | '/photo/$photoId'
     | '/password/lost'
     | '/password/reset'
     | '/profile/create'
@@ -156,7 +156,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/login'
     | '/signup'
-    | '/photo/$id'
+    | '/photo/$photoId'
     | '/password/lost'
     | '/password/reset'
     | '/profile/create'
@@ -170,7 +170,7 @@ export interface FileRouteTypes {
     | '/_auth/profile'
     | '/_public/login'
     | '/_public/signup'
-    | '/photo/$id'
+    | '/photo/$photoId'
     | '/_auth/profile/_layout'
     | '/_public/password/lost'
     | '/_public/password/reset'
@@ -184,7 +184,7 @@ export interface RootRouteChildren {
   ProfileIdRoute: typeof ProfileIdRoute
   AuthRoute: typeof AuthRouteWithChildren
   PublicRoute: typeof PublicRouteWithChildren
-  PhotoIdRoute: typeof PhotoIdRoute
+  PhotoPhotoIdRoute: typeof PhotoPhotoIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -217,11 +217,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/photo/$id': {
-      id: '/photo/$id'
-      path: '/photo/$id'
-      fullPath: '/photo/$id'
-      preLoaderRoute: typeof PhotoIdRouteImport
+    '/photo/$photoId': {
+      id: '/photo/$photoId'
+      path: '/photo/$photoId'
+      fullPath: '/photo/$photoId'
+      preLoaderRoute: typeof PhotoPhotoIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_public/signup': {
@@ -348,7 +348,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProfileIdRoute: ProfileIdRoute,
   AuthRoute: AuthRouteWithChildren,
   PublicRoute: PublicRouteWithChildren,
-  PhotoIdRoute: PhotoIdRoute,
+  PhotoPhotoIdRoute: PhotoPhotoIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

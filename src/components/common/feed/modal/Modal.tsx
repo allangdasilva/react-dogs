@@ -55,8 +55,8 @@ const Modal = ({ photo }: Props) => {
                 <Dialog.Close className="w-full" asChild>
                   <Link
                     className="flex justify-between items-center gap-1 group"
-                    to="/photo/$id"
-                    params={{ id: photoId }}
+                    to="/photo/$photoId"
+                    params={{ photoId: photoId }}
                     aria-label="Ir para o post"
                   >
                     {/* break-words: Quebra em espaços. Se a palavra for única e gigante, quebra a palavra.*/}

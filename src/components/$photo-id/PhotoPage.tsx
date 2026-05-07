@@ -16,8 +16,8 @@ import PhotoPageComments from "./PhotoPageComments";
 import ModalHeader from "../common/feed/modal/ModalHeader";
 
 const PhotoPage = () => {
-  const params = useParams({ from: "/photo/$id" });
-  const { data } = useSuspenseQuery(photoQueryOptions(Number(params.id)));
+  const params = useParams({ from: "/photo/$photoId" });
+  const { data } = useSuspenseQuery(photoQueryOptions(Number(params.photoId)));
 
   const { reset } = useQueryErrorResetBoundary();
 
