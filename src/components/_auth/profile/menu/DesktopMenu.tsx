@@ -6,7 +6,6 @@ import AnchorRouter from "../../../common/AnchorRouter";
 import AddIcon from "../../../svgs/AddIcon";
 import ExitIcon from "../../../svgs/ExitIcon";
 import PostsIcon from "../../../svgs/PostsIcon";
-import StatsIcon from "../../../svgs/StatsIcon";
 
 const DesktopMenu = () => {
   const logout = useAuthStore((state) => state.logout);
@@ -43,14 +42,6 @@ const DesktopMenu = () => {
       >
         <AddIcon />
         <AnchorLabel>Criar</AnchorLabel>
-      </AnchorRouter>
-      <AnchorRouter
-        activeProps={{ className: "bg-interactive-primary" }}
-        className="bg-interactive-200"
-        to="/profile/statistics"
-      >
-        <StatsIcon />
-        <AnchorLabel>Dados</AnchorLabel>
       </AnchorRouter>
       <button
         onClick={handleLogout}

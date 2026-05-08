@@ -2,7 +2,6 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Spacer from "../../../common/Spacer";
 import PostsIcon from "../../../svgs/PostsIcon";
 import AddIcon from "../../../svgs/AddIcon";
-import StatsIcon from "../../../svgs/StatsIcon";
 import ExitIcon from "../../../svgs/ExitIcon";
 import MobileMenuItem from "./MobileMenuItem";
 import MobileMenuTrigger from "./MobileMenuTrigger";
@@ -36,13 +35,6 @@ const MobileMenu = () => {
               icon={<AddIcon />}
               label="Criar"
               to="/profile/create"
-            />
-            <Spacer className="bg-base-300" />
-
-            <MobileMenuItem
-              icon={<StatsIcon />}
-              label="Dados"
-              to="/profile/statistics"
             />
             <Spacer className="bg-base-300" />
 

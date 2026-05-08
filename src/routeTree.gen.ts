@@ -21,7 +21,6 @@ import { Route as PublicPasswordResetRouteImport } from './routes/_public/passwo
 import { Route as PublicPasswordLostRouteImport } from './routes/_public/password/lost'
 import { Route as AuthProfileLayoutRouteImport } from './routes/_auth/profile/_layout'
 import { Route as AuthProfileLayoutIndexRouteImport } from './routes/_auth/profile/_layout.index'
-import { Route as AuthProfileLayoutStatisticsRouteImport } from './routes/_auth/profile/_layout.statistics'
 import { Route as AuthProfileLayoutCreateRouteImport } from './routes/_auth/profile/_layout.create'
 
 const PublicRoute = PublicRouteImport.update({
@@ -81,12 +80,6 @@ const AuthProfileLayoutIndexRoute = AuthProfileLayoutIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthProfileLayoutRoute,
 } as any)
-const AuthProfileLayoutStatisticsRoute =
-  AuthProfileLayoutStatisticsRouteImport.update({
-    id: '/statistics',
-    path: '/statistics',
-    getParentRoute: () => AuthProfileLayoutRoute,
-  } as any)
 const AuthProfileLayoutCreateRoute = AuthProfileLayoutCreateRouteImport.update({
   id: '/create',
   path: '/create',
@@ -103,7 +96,6 @@ export interface FileRoutesByFullPath {
   '/password/lost': typeof PublicPasswordLostRoute
   '/password/reset': typeof PublicPasswordResetRoute
   '/profile/create': typeof AuthProfileLayoutCreateRoute
-  '/profile/statistics': typeof AuthProfileLayoutStatisticsRoute
   '/profile/': typeof AuthProfileLayoutIndexRoute
 }
 export interface FileRoutesByTo {
@@ -116,7 +108,6 @@ export interface FileRoutesByTo {
   '/password/lost': typeof PublicPasswordLostRoute
   '/password/reset': typeof PublicPasswordResetRoute
   '/profile/create': typeof AuthProfileLayoutCreateRoute
-  '/profile/statistics': typeof AuthProfileLayoutStatisticsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -132,7 +123,6 @@ export interface FileRoutesById {
   '/_public/password/lost': typeof PublicPasswordLostRoute
   '/_public/password/reset': typeof PublicPasswordResetRoute
   '/_auth/profile/_layout/create': typeof AuthProfileLayoutCreateRoute
-  '/_auth/profile/_layout/statistics': typeof AuthProfileLayoutStatisticsRoute
   '/_auth/profile/_layout/': typeof AuthProfileLayoutIndexRoute
 }
 export interface FileRouteTypes {
@@ -147,7 +137,6 @@ export interface FileRouteTypes {
     | '/password/lost'
     | '/password/reset'
     | '/profile/create'
-    | '/profile/statistics'
     | '/profile/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -160,7 +149,6 @@ export interface FileRouteTypes {
     | '/password/lost'
     | '/password/reset'
     | '/profile/create'
-    | '/profile/statistics'
   id:
     | '__root__'
     | '/'
@@ -175,7 +163,6 @@ export interface FileRouteTypes {
     | '/_public/password/lost'
     | '/_public/password/reset'
     | '/_auth/profile/_layout/create'
-    | '/_auth/profile/_layout/statistics'
     | '/_auth/profile/_layout/'
   fileRoutesById: FileRoutesById
 }
@@ -273,13 +260,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthProfileLayoutIndexRouteImport
       parentRoute: typeof AuthProfileLayoutRoute
     }
-    '/_auth/profile/_layout/statistics': {
-      id: '/_auth/profile/_layout/statistics'
-      path: '/statistics'
-      fullPath: '/profile/statistics'
-      preLoaderRoute: typeof AuthProfileLayoutStatisticsRouteImport
-      parentRoute: typeof AuthProfileLayoutRoute
-    }
     '/_auth/profile/_layout/create': {
       id: '/_auth/profile/_layout/create'
       path: '/create'
@@ -292,13 +272,11 @@ declare module '@tanstack/react-router' {
 
 interface AuthProfileLayoutRouteChildren {
   AuthProfileLayoutCreateRoute: typeof AuthProfileLayoutCreateRoute
-  AuthProfileLayoutStatisticsRoute: typeof AuthProfileLayoutStatisticsRoute
   AuthProfileLayoutIndexRoute: typeof AuthProfileLayoutIndexRoute
 }
 
 const AuthProfileLayoutRouteChildren: AuthProfileLayoutRouteChildren = {
   AuthProfileLayoutCreateRoute: AuthProfileLayoutCreateRoute,
-  AuthProfileLayoutStatisticsRoute: AuthProfileLayoutStatisticsRoute,
   AuthProfileLayoutIndexRoute: AuthProfileLayoutIndexRoute,
 }
 
