@@ -14,7 +14,7 @@ const ProfileId = () => {
   );
   const photos = data.pages.flat();
   return (
-    <div>
+    <section>
       <ProfileIdHeader profileId={params.profileId} />
       <Spacer className="my-12 bg-base-200" />
       {photos.length ? (
@@ -22,7 +22,7 @@ const ProfileId = () => {
       ) : (
         <ProfileIdNoPosts />
       )}
-    </div>
+    </section>
   );
 };
 

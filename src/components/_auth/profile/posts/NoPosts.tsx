@@ -4,7 +4,7 @@ import TitleSm from "../../../common/TitleSm";
 
 const NoPosts = () => {
   return (
-    <div className="flex flex-col gap-6 items-center text-center text-base-700">
+    <section className="flex flex-col gap-6 items-center text-center text-base-700">
       <BoneIcon />
       <TitleSm>Postar fotos</TitleSm>
       <p>Quando você postar fotos, elas aparecerão aqui.</p>
@@ -14,7 +14,7 @@ const NoPosts = () => {
       >
         Poste sua primeira foto!
       </Link>
-    </div>
+    </section>
   );
 };
 
