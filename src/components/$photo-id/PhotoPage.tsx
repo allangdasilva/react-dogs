@@ -24,7 +24,7 @@ const PhotoPage = () => {
   const { photo, comments } = data;
 
   return (
-    <section className="flex flex-col items-center">
+    <section className="flex flex-col items-center animate-content-in">
       <div className="w-full max-w-160">
         <div className="aspect-square rounded-base overflow-hidden">
           <Image src={photo.src} alt={photo.title} />

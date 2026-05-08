@@ -67,6 +67,7 @@
 
   --animate-modal-in: modal-in 0.15s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-modal-out: modal-out 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-content-in: content-in 0.25s ease-in;
 
   /* Keyframes aqui dentro estão perfeitos! */
   @keyframes modal-in {
@@ -89,6 +90,14 @@
       transform: scale(0.95);
     }
   }
+  @keyframes content-in {
+    from {
+      opacity: 0.6;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 /* Utilitários Customizados */
@@ -98,7 +107,7 @@
   @apply max-w-255 mx-auto;
 }
 @utility public-section-wrapper {
-  @apply grow grid sm:items-center sm:min-h-145 sm:grid-cols-2 sm:bg-base-100 sm:rounded-base sm:shadow-xl sm:shadow-base-300/50 sm:overflow-hidden;
+  @apply grow grid animate-content-in sm:items-center sm:min-h-145 sm:grid-cols-2 sm:bg-base-100 sm:rounded-base sm:shadow-xl sm:shadow-base-300/50 sm:overflow-hidden;
 }
 @utility public-section-background {
   @apply hidden sm:block sm:self-stretch sm:rounded-base sm:overflow-hidden;

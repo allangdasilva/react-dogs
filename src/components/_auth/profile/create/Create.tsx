@@ -7,7 +7,7 @@ const Create = () => {
   const [preview, setPreview] = useState<string | null>(null);
 
   return (
-    <section className="grid gap-8 md:grid-cols-2 md:gap-4 md:items-center">
+    <section className="grid gap-8 animate-content-in md:grid-cols-2 md:gap-4 md:items-center">
       <CreateForm preview={preview} setPreview={setPreview} />
       <div
         className={clsx(

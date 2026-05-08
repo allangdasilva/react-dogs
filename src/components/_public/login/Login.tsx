@@ -5,7 +5,7 @@ import Image from "../../helper/Image";
 
 const Login = () => {
   return (
-    <section className="public-section-wrapper">
+    <section className="public-section-wrapper animate-content-in">
       <div className="public-section-background">
         <Image alt="" aria-hidden="true" src="/img/login-bg.webp" />
       </div>

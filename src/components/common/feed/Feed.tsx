@@ -33,7 +33,7 @@ const Feed = ({ userId, isProfile }: Props) => {
   const photos = data.pages.flat();
 
   return (
-    <section className="w-full flex flex-col">
+    <section className="w-full flex flex-col animate-content-in">
       <ul className="grid grid-cols-2 gap-3 md:grid-cols-3">
         {photos.map((photo) => (
           <li
