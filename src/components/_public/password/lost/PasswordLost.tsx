@@ -10,7 +10,7 @@ const PasswordLost = () => {
       </div>
       <div className="public-section-form-wrapper">
         <div className="mb-6">
-          <TitleBase>Encontrar conta</TitleBase>
+          <TitleBase>Encontrar sua conta</TitleBase>
         </div>
 
         <PasswordLostForm />
