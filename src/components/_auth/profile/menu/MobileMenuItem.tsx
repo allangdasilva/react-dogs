@@ -25,7 +25,7 @@ const MobileMenuItem = ({ to, icon, label }: Props) => {
   const content = (
     <div className="flex gap-3">
       {icon}
-      <span>{label}</span>
+      <span className="text-neutral-dogs-900/90">{label}</span>
     </div>
   );
 
@@ -39,9 +39,9 @@ const MobileMenuItem = ({ to, icon, label }: Props) => {
             // Dinamicamente: Se você usa frameworks como React, Vue ou Next.js, você configura uma lógica para que o atributo apareça apenas quando a rota ativa coincidir com o href do link. Ou seja, esse aria-current: page só vai aparecer para o link que estiver ativo no momento
             // O tanstack router já adiciona esse atributo automaticamente, mas nesse caso aqui eu tive que colocar manualmente porque o post estava ficando como ativa sempre, então adicionei o atributo e coloquei o exact também
             "aria-current": "page",
+            className: "mobile-menu-active",
           }}
           activeOptions={{ exact: true }}
-          className="group"
           to={to}
         >
           {content}

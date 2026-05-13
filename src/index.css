@@ -10,30 +10,24 @@
 }
 
 :root {
-  --color-base-000: #ffffff;
-  --color-base-100: #f8f8f1;
-  --color-base-200: #f0ede6;
-  --color-base-300: #d9d6ce;
+  --color-neutral-dogs-100: #fafaf9;
+  --color-neutral-dogs-200: #f2f1ee;
+  --color-neutral-dogs-300: #eae7e1;
 
-  --color-base-500: #8c887e;
-
-  --color-base-700: #1f1c14;
-  --color-base-800: #19170f;
-  --color-base-900: #0c0b07;
+  --color-neutral-dogs-700: #272520;
+  --color-neutral-dogs-800: #21201c;
+  --color-neutral-dogs-900: #1b1a18;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-base-000: #000000;
-    --color-base-100: #0c0b07;
-    --color-base-200: #19170f;
-    --color-base-300: #1f1c14;
+    --color-neutral-dogs-100: #1b1a18;
+    --color-neutral-dogs-200: #21201c;
+    --color-neutral-dogs-300: #272520;
 
-    --color-base-500: #8c887e;
-
-    --color-base-700: #d9d6ce;
-    --color-base-800: #f0ede6;
-    --color-base-900: #f8f8f1;
+    --color-neutral-dogs-700: #eae7e1;
+    --color-neutral-dogs-800: #f2f1ee;
+    --color-neutral-dogs-900: #fafaf9;
   }
 }
 
@@ -47,23 +41,19 @@
 
   --radius-base: var(--radius-2xl);
 
-  --color-link: #0067b8;
-  --color-error: #b60c0c;
-
-  --color-primary: #ffbb11;
-  --color-primary-dark: #e3a302;
+  --color-link-500: #0067b8;
+  --color-error-500: #b60c0c;
+  --color-primary-500: #f6b81e;
+  --color-primary-600: #f2ae02;
 
   /* Referenciando as variáveis do :root */
-  --color-base-000: var(--color-base-000);
-  --color-base-100: var(--color-base-100);
-  --color-base-200: var(--color-base-200);
-  --color-base-300: var(--color-base-300);
+  --color-neutral-dogs-100: var(--color-neutral-dogs-100);
+  --color-neutral-dogs-200: var(--color-neutral-dogs-200);
+  --color-neutral-dogs-300: var(--color-neutral-dogs-300);
 
-  --color-base-500: var(--color-base-500);
-
-  --color-base-700: var(--color-base-700);
-  --color-base-800: var(--color-base-800);
-  --color-base-900: var(--color-base-900);
+  --color-neutral-dogs-700: var(--color-neutral-dogs-700);
+  --color-neutral-dogs-800: var(--color-neutral-dogs-800);
+  --color-neutral-dogs-900: var(--color-neutral-dogs-900);
 
   --animate-modal-in: modal-in 0.15s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-modal-out: modal-out 0.15s cubic-bezier(0.16, 1, 0.3, 1);
@@ -107,7 +97,7 @@
   @apply max-w-255 mx-auto;
 }
 @utility public-section-wrapper {
-  @apply grow grid animate-content-in sm:items-center sm:min-h-145 sm:grid-cols-2 sm:bg-base-100 sm:rounded-base sm:shadow-xl sm:shadow-base-300/50 sm:overflow-hidden;
+  @apply grow grid animate-content-in sm:items-center sm:min-h-145 sm:grid-cols-2 sm:bg-neutral-dogs-100 sm:border sm:border-neutral-dogs-200 sm:rounded-base sm:overflow-hidden;
 }
 @utility public-section-background {
   @apply hidden sm:block sm:self-stretch sm:rounded-base sm:overflow-hidden;
@@ -124,54 +114,49 @@
 
 /* Utilitários de Botão/Link */
 @utility button-form {
-  @apply w-full py-3 px-6 font-body-sm font-semibold text-center rounded-base cursor-pointer whitespace-nowrap outline-interactive-primary transition-colors-no-outline;
-}
-@utility bg-interactive {
-  @apply hover:bg-base-300 focus-visible:bg-base-300;
+  @apply w-full py-3 px-6 font-body-primary font-semibold text-center rounded-base cursor-pointer whitespace-nowrap outline-interactive-primary-500 transition-colors-no-outline;
 }
 @utility bg-interactive-200 {
-  @apply bg-base-200 hover:bg-base-300 focus-visible:bg-base-300;
+  @apply bg-neutral-dogs-200 hover:bg-neutral-dogs-300 focus-visible:bg-neutral-dogs-300;
 }
-@utility bg-interactive-700 {
-  @apply bg-base-700 hover:bg-base-500 focus-visible:bg-base-500;
+@utility bg-interactive-800 {
+  @apply bg-neutral-dogs-800 hover:bg-neutral-dogs-700 focus-visible:bg-neutral-dogs-700;
 }
-@utility bg-interactive-primary {
-  @apply bg-primary hover:bg-primary-dark focus-visible:bg-primary-dark;
-}
-@utility icon-interactive-fill-primary {
-  @apply *:group-hover:fill-primary *:group-focus-visible:fill-primary *:transition-colors-no-outline *:ease-in;
+@utility bg-interactive-primary-500 {
+  @apply bg-primary-500 hover:bg-primary-600 focus-visible:bg-primary-600;
 }
 @utility input-interactive {
-  @apply border border-base-300 outline-0 bg-base-100 hover:border-base-500 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:bg-base-000;
+  @apply outline-0 bg-neutral-dogs-200 hover:outline-1 hover:outline-neutral-dogs-900/30 focus-visible:outline-2 focus-visible:outline-primary-600 focus-visible:ring-4 focus-visible:ring-primary-500/40 focus-visible:bg-neutral-dogs-100;
 }
-@utility outline-interactive-primary {
-  @apply focus-visible:outline-offset-2 focus-visible:outline-2 focus-visible:outline-primary;
+@utility outline-interactive-primary-500 {
+  @apply focus-visible:outline-offset-2 focus-visible:outline-2 focus-visible:outline-primary-500;
 }
-@utility link-sm-underline-blue {
-  @apply text-link hover:underline focus-visible:underline outline-none;
+@utility link-underline-blue {
+  @apply text-link-500 hover:underline focus-visible:underline outline-none;
+}
+@utility mobile-menu-active {
+  @apply **:stroke-primary-500! **:text-primary-500!;
+}
+@utility anchor-color-active {
+  @apply **:stroke-[#1b1a18]!  *:text-[#1b1a18]!;
 }
 
 /* Utilitários de Tipografia */
-@utility font-label-base {
-  @apply text-[0.625rem] leading-3;
+@utility font-icon-label {
+  @apply text-[0.625rem] leading-3 font-semibold;
 }
-@utility font-body-xs {
-  @apply text-xs leading-4 ease-in;
-}
-@utility font-body-sm {
+@utility font-body-primary {
   @apply text-sm leading-5;
 }
-@utility font-body-base {
-  @apply text-base leading-6;
+@utility font-title-secondary {
+  @apply text-2xl leading-7 font-bold;
 }
-@utility font-title-sm {
-  @apply text-[2rem] leading-8 font-bold;
+@utility font-title-primary {
+  @apply text-[2rem] leading-9 font-bold;
 }
-@utility font-title-base {
-  @apply text-5xl leading-14 font-bold;
-}
+
 @utility paragraph-inline-700 {
-  @apply inline font-body-base text-base-700;
+  @apply inline font-body-primary text-neutral-dogs-900;
 }
 
 /* Utilitários de Transição */
@@ -181,4 +166,10 @@
     color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
   transition-duration: 150ms;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-neutral-dogs-100);
+  }
 }

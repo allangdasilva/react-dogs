@@ -1,4 +1,4 @@
-const CloseIcon = () => {
+const CreateIcon = () => {
   return (
     <svg
       width={24}
@@ -7,16 +7,15 @@ const CloseIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <title>Fechar</title>
+      <title>Criar</title>
       <path
-        d="M18 18L12 12M12 12L6 6M12 12L18 6M12 12L6 18"
+        d="M12 20V12M12 4V12M12 12H20M12 12H4"
         stroke="var(--color-neutral-dogs-900)"
         strokeWidth={1.5}
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
     </svg>
   );
 };
 
-export default CloseIcon;
+export default CreateIcon;

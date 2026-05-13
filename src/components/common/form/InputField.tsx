@@ -8,7 +8,7 @@ type Props = React.InputHTMLAttributes<HTMLInputElement> & {
 
 const InputField = ({ id, label, error, ...props }: Props) => {
   return (
-    <div className="flex flex-col font-body-base text-base-700">
+    <div className="flex flex-col font-body-primary text-neutral-dogs-900/90">
       <label className="pb-2 cursor-pointer" htmlFor={id}>
         {label}
       </label>
@@ -17,7 +17,7 @@ const InputField = ({ id, label, error, ...props }: Props) => {
         aria-invalid={!!error}
         // Se o erro existir: vincula esse elemento (input) à mensagem de erro através do id
         aria-describedby={error ? `${id}-error` : undefined}
-        className="w-full px-4 py-3 rounded-base input-interactive  placeholder:text-base-300 transition-colors-no-outline"
+        className="w-full px-4 py-3 rounded-base input-interactive  placeholder:text-neutral-dogs-900/30"
         id={id}
         // O atributo autocomplete no HTML é uma diretriz que informa ao navegador se ele deve ou não preencher automaticamente um campo de formulário com base em dados salvos anteriormente pelo usuário.
         // O Google Chrome incentiva o uso de autocomplete com os valores corretos principalmente por razões de usabilidade e acessibilidade
@@ -27,7 +27,10 @@ const InputField = ({ id, label, error, ...props }: Props) => {
         {...props}
       />
       {error && (
-        <span id={`${id}-error`} className="mt-1 font-body-sm text-error">
+        <span
+          id={`${id}-error`}
+          className="mt-1 font-body-primary text-error-500"
+        >
           {error.message}
         </span>
       )}

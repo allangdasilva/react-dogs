@@ -3,7 +3,9 @@ type Props = React.HTMLAttributes<HTMLSpanElement> & {
 };
 
 const ErrorForm = ({ error }: Props) => {
-  return <span className="font-body-sm text-error">{error.message}</span>;
+  return (
+    <span className="font-body-primary text-error-500">{error.message}</span>
+  );
 };
 
 export default ErrorForm;

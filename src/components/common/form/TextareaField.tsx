@@ -10,7 +10,7 @@ const TextareaField = ({ id, label, ...props }: Props) => {
         {label}
       </label>
       <textarea
-        className="w-full px-4 py-3 rounded-base resize-none input-interactive text-base-700 placeholder:text-base-300 transition-colors-no-outline"
+        className="w-full px-4 py-3 rounded-base resize-none input-interactive text-neutral-dogs-900/90 placeholder:text-neutral-dogs-900/30 transition-colors-no-outline"
         id={id}
         {...props}
       ></textarea>

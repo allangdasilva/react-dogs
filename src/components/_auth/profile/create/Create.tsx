@@ -27,7 +27,7 @@ const Create = () => {
             )}
           >
             <PetBowlIcon />
-            <span className="font-body-base text-base-300">
+            <span className="font-body-primary text-neutral-dogs-300">
               Adicione uma foto.
             </span>
           </div>

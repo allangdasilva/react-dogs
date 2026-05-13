@@ -38,7 +38,7 @@ const Feed = ({ userId, isProfile }: Props) => {
         {photos.map((photo) => (
           <li
             className={clsx(
-              "relative grid rounded-base aspect-square overflow-hidden  transition-colors-no-outline has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary outline-base-900",
+              "relative grid rounded-base aspect-square overflow-hidden  transition-colors-no-outline has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary-500",
               {
                 "md:nth-2:col-start-2 md:nth-2:col-end-4 md:nth-2:row-span-2":
                   !isProfile,
@@ -60,7 +60,7 @@ const Feed = ({ userId, isProfile }: Props) => {
       )}
 
       {!hasNextPage && !isProfile ? (
-        <p className="font-body-base text-base-500 text-center mt-12">
+        <p className="font-body-primary text-neutral-dogs-900/40 text-center mt-12">
           Isso é tudo por enquanto.
         </p>
       ) : null}

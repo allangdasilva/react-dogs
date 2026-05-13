@@ -1,4 +1,4 @@
-import TitleBase from "../../common/TitleBase";
+import Heading1 from "../../common/Heading1";
 import Image from "../../helper/Image";
 import SignupForm from "./SignupForm";
 
@@ -10,7 +10,7 @@ const Signup = () => {
       </div>
       <div className="public-section-form-wrapper">
         <div className="mb-6">
-          <TitleBase>Criar Conta</TitleBase>
+          <Heading1>Criar Conta</Heading1>
         </div>
 
         <SignupForm />

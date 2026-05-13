@@ -1,5 +1,5 @@
-import TitleBase from "../common/TitleBase";
-import TitleSm from "../common/TitleSm";
+import Heading1 from "../common/Heading1";
+import Heading2 from "../common/Heading2";
 
 type Props = React.HTMLAttributes<HTMLElement> & {
   profileId: string;
@@ -8,8 +8,8 @@ type Props = React.HTMLAttributes<HTMLElement> & {
 const ProfileIdHeader = ({ profileId }: Props) => {
   return (
     <header className="flex flex-col gap-4 justify-between items-center flex-wrap xxs:flex-row">
-      <TitleBase>Posts</TitleBase>
-      <TitleSm>@{profileId}</TitleSm>
+      <Heading1>Posts</Heading1>
+      <Heading2>@{profileId}</Heading2>
     </header>
   );
 };

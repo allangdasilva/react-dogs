@@ -16,7 +16,7 @@ const ProfileId = () => {
   return (
     <section>
       <ProfileIdHeader profileId={params.profileId} />
-      <Spacer className="my-12 bg-base-200" />
+      <Spacer className="my-12 bg-neutral-dogs-200" />
       {photos.length ? (
         <Feed isProfile={true} userId={params.profileId} />
       ) : (

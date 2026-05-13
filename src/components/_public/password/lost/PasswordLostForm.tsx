@@ -45,7 +45,7 @@ const PasswordLostForm = () => {
           />
         </div>
 
-        <div className="mt-6">
+        <div className="mt-4">
           <ButtonSubmit disabled={isPending}>
             {isPending ? "Enviando..." : "Enviar"}
           </ButtonSubmit>

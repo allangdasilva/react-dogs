@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { useLocation } from "@tanstack/react-router";
 import clsx from "clsx";
 import { useAuthStore } from "../features/auth/store/auth.store";
 import { userQueryOptions } from "../features/auth/api/queries/user.query";
@@ -8,6 +7,7 @@ import AnchorLabel from "./common/AnchorLabel";
 import HomeIcon from "./svgs/HomeIcon";
 import ProfileIcon from "./svgs/ProfileIcon";
 import SignupIcon from "./svgs/SignupIcon";
+import LoginIcon from "./svgs/LoginIcon";
 
 const Header = () => {
   const token = useAuthStore((s) => s.token);
@@ -16,15 +16,21 @@ const Header = () => {
   const { data: user } = useQuery(userQueryOptions(token));
 
   return (
-    <header className="fixed top-0 left-0 w-full z-40 bg-base-100">
+    <header className="fixed top-0 left-0 w-full z-40 backdrop-blur-md border-b border-neutral-dogs-200/90 bg-neutral-dogs-100/90">
       <div className="max-w-base px-4 py-3">
         <nav
           className={clsx(
-            "flex flex-col items-center justify-center gap-3 text-base-700 xs:flex-row xs:justify-between",
+            "flex flex-col items-center justify-center gap-3 xs:flex-row xs:justify-between",
             { "xxs:flex-row xxs:justify-between": user },
           )}
         >
-          <AnchorRouter className="bg-interactive" to="/">
+          <AnchorRouter
+            className="bg-interactive-200"
+            to="/"
+            activeProps={{
+              className: "bg-interactive-primary-500 anchor-color-active",
+            }}
+          >
             <HomeIcon />
             <AnchorLabel>Início</AnchorLabel>
           </AnchorRouter>
@@ -42,9 +48,11 @@ function AuthBar() {
   return (
     <div>
       <AnchorRouter
-        to="/profile"
-        activeProps={{ className: "bg-interactive-primary" }}
         className="bg-interactive-200"
+        to="/profile"
+        activeProps={{
+          className: "bg-interactive-primary-500 anchor-color-active",
+        }}
       >
         <ProfileIcon />
         <AnchorLabel>Perfil</AnchorLabel>
@@ -54,27 +62,23 @@ function AuthBar() {
 }
 
 function PublicBar() {
-  // Verificamos se a rota atual é exatamente a de cadastro
-  // O 'strict: false' evita erros se a rota ainda não estiver carregada
-  const location = useLocation();
-  const isSignupActive = location.pathname === "/signup";
-
   return (
     <div className="flex items-center justify-center gap-3">
       <AnchorRouter
-        className={
-          isSignupActive ? "bg-interactive-200" : "bg-interactive-primary"
-        }
+        className="bg-interactive-200"
         to="/login"
+        activeProps={{ className: "bg-interactive-primary-500" }}
       >
-        <ProfileIcon />
-        <AnchorLabel>Entrar</AnchorLabel>
+        <LoginIcon />
+        <AnchorLabel className="text-link-500!">Entrar</AnchorLabel>
       </AnchorRouter>
 
       <AnchorRouter
         className="bg-interactive-200"
         to="/signup"
-        activeProps={{ className: "bg-interactive-primary" }}
+        activeProps={{
+          className: "bg-interactive-primary-500 anchor-color-active",
+        }}
       >
         <SignupIcon />
         <AnchorLabel>Criar conta</AnchorLabel>

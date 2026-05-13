@@ -1,4 +1,4 @@
-import TitleBase from "../../../common/TitleBase";
+import Heading1 from "../../../common/Heading1";
 import Image from "../../../helper/Image";
 import PasswordResetForm from "./PasswordResetForm";
 
@@ -10,7 +10,7 @@ const PasswordReset = () => {
       </div>
       <div className="public-section-form-wrapper">
         <div className="mb-6">
-          <TitleBase>Resetar Senha</TitleBase>
+          <Heading1>Resetar Senha</Heading1>
         </div>
 
         <PasswordResetForm />

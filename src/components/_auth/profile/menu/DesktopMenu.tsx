@@ -3,9 +3,9 @@ import { useNavigate } from "@tanstack/react-router";
 import { useAuthStore } from "../../../../features/auth/store/auth.store";
 import AnchorLabel from "../../../common/AnchorLabel";
 import AnchorRouter from "../../../common/AnchorRouter";
-import AddIcon from "../../../svgs/AddIcon";
 import ExitIcon from "../../../svgs/ExitIcon";
 import PostsIcon from "../../../svgs/PostsIcon";
+import CreateIcon from "../../../svgs/CreateIcon";
 
 const DesktopMenu = () => {
   const logout = useAuthStore((state) => state.logout);
@@ -27,7 +27,7 @@ const DesktopMenu = () => {
       <AnchorRouter
         activeOptions={{ exact: true }}
         activeProps={{
-          className: "bg-interactive-primary",
+          className: "bg-interactive-primary-500 anchor-color-active",
         }}
         className="bg-interactive-200"
         to="/profile"
@@ -36,16 +36,18 @@ const DesktopMenu = () => {
         <AnchorLabel>Posts</AnchorLabel>
       </AnchorRouter>
       <AnchorRouter
-        activeProps={{ className: "bg-interactive-primary" }}
+        activeProps={{
+          className: "bg-interactive-primary-500 anchor-color-active",
+        }}
         className="bg-interactive-200"
         to="/profile/create"
       >
-        <AddIcon />
+        <CreateIcon />
         <AnchorLabel>Criar</AnchorLabel>
       </AnchorRouter>
       <button
         onClick={handleLogout}
-        className="flex flex-col items-center px-4 py-2 rounded-base whitespace-nowrap outline-interactive-primary cursor-pointer group"
+        className="flex flex-col items-center px-4 py-2 rounded-base outline-interactive-primary-500 cursor-pointer bg-interactive-200"
       >
         <ExitIcon />
         <AnchorLabel>Sair</AnchorLabel>

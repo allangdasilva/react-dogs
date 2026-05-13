@@ -1,4 +1,4 @@
-import TitleBase from "../../../common/TitleBase";
+import Heading1 from "../../../common/Heading1";
 import Image from "../../../helper/Image";
 import PasswordLostForm from "./PasswordLostForm";
 
@@ -10,7 +10,7 @@ const PasswordLost = () => {
       </div>
       <div className="public-section-form-wrapper">
         <div className="mb-6">
-          <TitleBase>Encontrar sua conta</TitleBase>
+          <Heading1>Encontrar sua conta</Heading1>
         </div>
 
         <PasswordLostForm />

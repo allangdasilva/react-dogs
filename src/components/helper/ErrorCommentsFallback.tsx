@@ -16,7 +16,7 @@ const ErrorCommentsFallback = ({ error, resetErrorBoundary }: any) => {
       </p>
       <button
         type="button"
-        className="font-body-base link-sm-underline-blue cursor-pointer"
+        className="font-body-primary link-underline-blue cursor-pointer"
         onClick={resetErrorBoundary} // Ao clicar, ele chama o onReset
       >
         Tentar novamente

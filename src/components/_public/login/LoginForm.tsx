@@ -1,5 +1,6 @@
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { Link } from "@tanstack/react-router";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Route } from "../../../routes/_public/login";
 import { useLoginMutation } from "../../../features/auth/api/mutations/useLoginMutation";
 import Form from "../../common/form/Form";
@@ -60,10 +61,18 @@ const LoginForm = () => {
           />
         </div>
 
-        <div className="mt-6">
+        <div className="mt-4 flex flex-col gap-3">
           <ButtonSubmit disabled={isPending}>
             {isPending ? "Entrando..." : "Entrar"}
           </ButtonSubmit>
+
+          <Link
+            type="button"
+            to="/password/lost"
+            className="button-form text-neutral-dogs-900/90 bg-interactive-200"
+          >
+            Esqueceu a Senha?
+          </Link>
         </div>
 
         <div className="mt-1">{isError && <ErrorForm error={error} />}</div>

@@ -9,7 +9,7 @@ const ButtonSubmit = ({ children, ...props }: Props) => {
     <button
       className={clsx(
         props.className,
-        "button-form bg-interactive-700 text-base-100 disabled:hover:bg-base-700 disabled:focus-visible:bg-base-700 disabled:cursor-default",
+        "button-form bg-interactive-800 text-neutral-dogs-100/90 disabled:hover:bg-neutral-dogs-800 disabled:focus-visible:bg-neutral-dogs-800 disabled:cursor-default",
       )}
       tabIndex={props.tabIndex}
       disabled={props.disabled}

@@ -104,7 +104,7 @@ const CreateForm = ({ preview, setPreview }: Props) => {
           />
         </div>
 
-        <div className="mt-6">
+        <div className="mt-4">
           <ButtonSubmit disabled={isPending}>
             {isPending ? "Postando..." : "Postar"}
           </ButtonSubmit>

@@ -9,11 +9,11 @@ const ModalComments = ({ photo_id }: Props) => {
   const { data } = useSuspenseQuery(photoQueryOptions(photo_id));
 
   return (
-    <ul className="mt-2">
+    <ul className="flex flex-col-reverse mt-2">
       {data.comments.map((comment) => (
         <li
           key={comment.comment_ID}
-          className="font-body-sm text-base-700 *:wrap-break-word"
+          className="font-body-primary text-neutral-dogs-900/90 *:wrap-break-word"
         >
           <h3 className="font-semibold inline">{comment.comment_author}: </h3>
           <span className="min-w-0">{comment.comment_content}</span>

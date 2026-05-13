@@ -26,7 +26,7 @@ const ModalHeader = ({ photo, isPhotoPage = false }: Props) => {
   return (
     <header
       className={clsx(
-        "p-3 flex justify-between items-center gap-1 bg-base-100",
+        "p-3 flex justify-between items-center gap-1 border-b border-neutral-dogs-200 bg-neutral-dogs-100",
         { "flex-row-reverse": isAuthor }, // se o dono da foto (logado obviamente) é quem está vendo a foto, então inverte os lados do flex
       )}
     >
@@ -48,13 +48,15 @@ const ModalHeader = ({ photo, isPhotoPage = false }: Props) => {
         {shouldShowViews ? (
           <div className="flex items-center gap-1">
             <EyeIcon />
-            <span className="font-body-xs text-base-500">{photo.acessos}</span>
+            <span className="font-body-primary text-neutral-dogs-900/40">
+              {photo.acessos}
+            </span>
           </div>
         ) : (
           // é photoPage, mas é o usuário? então mostra: visualização + lixeira (ou seja, esse span aqui debaixo nem vai ser usado, ele só é usado no modal)
           // não é photoPage e nem é o usuário? então mostra: link + visualização (nem mostra esse span abaixo, pois shouldShowViews é true (por causa do !isAuthor))
           // não é photoPage, mas é o usuário, daí sim mostra esse span (que é o único momento que ele aparece, que é no modal)
-          <span className="font-body-base font-semibold text-base-700">
+          <span className="font-body-primary font-semibold text-neutral-dogs-900/90">
             @{photo.author}
           </span>
         )}
@@ -76,7 +78,7 @@ function NavigationLink({
 }) {
   const content = (
     <Link
-      className="font-body-sm link-sm-underline-blue wrap-break-word min-w-0"
+      className="font-body-primary link-underline-blue wrap-break-word min-w-0"
       to="/$profileId"
       params={{ profileId: author }}
     >

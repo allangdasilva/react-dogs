@@ -18,7 +18,7 @@ const Image = ({ ...props }: Props) => {
   return (
     <div className="w-full h-full flex-1">
       {!loaded && (
-        <div className="w-full h-full animate-pulse bg-base-200"></div>
+        <div className="w-full h-full animate-pulse bg-neutral-dogs-200"></div>
       )}
       <img
         ref={imgRef}

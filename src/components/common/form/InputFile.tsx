@@ -1,5 +1,4 @@
 import type { FieldError } from "react-hook-form";
-import UploadIcon from "../../svgs/UploadIcon";
 
 type Props = React.InputHTMLAttributes<HTMLInputElement> & {
   id: string;
@@ -19,21 +18,14 @@ const InputFile = ({ id, label, error, preview, ...props }: Props) => {
         // Se o erro existir: vincula esse elemento (input) à mensagem de erro através do id
         aria-describedby={error ? `${id}-error` : undefined}
         htmlFor={id}
-        className="flex items-center justify-center gap-3 button-form text-base-700 bg-interactive-200 peer-focus-visible:bg-base-300 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-2 peer-focus-visible:outline-primary"
+        className="flex items-center justify-center gap-3 button-form text-neutral-dogs-900/90 bg-interactive-200 peer-focus:bg-neutral-dogs-300 peer-focus:outline-offset-2 peer-focus:outline-2 peer-focus:outline-primary-500"
       >
-        {preview ? (
-          "Alterar foto"
-        ) : (
-          <>
-            <UploadIcon />
-            {label}
-          </>
-        )}
+        {preview ? "Alterar foto" : `${label}`}
       </label>
       {error && (
         <span
           id={`${id}-error`}
-          className="mt-1 font-body-sm text-left text-error"
+          className="mt-1 font-body-primary text-left text-error-500"
         >
           {error.message}
         </span>

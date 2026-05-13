@@ -11,9 +11,9 @@ import Image from "../helper/Image";
 import ErrorCommentsFallback from "../helper/ErrorCommentsFallback";
 import ModalDescription from "../common/feed/modal/ModalDescription";
 import ModalFormComment from "../common/feed/modal/ModalFormComment";
-import TitleSm from "../common/TitleSm";
-import PhotoPageComments from "./PhotoPageComments";
 import ModalHeader from "../common/feed/modal/ModalHeader";
+import Heading2 from "../common/Heading2";
+import PhotoPageComments from "./PhotoPageComments";
 
 const PhotoPage = () => {
   const params = useParams({ from: "/photo/$photoId" });
@@ -36,9 +36,9 @@ const PhotoPage = () => {
           </div>
 
           {/* infos */}
-          <div className="p-3 rounded-base bg-base-100">
+          <div className="p-3 rounded-base bg-neutral-dogs-200">
             <div className="mb-1">
-              <TitleSm>{photo.title}</TitleSm>
+              <Heading2>{photo.title}</Heading2>
             </div>
             <ModalDescription photo={photo} />
           </div>

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { type ErrorComponentProps } from "@tanstack/react-router";
 import clsx from "clsx";
-import TitleBase from "../common/TitleBase";
+import Heading1 from "../common/Heading1";
 
 type Props = ErrorComponentProps & {
   isRoot?: boolean;
@@ -20,7 +20,7 @@ const ErrorGeneral = ({ isRoot, error, reset }: Props) => {
         "px-4 py-12": isRoot,
       })}
     >
-      <TitleBase>Ops! Algo deu errado.</TitleBase>
+      <Heading1>Ops! Algo deu errado.</Heading1>
       <div className="max-w-prose">
         <p className="paragraph-inline-700">
           Ocorreu um erro técnico ao carregar esta página. Pode ser uma
@@ -28,7 +28,7 @@ const ErrorGeneral = ({ isRoot, error, reset }: Props) => {
         </p>
         <button
           type="button"
-          className="font-body-base link-sm-underline-blue cursor-pointer"
+          className="font-body-primary link-underline-blue cursor-pointer"
           onClick={() => reset()}
         >
           Tentar novamente

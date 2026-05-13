@@ -49,7 +49,7 @@ const PasswordResetForm = () => {
           />
         </div>
 
-        <div className="mt-6">
+        <div className="mt-4">
           {/* as vezes um ternário causa salto visual em componentes, então altere só o estado insterno para garantir que não tenha esse salto */}
           <ButtonSubmit disabled={isPending}>
             {isPending ? "Alterando..." : "Alterar"}
@@ -62,7 +62,7 @@ const PasswordResetForm = () => {
               <ErrorForm error={error} />{" "}
               <Link
                 to="/password/lost"
-                className="font-body-sm link-sm-underline-blue"
+                className="font-body-primary link-underline-blue"
               >
                 Solicitar novo link.
               </Link>

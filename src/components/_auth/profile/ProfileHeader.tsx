@@ -1,5 +1,5 @@
 import { useMatches } from "@tanstack/react-router";
-import TitleBase from "../../common/TitleBase";
+import Heading1 from "../../common/Heading1";
 import DesktopMenu from "./menu/DesktopMenu";
 import MobileMenu from "./menu/MobileMenu";
 
@@ -15,7 +15,7 @@ const ProfileHeader = () => {
   return (
     <header className="flex flex-col">
       <div className="flex flex-col gap-4 justify-between items-center flex-wrap xxs:flex-row">
-        <TitleBase>{pageTitle}</TitleBase>
+        <Heading1>{pageTitle}</Heading1>
         <nav>
           <MobileMenu />
           <DesktopMenu />

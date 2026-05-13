@@ -31,11 +31,11 @@ const Modal = ({ photo }: Props) => {
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-base-700/40 z-50" />
+        <Dialog.Overlay className="fixed inset-0 bg-[#1b1a18]/40 z-50" />
 
-        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-1/2 w-4/5 h-4/5 max-w-255 max-h-170 flex flex-col overflow-auto rounded-base shadow-lg z-60 scrollbar-none md:grid md:grid-cols-3 md:grid-rows-1 will-change-auto data-[state=open]:animate-modal-in">
+        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-1/2 w-4/5 h-4/5 max-w-255 max-h-170 flex flex-col overflow-auto rounded-base z-60 bg-neutral-dogs-100  md:grid md:grid-cols-3 md:grid-rows-1 will-change-auto data-[state=open]:animate-modal-in dark:border dark:border-neutral-dogs-200/90">
           {/* Imagem */}
-          <div className="max-h-4/5 md:max-h-none md:col-span-2 bg-black">
+          <div className="max-h-4/5 md:max-h-none md:col-span-2 bg-[#1b1a18]">
             <img
               className="w-full h-full object-contain"
               src={photo.src}
@@ -44,17 +44,17 @@ const Modal = ({ photo }: Props) => {
           </div>
 
           {/* Conteúdo */}
-          <div className="flex flex-col bg-base-000">
+          <div className="flex flex-col bg-neutral-dogs-100">
             {/* Link do perfil e Visualizações */}
             <ModalHeader photo={photo} />
 
             {/* Título, Descrição e Comentários*/}
-            <div className="p-3 h-full overflow-y-scroll scrollbar-none bg-base-000">
+            <div className="p-3 h-full overflow-y-scroll scrollbar-none bg-neutral-dogs-100">
               {/* Título */}
-              <Dialog.Title className="font-title-sm wrap-break-word min-w-0 text-base-700 mb-1">
+              <Dialog.Title className="font-title-secondary wrap-break-word min-w-0 text-neutral-dogs-900 mb-1">
                 <Dialog.Close className="w-full" asChild>
                   <Link
-                    className="flex justify-between items-center gap-1 outline-interactive-primary rounded-sm group"
+                    className="flex justify-between items-center gap-1 outline-interactive-primary-500 rounded-sm group"
                     to="/photo/$photoId"
                     params={{ photoId: photoId }}
                     aria-label="Ir para o post"
@@ -77,7 +77,7 @@ const Modal = ({ photo }: Props) => {
               {/* Descrição */}
               <ModalDescription photo={photo} />
 
-              <Spacer className="mt-2 bg-base-200" />
+              <Spacer className="mt-2 bg-neutral-dogs-200" />
 
               {/* Comentários */}
               {/* O Suspense permite que você "delegue" o estado de loading para um pai. Quando o useSuspenseQuery é chamado, ele "suspende" o componente e mostra o fallback mais próximo. */}
@@ -107,12 +107,15 @@ const Modal = ({ photo }: Props) => {
             </div>
 
             {/* Formulário de comentar */}
-            <ModalFormComment className="p-3 bg-base-100" photo_id={photo.id} />
+            <ModalFormComment
+              className="p-3 border-t border-neutral-dogs-200 bg-neutral-dogs-100"
+              photo_id={photo.id}
+            />
           </div>
 
           <Dialog.Close
             aria-label="Fechar modal"
-            className="absolute top-3 left-3 rounded-full p-0.5 cursor-pointer bg-base-100/50 hover:bg-base-100 focus-visible:bg-base-100 outline-interactive-primary transition-colors-no-outline"
+            className="absolute top-3 left-3 rounded-full p-0.5 cursor-pointer bg-neutral-dogs-200/50 hover:bg-neutral-dogs-200 focus-visible:bg-neutral-dogs-200 outline-interactive-primary-500 transition-colors-no-outline"
           >
             <CloseIcon />
           </Dialog.Close>
