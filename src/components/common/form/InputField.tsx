@@ -17,7 +17,7 @@ const InputField = ({ id, label, error, ...props }: Props) => {
         aria-invalid={!!error}
         // Se o erro existir: vincula esse elemento (input) à mensagem de erro através do id
         aria-describedby={error ? `${id}-error` : undefined}
-        className="w-full px-4 py-3 rounded-base input-interactive  placeholder:text-neutral-dogs-900/30"
+        className="w-full px-4 py-3 rounded-base input-interactive no-spinners  placeholder:text-neutral-dogs-900/30"
         id={id}
         // O atributo autocomplete no HTML é uma diretriz que informa ao navegador se ele deve ou não preencher automaticamente um campo de formulário com base em dados salvos anteriormente pelo usuário.
         // O Google Chrome incentiva o uso de autocomplete com os valores corretos principalmente por razões de usabilidade e acessibilidade

@@ -169,7 +169,25 @@
 }
 
 @layer base {
+  /* html: É a raiz do documento. Ele sempre ocupa 100% da viewport (a tela toda). Se você colocar o background nele, ele sempre vai colorir a tela inteira, não importa se sua página tem pouco conteúdo ou muito.
+  body: É o primeiro filho do html. Ele tem o tamanho do seu conteúdo. Se sua página tem apenas um parágrafo de texto, o body terá apenas a altura desse parágrafo.
+  Melhor prática? usar body com min-height: 100dvh */
   body {
     background-color: var(--color-neutral-dogs-100);
+    /* Garante que o body OCUPE pelo menos a altura da tela inteira */
+    min-height: 100dvh;
+  }
+
+  /* Para remover os controladores (setas de incremento e decremento/spinners) de um campo <input type="number"> : */
+  /* aborda navegadores baseados em WebKit (Chrome, Safari, Edge) */
+  .no-spinners::-webkit-inner-spin-button,
+  .no-spinners::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  .no-spinners {
+    -moz-appearance: textfield;
+    appearance: textfield;
   }
 }
