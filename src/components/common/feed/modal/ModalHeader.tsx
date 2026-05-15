@@ -17,6 +17,12 @@ const ModalHeader = ({ photo, isPhotoPage = false }: Props) => {
   const token = useAuthStore((s) => s.token);
   const { data: user } = useQuery(userQueryOptions(token));
 
+  // formartando número de acessos
+  // Esta é a API nativa mais eficiente e segura para formatação regional.
+  // pt-BR garante o uso do ponto como separador de milhar.
+  const views = photo.acessos;
+  const formatter = new Intl.NumberFormat("pt-BR");
+
   // Lógica extraída para variáveis
   // É o dono da foto?
   const isAuthor = user?.username === photo.author;
@@ -44,18 +50,14 @@ const ModalHeader = ({ photo, isPhotoPage = false }: Props) => {
       </div>
 
       <div className="flex items-center">
-        {/* se isPhotoPage for true (é a página única) OU se o usuário não é o dono da foto (isso conta para o usuário deslogado obviamente), então mostra as visualizações. mas tenha em mente, PODE ser photoPage e o usuário estar logado, que também vai aparecer (por isso do || 'OU')  */}
-        {shouldShowViews ? (
+        {!isPhotoPage && !isAuthor ? null : shouldShowViews ? (
           <div className="flex items-center gap-1">
             <EyeIcon />
             <span className="font-body-primary text-neutral-dogs-900/40">
-              {photo.acessos}
+              {formatter.format(views)}
             </span>
           </div>
         ) : (
-          // é photoPage, mas é o usuário? então mostra: visualização + lixeira (ou seja, esse span aqui debaixo nem vai ser usado, ele só é usado no modal)
-          // não é photoPage e nem é o usuário? então mostra: link + visualização (nem mostra esse span abaixo, pois shouldShowViews é true (por causa do !isAuthor))
-          // não é photoPage, mas é o usuário, daí sim mostra esse span (que é o único momento que ele aparece, que é no modal)
           <span className="font-body-primary font-semibold text-neutral-dogs-900/90">
             @{photo.author}
           </span>
