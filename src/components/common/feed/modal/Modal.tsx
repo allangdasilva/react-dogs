@@ -33,9 +33,9 @@ const Modal = ({ photo }: Props) => {
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-[#1b1a18]/40 z-50" />
 
-        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-1/2 w-4/5 h-4/5 max-w-255 max-h-170 flex flex-col overflow-auto rounded-base z-60 bg-neutral-dogs-100  md:grid md:grid-cols-3 md:grid-rows-1 will-change-auto data-[state=open]:animate-modal-in dark:border dark:border-neutral-dogs-200/90">
+        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-1/2 w-4/5 h-4/5 max-w-255 max-h-170 flex flex-col overflow-auto rounded-base z-60 bg-neutral-dogs-100 md:grid md:grid-cols-3 md:grid-rows-1 will-change-auto data-[state=open]:animate-modal-in">
           {/* Imagem */}
-          <div className="max-h-4/5 md:max-h-none md:col-span-2 bg-[#1b1a18]">
+          <div className="max-h-4/5 md:max-h-none md:col-span-2 bg-[#0f0e0e]">
             <img
               className="w-full h-full object-contain"
               src={photo.src}
@@ -44,7 +44,7 @@ const Modal = ({ photo }: Props) => {
           </div>
 
           {/* Conteúdo */}
-          <div className="flex flex-col bg-neutral-dogs-100">
+          <div className="flex flex-col bg-neutral-dogs-100 dark:border-t dark:border-neutral-dogs-200 md:overflow-hidden md:rounded-r-base md:dark:border-r md:dark:border-b md:dark:border-neutral-dogs-200">
             {/* Link do perfil e Visualizações */}
             <ModalHeader photo={photo} />
 

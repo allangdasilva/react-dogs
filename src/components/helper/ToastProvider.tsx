@@ -11,6 +11,8 @@ const ToastProvider = () => {
           lineHeight: "24px",
           color: "#1f1c14",
           background: "#f8f8f1",
+          fontSize: "0.875rem",
+          lineHeightStep: "1.25rem",
         },
         duration: 2000,
       }}

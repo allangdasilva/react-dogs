@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useAuthStore } from "../features/auth/store/auth.store";
 import { api } from "./axios";
 import type { AxiosError } from "axios";
@@ -55,9 +56,18 @@ api.interceptors.response.use(
   (error: AxiosError) => {
     // Aqui está dizendo: "Se a API respondeu que não está autorizado"
     // HTTP status code: 401 = Unauthorized
-    if (error.response?.status === 401) {
+    // essa api ao invés de retornar 401 está retornando 403, por isso o uso do OU, só por curiosidade, 403 = "Eu sei quem você é, mas você não tem permissão para isso"
+    if (error.response?.status === 401 || error.response?.status === 403) {
       // Ação direta: desloga usuário / limpa token
-      useAuthStore.getState().logout();
+      const { token, logout } = useAuthStore.getState();
+
+      // Só dispara o toast e o logout se o usuário AINDA tiver um token no estado.
+      // Isso evita que 5 requisições falhas disparem 5 logouts/toasts seguidos.
+      // Se o usuário já estiver na tela de login e alguma requisição "zumbi" de fundo falhar, ele não será incomodado com um toast de erro de sessão, já que ele tecnicamente já está deslogado.
+      if (token) {
+        toast.error("Sua sessão expirou.");
+        logout();
+      }
     }
     // Repassa o erro pra quem chamou a requisição.
     // Rejeita a promessa para que o erro ainda possa ser tratado localmente (ex: no React Query).

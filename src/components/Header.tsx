@@ -48,7 +48,7 @@ function AuthBar() {
   return (
     <div>
       <AnchorRouter
-        className="bg-interactive-200"
+        className="relative bg-interactive-200"
         to="/profile"
         activeProps={{
           className: "bg-interactive-primary-500 anchor-color-active",

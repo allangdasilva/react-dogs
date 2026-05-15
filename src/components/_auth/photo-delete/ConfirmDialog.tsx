@@ -15,7 +15,7 @@ const ConfirmDialog = ({ photo_id }: Props) => {
 
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-[#1b1a18]/40 z-70" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-1/2 flex flex-col gap-6 justify-between p-4 rounded-base z-80 bg-neutral-dogs-100 will-change-auto data-[state=open]:animate-modal-in dark:border dark:border-neutral-dogs-200/90">
+        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-1/2 flex flex-col gap-6 justify-between p-4 rounded-base z-80 bg-neutral-dogs-100 will-change-auto data-[state=open]:animate-modal-in">
           <Dialog.Title className="font-body-primary text-neutral-dogs-900/90">
             Tem certeza que deseja apagar esta foto?
           </Dialog.Title>
