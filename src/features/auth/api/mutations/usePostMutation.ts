@@ -16,7 +16,7 @@ export const usePostMutation = () => {
         // agora, não precisamos de um parse rigoroso do Zod aqui.
         return response.data;
       } catch (error) {
-        handleApiError(error, "Erro ao processar os dados da foto.");
+        handleApiError(error, "Erro ao processar os dados da foto.", true);
       }
     },
     onSuccess: async () => {

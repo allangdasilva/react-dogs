@@ -6,6 +6,7 @@ export const Route = createFileRoute("/_auth/profile")({
   component: RouteComponent,
 });
 
+// eslint-disable-next-line react-refresh/only-export-components
 function RouteComponent() {
   return <Outlet />;
 }

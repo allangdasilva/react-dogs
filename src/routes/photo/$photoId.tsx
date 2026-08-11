@@ -57,6 +57,7 @@ export const Route = createFileRoute("/photo/$photoId")({
   component: RouteComponent,
 });
 
+// eslint-disable-next-line react-refresh/only-export-components
 function RouteComponent() {
   return <PhotoPage />;
 }

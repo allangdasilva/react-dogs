@@ -46,6 +46,7 @@ export const Route = createFileRoute("/")({
   component: RouteComponent,
 });
 
+// eslint-disable-next-line react-refresh/only-export-components
 function RouteComponent() {
   return <Feed userId={0} />;
 }

@@ -33,6 +33,7 @@ export const Route = createFileRoute("/_auth/profile/_layout/")({
   component: RouteComponent,
 });
 
+// eslint-disable-next-line react-refresh/only-export-components
 function RouteComponent() {
   // useQuery:
   // Já vai estar no cache por causa do BeforeLoad do __root, ou seja, ele vem instantaneamente.
@@ -47,6 +48,7 @@ function RouteComponent() {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 function ProfileFeed({ userId }: { userId: number }) {
   // usa o useSuspenseInfintieQuery pois o Suspense do React já garantiu que o dados existem. e o restante segue a mesma lógica...
   const { data } = useSuspenseInfiniteQuery(photosInfiniteQueryOptions(userId));

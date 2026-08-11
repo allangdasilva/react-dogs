@@ -9,7 +9,7 @@ export const Route = createFileRoute("/_auth/profile/_layout")({
 });
 
 // _layout no inicio dos arquivos quer dizer que todos eles vão usar esse layout aqui
-
+// eslint-disable-next-line react-refresh/only-export-components
 function RouteComponent() {
   return (
     <>

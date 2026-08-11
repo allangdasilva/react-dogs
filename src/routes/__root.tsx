@@ -70,6 +70,7 @@ export const Route = createRootRouteWithContext<RootRouteContext>()({
   component: RootComponent,
 });
 
+// eslint-disable-next-line react-refresh/only-export-components
 function RootComponent() {
   const token = useAuthStore((s) => s.token);
 
