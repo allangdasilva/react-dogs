@@ -1,4 +1,4 @@
-# � Dogs
+# Dogs
 
 <div align="center">
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 19" />
@@ -15,7 +15,7 @@
 
 ## 📌 Visão Geral
 
-O projeto **Dogs** nasceu como uma aplicação de estudo baseada no curso de React da Origamid, mas foi evoluído para uma versão mais robusta, visualmente mais refinada e melhor alinhada com as práticas modernas do front-end.
+O **Dogs** é uma rede social focada em cachorros. O projeto original faz parte da trilha de React da **Origamid**, mas foi evoluído para uma versão mais robusta, visualmente mais refinada e melhor alinhada com as práticas modernas do front-end.
 
 A ideia central foi ir além da reprodução fiel do projeto original: aplicar o que foi aprendido na prática, expandir a stack, reforçar a experiência do usuário e transformar o app em uma solução mais próxima do que se vê em produtos reais de mercado.
 
@@ -25,8 +25,6 @@ Este projeto combina:
 - arquitetura moderna com roteamento tipado e cache inteligente;
 - estudo aprofundado de UX/UI com interface pensada para diferentes contextos e temas;
 - boas práticas de autenticação, validação, feedback visual e organização de código.
-
----
 
 ## 🚀 Diferencial do Projeto
 
@@ -44,8 +42,6 @@ Ao longo do desenvolvimento, tive a preocupação de ampliar a stack do projeto 
 - interface reformulada com foco em usabilidade, hierarquia visual e melhor experiência mobile.
 
 A implementação dessa versão mostra proatividade para ir além do escopo do curso e entender que, em projetos reais, a decisão técnica e a experiência do usuário pesam tanto quanto o código em si.
-
----
 
 ## 🧩 O que o projeto faz
 
@@ -88,16 +84,14 @@ A aplicação funciona como uma rede social voltada para compartilhamento de fot
 - comentários em fotos;
 - exibição de detalhes da publicação;
 - contador de visualizações;
-- páginas com foco em engajamento e compartilhamento.
+- páginas com foco em compartilhamento.
 
 #### UX e feedback visual
 
-- toast para mensagens de sucesso, erro e sessão expirada;
+- toast para mensagens de sucesso e erro;
 - confirmação antes de ação destrutiva;
 - estados de loading, erro e vazio;
 - melhor experiência de acessibilidade e navegação com componentes de UI mais robustos.
-
----
 
 ## 🛠️ Tecnologias utilizadas
 
@@ -138,8 +132,6 @@ A stack do projeto foi escolhida para representar uma evolução significativa e
 - clsx
 - react-error-boundary
 - localStorage persistido via middleware do Zustand
-
----
 
 ## ✨ Melhorias implementadas
 
@@ -184,8 +176,6 @@ Além de manter o escopo funcional do projeto original, esta versão focou em re
 - atenção a contraste, proporção, espaçamento e legibilidade;
 - estética que se distancia do visual mais “didático” do projeto original e se aproxima mais de uma entrega de produto final.
 
----
-
 ## ▶️ Como executar a aplicação
 
 ### Pré-requisitos
@@ -201,10 +191,10 @@ pnpm install
 
 ### 2. Configure as variáveis de ambiente
 
-Crie um arquivo `.env` na raiz do projeto com a URL da API:
+Crie um arquivo `.env.local` na raiz do projeto com a URL da API:
 
 ```bash
-VITE_API_BASE_URL=sua_url_da_api
+VITE_API_BASE_URL=https://dogsapi.origamid.dev/json
 ```
 
 > A aplicação utiliza a variável `VITE_API_BASE_URL` para comunicação com a API do backend do projeto.
@@ -233,8 +223,6 @@ pnpm build
 pnpm preview
 ```
 
----
-
 ## 🧪 Como testar o fluxo principal
 
 Para validar o comportamento da aplicação, o fluxo mais importante é o de autenticação e interação do usuário.
@@ -262,8 +250,6 @@ Para validar o comportamento da aplicação, o fluxo mais importante é o de aut
 - carregamento do feed com scroll infinito;
 - comportamento do modal e navegação entre páginas;
 - estado do menu mobile e tema claro/escuro.
-
----
 
 ## 📚 O que foi estudado durante o projeto
 
@@ -296,7 +282,7 @@ Este projeto foi essencial para consolidar uma série de conceitos importantes d
 
 ### Estado e dados
 
-- React Query para dados assíncronos;
+- Tanstack Query para dados assíncronos;
 - Zustand para estado global;
 - persistência de dados no cliente;
 - gerenciamento eficiente de cache e sincronização.
@@ -315,56 +301,44 @@ Este projeto foi essencial para consolidar uma série de conceitos importantes d
 - feedback visual para o usuário;
 - decisões técnicas fundamentadas no problema e não apenas no tutorial.
 
----
-
 ## 🖼️ Layout e identidade visual
 
 A interface foi pensada para ser mais amigável, moderna e adaptável, trazendo uma experiência visual diferente da proposta original do curso.
 
-### Espaço para imagens do Figma
+#### Tipografia
+
+![type-style](/img/type-style.png)
+
+#### Cores
+
+![type-style](/img/color-system.png)
 
 #### Home / Feed
 
-> Inserir imagem aqui
-
-#### Modal da foto
-
-> Inserir imagem aqui
+![feed light theme](/img/light_feed.webp)
 
 #### Página do perfil
 
-> Inserir imagem aqui
+![profile light theme](/img/light_profile.webp)
 
 #### Tema light/dark
 
-> Inserir imagem aqui
+![login dark theme](/img/dark_login.webp)
 
 #### Mobile / menu hambúrguer
 
-> Inserir imagem aqui
-
----
+![profile dark theme](/img/dark_profile.webp)
 
 ## 🌐 Projeto e Deploy
 
 ### Link do projeto
 
 - [Projeto em produção](#)
-- [Repositório](#)
-- [Figma / Layout](#)
-
-> Reserve este espaço para inserir o link do deploy final, do protótipo no Figma e do repositório oficial.
-
----
+- [Repositório](https://github.com/allangdasilva/react-dogs)
+- [Figma / Layout](https://www.figma.com/design/YQI6tTd05JnPmaAq9IMxWd/Dogs?node-id=0-1&m=dev&t=w5HO19Ch2PTM2UoD-1)
 
 ## ✅ Conclusão
 
-O Dogs representa uma evolução consciente do projeto original da Origamid: mantendo o foco em aprendizado e aplicação prática, mas elevando a experiência para um nível mais profissional, com arquitetura melhor pensada, interface mais refinada e stack mais moderna.
+O projeto Dogs representa uma evolução consciente do projeto original da Origamid: mantendo o foco em aprendizado e aplicação prática, mas elevando a experiência para um nível mais profissional, com arquitetura melhor pensada, interface mais refinada e stack mais moderna.
 
 Esse projeto foi importante não apenas para consolidar conhecimentos em React, mas também para exercitar a maturidade de um desenvolvedor que pensa em produto, experiência do usuário e qualidade de implementação.
-
----
-
-## 📌 Observação
-
-Este README foi estruturado para servir como apresentação do projeto em um contexto profissional, destacando tanto o aprendizado técnico quanto a decisão de evoluir a solução de forma autônoma e criativa.

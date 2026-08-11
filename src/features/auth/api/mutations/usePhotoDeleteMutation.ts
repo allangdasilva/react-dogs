@@ -14,7 +14,7 @@ export const usePhotoDeleteMutation = () => {
       const response = await api.delete(`/api/photo/${id}`);
       return response.data;
     },
-    onSuccess: async (_data) => {
+    onSuccess: async () => {
       // AÇÃO ASSÍNCRONA (Com await): invalidateQueries orquestra uma nova requisição de rede, Ele avisa ao cache que os dados daquela chave (ex: ["photos"]) não são mais confiáveis. E Se o componente que usa essa query estiver ativo na tela (montado), o TanStack Query dispara imediatamente uma nova requisição via rede para buscar os dados atualizados.
       // (curiosidade sobre invalidateQueries: Ele dispara um requisição, desde que haja alguém "ouvindo" ou "precisando" daqueles dados na tela atual. Caso o usuário não esteja na tela que exibe a query que foi invalidada, ele apenas agenda a atualização para a próxima vez que a tela for aberta.)
       await queryClient.invalidateQueries({ queryKey: ["photos"] });
@@ -28,7 +28,7 @@ export const usePhotoDeleteMutation = () => {
         replace: true, // Substitui no histórico para o usuário não ficar preso no "voltar"
       });
     },
-    onError: (_error) => {
+    onError: () => {
       // Use o onError para EFEITOS (Toasts, logs externos, etc)
       // Não dê 'throw' aqui.
       toast.error("Não foi possível apagar a foto.");
