@@ -307,27 +307,27 @@ A interface foi pensada para ser mais amigável, moderna e adaptável, trazendo 
 
 #### Tipografia
 
-![type-style](./img/type-style.png)
+![type-style](./public/img/type-style.png)
 
 #### Cores
 
-![type-style](./img/color-system.png)
+![type-style](./public/img/color-system.png)
 
 #### Home / Feed
 
-![feed light theme](./img/light_feed.webp)
+![feed light theme](./public/img/light_feed.webp)
 
 #### Página do perfil
 
-![profile light theme](./img/light_profile.webp)
+![profile light theme](./public/img/light_profile.webp)
 
 #### Tema light/dark
 
-![login dark theme](./img/dark_login.webp)
+![login dark theme](./public/img/dark_login.webp)
 
 #### Mobile / menu hambúrguer
 
-![profile dark theme](./img/dark_profile.webp)
+![profile dark theme](./public/img/dark_profile.webp)
 
 ## 🌐 Projeto e Deploy
 
